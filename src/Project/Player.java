@@ -1,5 +1,7 @@
 package Project;
 
+import java.awt.Color;
+
 public class Player {
 
 	private ASEFile ball1;
@@ -11,6 +13,25 @@ public class Player {
 		this.ball1 = ball1;
 		this.ball2 = ball2;
 		spinning = 1;
+	}
+
+	public ASEFile getBall1() {
+		return ball1;
+	}
+
+	public ASEFile getBall2() {
+		return ball2;
+	}
+
+	public void changeSpinning() {
+		if (spinning == 1)
+			spinning = 2;
+		else
+			spinning = 1;
+	}
+
+	public int getRadius() {
+		return RADIUS;
 	}
 
 	public void Click(int spinning) {

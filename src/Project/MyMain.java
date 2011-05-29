@@ -2,6 +2,8 @@ package Project;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Graphics;
+
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -13,9 +15,10 @@ public class MyMain extends JFrame {
 	private static ASEFile asefile, ball, cube;
 	private static JMenuBar menubar;
 	private static JMenu filemenu;
-	private static JMenuItem open, ballmenuitem, cubemenuitem, exit, help;
-	private static MyListener mylistener;
+	private static JMenuItem open, ballmenuitem, cubemenuitem, playermenuitem, exit, help;
+	private static GameListener mylistener;
 	private static Player player;
+	private Graphics g;
 
 	public MyMain(String st) {
 		super(st);
@@ -23,12 +26,15 @@ public class MyMain extends JFrame {
 		this.getContentPane().add(pic, BorderLayout.CENTER);
 		this.setSize(800, 600);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		mylistener = new MyListener(pic, cube, ball, asefile, player);
+		mylistener = new GameListener(pic, player);
 		BuildMenu();
 		this.setVisible(true);
 		this.addMouseListener(mylistener);
 		this.addMouseWheelListener(mylistener);
 		this.addMouseMotionListener(mylistener);
+		// g = pic.getGraphics();
+		// pic.paintShape(player.getBall1(), g);
+		// pic.paintShape(player.getBall2(), g);
 	}
 
 	public static void BuildMenu() {
@@ -40,8 +46,10 @@ public class MyMain extends JFrame {
 		filemenu.addSeparator();
 		ballmenuitem = new JMenuItem("Ball");
 		cubemenuitem = new JMenuItem("Cube");
+		playermenuitem = new JMenuItem("Player");
 		filemenu.add(ballmenuitem);
 		filemenu.add(cubemenuitem);
+		filemenu.add(playermenuitem);
 		filemenu.addSeparator();
 		help = new JMenuItem("Help");
 		filemenu.add(help);
@@ -49,6 +57,7 @@ public class MyMain extends JFrame {
 		filemenu.add(exit);
 		ballmenuitem.addActionListener(mylistener);
 		cubemenuitem.addActionListener(mylistener);
+		playermenuitem.addActionListener(mylistener);
 		help.addActionListener(mylistener);
 		exit.addActionListener(mylistener);
 		open.addActionListener(mylistener);
@@ -59,10 +68,14 @@ public class MyMain extends JFrame {
 	}
 
 	public static void main(String[] args) {
+		player = new Player(new ASEFile(new ASEParser("models/small_ball.ase"), Color.gray), new ASEFile(new ASEParser("models/small_ball.ase"), Color.gray));
 		ball = new ASEFile(new ASEParser("models/small_ball.ase"), Color.yellow);
 		cube = new ASEFile(new ASEParser("models/cubik1.ase"), Color.BLUE);
 		ball.Move(400, 400, 0);
 		ball.Zoom(50, ball.getCenter());
+		player.getBall1().Zoom(5, player.getBall1().getCenter());
+		player.getBall2().Zoom(5, player.getBall2().getCenter());
+		player.getBall2().Move(player.getRadius(), player.getRadius(), 0);
 		cube.Move(200, 200, 0);
 		MyMain my = new MyMain("Game");
 		my.setJMenuBar(menubar);
@@ -76,5 +89,10 @@ public class MyMain extends JFrame {
 	public static ASEFile createCube() {
 		cube = new ASEFile(new ASEParser("models/cubik1.ase"), Color.BLUE);
 		return cube;
+	}
+
+	public static Player createPlayer() {
+		player = new Player(new ASEFile(new ASEParser("models/small_ball.ase"), Color.gray), new ASEFile(new ASEParser("models/small_ball.ase"), Color.gray));
+		return player;
 	}
 }
