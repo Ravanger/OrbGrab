@@ -57,11 +57,11 @@ public class MyMain extends JFrame {
 		filemenu.add(help);
 		exit = new JMenuItem("Exit");
 		filemenu.add(exit);
+		help.addActionListener(gamelistener);
+		exit.addActionListener(gamelistener);
 		// ballmenuitem.addActionListener(gamelistener);
 		// cubemenuitem.addActionListener(gamelistener);
 		// playermenuitem.addActionListener(gamelistener);
-		help.addActionListener(gamelistener);
-		exit.addActionListener(gamelistener);
 		// open.addActionListener(gamelistener);
 	}
 
