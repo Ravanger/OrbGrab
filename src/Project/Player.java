@@ -1,7 +1,5 @@
 package Project;
 
-import java.awt.Color;
-
 public class Player {
 
 	private ASEFile ball1;
@@ -23,6 +21,15 @@ public class Player {
 		return ball2;
 	}
 
+	public void Collide(ASEFile shape) {
+
+	}
+
+	/**
+	 * Switches from one spinning ball to the other
+	 * 
+	 * @param spinning
+	 */
 	public void changeSpinning() {
 		if (spinning == 1)
 			spinning = 2;
@@ -32,15 +39,6 @@ public class Player {
 
 	public int getRadius() {
 		return RADIUS;
-	}
-
-	public void Click(int spinning) {
-		if (spinning == 1) {
-			spinning = 2;
-		}
-		if (spinning == 2) {
-			spinning = 1;
-		}
 	}
 
 	/**

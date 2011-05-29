@@ -12,12 +12,14 @@ import javax.swing.JMenuItem;
 public class MyMain extends JFrame {
 
 	private static Picture pic;
-	private static ASEFile asefile, ball, cube;
+	// private static ASEFile asefile, ball, cube;
 	private static JMenuBar menubar;
 	private static JMenu filemenu;
-	private static JMenuItem open, ballmenuitem, cubemenuitem, playermenuitem, exit, help;
-	private static GameListener mylistener;
+	// private static JMenuItem open, ballmenuitem, cubemenuitem, playermenuitem, exit, help;
+	private static JMenuItem exit, help;
+	private static GameListener gamelistener;
 	private static Player player;
+	private boolean gameover = false;
 	private Graphics g;
 
 	public MyMain(String st) {
@@ -26,12 +28,12 @@ public class MyMain extends JFrame {
 		this.getContentPane().add(pic, BorderLayout.CENTER);
 		this.setSize(800, 600);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		mylistener = new GameListener(pic, player);
+		gamelistener = new GameListener(pic, player);
 		BuildMenu();
 		this.setVisible(true);
-		this.addMouseListener(mylistener);
-		this.addMouseWheelListener(mylistener);
-		this.addMouseMotionListener(mylistener);
+		this.addMouseListener(gamelistener);
+		this.addMouseWheelListener(gamelistener);
+		this.addMouseMotionListener(gamelistener);
 		// g = pic.getGraphics();
 		// pic.paintShape(player.getBall1(), g);
 		// pic.paintShape(player.getBall2(), g);
@@ -41,55 +43,55 @@ public class MyMain extends JFrame {
 		menubar = new JMenuBar();
 		filemenu = new JMenu("File");
 		menubar.add(filemenu);
-		open = new JMenuItem("Open");
-		filemenu.add(open);
-		filemenu.addSeparator();
-		ballmenuitem = new JMenuItem("Ball");
-		cubemenuitem = new JMenuItem("Cube");
-		playermenuitem = new JMenuItem("Player");
-		filemenu.add(ballmenuitem);
-		filemenu.add(cubemenuitem);
-		filemenu.add(playermenuitem);
-		filemenu.addSeparator();
+		// open = new JMenuItem("Open");
+		// filemenu.add(open);
+		// filemenu.addSeparator();
+		// ballmenuitem = new JMenuItem("Ball");
+		// cubemenuitem = new JMenuItem("Cube");
+		// playermenuitem = new JMenuItem("Player");
+		// filemenu.add(ballmenuitem);
+		// filemenu.add(cubemenuitem);
+		// filemenu.add(playermenuitem);
+		// filemenu.addSeparator();
 		help = new JMenuItem("Help");
 		filemenu.add(help);
 		exit = new JMenuItem("Exit");
 		filemenu.add(exit);
-		ballmenuitem.addActionListener(mylistener);
-		cubemenuitem.addActionListener(mylistener);
-		playermenuitem.addActionListener(mylistener);
-		help.addActionListener(mylistener);
-		exit.addActionListener(mylistener);
-		open.addActionListener(mylistener);
+		// ballmenuitem.addActionListener(gamelistener);
+		// cubemenuitem.addActionListener(gamelistener);
+		// playermenuitem.addActionListener(gamelistener);
+		help.addActionListener(gamelistener);
+		exit.addActionListener(gamelistener);
+		// open.addActionListener(gamelistener);
 	}
 
-	public static JMenuItem getOpen() {
-		return open;
-	}
+	// public static JMenuItem getOpen() {
+	// return open;
+	// }
 
 	public static void main(String[] args) {
 		player = new Player(new ASEFile(new ASEParser("models/small_ball.ase"), Color.gray), new ASEFile(new ASEParser("models/small_ball.ase"), Color.gray));
-		ball = new ASEFile(new ASEParser("models/small_ball.ase"), Color.yellow);
-		cube = new ASEFile(new ASEParser("models/cubik1.ase"), Color.BLUE);
-		ball.Move(400, 400, 0);
-		ball.Zoom(50, ball.getCenter());
+		// ball = new ASEFile(new ASEParser("models/small_ball.ase"), Color.yellow);
+		// cube = new ASEFile(new ASEParser("models/cubik1.ase"), Color.BLUE);
+		// ball.Move(400, 400, 0);
+		// ball.Zoom(50, ball.getCenter());
 		player.getBall1().Zoom(5, player.getBall1().getCenter());
 		player.getBall2().Zoom(5, player.getBall2().getCenter());
 		player.getBall2().Move(player.getRadius(), player.getRadius(), 0);
-		cube.Move(200, 200, 0);
+		// cube.Move(200, 200, 0);
 		MyMain my = new MyMain("Game");
 		my.setJMenuBar(menubar);
 	}
 
-	public static ASEFile createBall() {
-		ball = new ASEFile(new ASEParser("models/small_ball.ase"), Color.yellow);
-		return ball;
-	}
-
-	public static ASEFile createCube() {
-		cube = new ASEFile(new ASEParser("models/cubik1.ase"), Color.BLUE);
-		return cube;
-	}
+	// public static ASEFile createBall() {
+	// ball = new ASEFile(new ASEParser("models/small_ball.ase"), Color.yellow);
+	// return ball;
+	// }
+	//
+	// public static ASEFile createCube() {
+	// cube = new ASEFile(new ASEParser("models/cubik1.ase"), Color.BLUE);
+	// return cube;
+	// }
 
 	public static Player createPlayer() {
 		player = new Player(new ASEFile(new ASEParser("models/small_ball.ase"), Color.gray), new ASEFile(new ASEParser("models/small_ball.ase"), Color.gray));
