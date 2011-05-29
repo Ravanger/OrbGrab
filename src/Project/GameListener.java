@@ -1,8 +1,6 @@
 package Project;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -10,7 +8,7 @@ import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 import javax.swing.event.MouseInputListener;
 
-public class GameListener implements ActionListener, MouseInputListener, KeyListener, MouseWheelListener {
+public class GameListener implements MouseInputListener, KeyListener, MouseWheelListener {
 
 	private Picture pic;
 	private Graphics g;
@@ -20,10 +18,6 @@ public class GameListener implements ActionListener, MouseInputListener, KeyList
 	public GameListener(Picture pic, Player player) {
 		this.pic = pic;
 		this.player = player;
-	}
-
-	public void actionPerformed(ActionEvent e) {
-		g = this.pic.getGraphics();
 	}
 
 	public void mouseWheelMoved(MouseWheelEvent e) {

@@ -3,6 +3,8 @@ package Project;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -55,10 +57,24 @@ public class MyMain extends JFrame {
 		// filemenu.addSeparator();
 		help = new JMenuItem("Help");
 		filemenu.add(help);
+		help.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+		});
 		exit = new JMenuItem("Exit");
 		filemenu.add(exit);
-		help.addActionListener(gamelistener);
-		exit.addActionListener(gamelistener);
+		exit.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+
+			}
+		});
 		// ballmenuitem.addActionListener(gamelistener);
 		// cubemenuitem.addActionListener(gamelistener);
 		// playermenuitem.addActionListener(gamelistener);
