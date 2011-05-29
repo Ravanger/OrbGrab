@@ -22,7 +22,7 @@ public class MyMain extends JFrame {
 	private static GameListener gamelistener;
 	private static Player player;
 	private boolean gameover = false;
-	private Graphics g;
+	private static Graphics g;
 
 	public MyMain(String st) {
 		super(st);
@@ -61,8 +61,8 @@ public class MyMain extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-
+				g = pic.getGraphics();
+				pic.paintHelp(g);
 			}
 		});
 		exit = new JMenuItem("Exit");

@@ -24,6 +24,6 @@ public class Picture extends JPanel {
 
 	public void paintHelp(Graphics g) {
 		g.clearRect(0, 0, 800, 600);
-		g.drawString("HELP TEXT", 100, 50);
+		g.drawRect(15, 15, 770, 570);
 	}
 }
