@@ -1,5 +1,7 @@
 package org.br.game;
 
+import java.util.List;
+
 public class Vertex {
 
 	double x, y, z;
@@ -17,7 +19,7 @@ public class Vertex {
 		this.z = p.getZ();
 	}
 
-	public void Move(double dx, double dy, double dz) {
+	public void move(double dx, double dy, double dz) {
 		x += dx;
 		y += dy;
 		z += dz;
@@ -78,5 +80,36 @@ public class Vertex {
 
 	public double getY() {
 		return y;
+	}
+
+	public static double[] getMinMaxXYZ(List<Vertex> positions) {
+		double maxX = 0;
+		double maxY = 0;
+		double minX = 0;
+		double minY = 0;
+		double maxZ = 0;
+		double minZ = 0;
+		for (Vertex p : positions) {
+			if (p.getX() > maxX) {
+				maxX = p.getX();
+			}
+			else {
+				minX = p.getX();
+			}
+			if (p.getY() > maxY) {
+				maxY = p.getY();
+			}
+			else {
+				minY = p.getY();
+			}
+			if (p.getZ() > maxZ) {
+				maxZ = p.getZ();
+			}
+			else {
+				minZ = p.getZ();
+			}
+		}
+
+		return new double[] { minX, minY, minZ, maxX, maxY, maxZ };
 	}
 }

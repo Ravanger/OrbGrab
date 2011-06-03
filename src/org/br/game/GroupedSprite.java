@@ -18,37 +18,27 @@ public abstract class GroupedSprite extends StatefullSprite {
 		this.group.addAll(group);
 	}
 
-	@Override
-	public Point getPosition() {
-		return getGroupCenter();
+	public List<Sprite> getGroup() {
+		return group;
 	}
 
-	@Override
-	public void setPosition(Point pos) {
-		Point center = getGroupCenter();
-		for (Sprite groupMember : group) {
-			groupMember.setPosition(center.getDistance(getGroupDistance(), getGroupDistance()));
-		}
-
-	}
-
-	protected Point getGroupCenter() {
-
-		List<Point> all = new ArrayList<Point>();
-		for (Sprite groupMember : group) {
-			all.add(groupMember.getPosition());
-		}
-		double[] minMax = Point.getMinMaxXY(all);
-		double maxX = minMax[2];
-		double maxY = minMax[3];
-
-		double minX = minMax[0];
-		double minY = minMax[1];
-
-		Point groupCenter = new Point((maxX - minX) / 2, (maxY - minY) / 2);
-
-		return groupCenter;
-	}
+	// protected Vertex getGroupCenter() {
+	//
+	// List<Point> all = new ArrayList<Point>();
+	// for (Sprite groupMember : group) {
+	// all.add(groupMember.getPosition());
+	// }
+	// double[] minMax = Point.getMinMaxXY(all);
+	// double maxX = minMax[2];
+	// double maxY = minMax[3];
+	//
+	// double minX = minMax[0];
+	// double minY = minMax[1];
+	//
+	// Point groupCenter = new Point((maxX - minX) / 2, (maxY - minY) / 2);
+	//
+	// return groupCenter;
+	// }
 
 	public void still() {
 		for (Sprite groupMember : group) {

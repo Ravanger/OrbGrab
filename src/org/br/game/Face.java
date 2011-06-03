@@ -51,10 +51,10 @@ public class Face {
 	// c= Color.RED;
 	// }
 
-	public void Move(double dx, double dy, double dz) {
-		p1.Move(dx, dy, dz);
-		p2.Move(dx, dy, dz);
-		p3.Move(dx, dy, dz);
+	public void move(double dx, double dy, double dz) {
+		p1.move(dx, dy, dz);
+		p2.move(dx, dy, dz);
+		p3.move(dx, dy, dz);
 	}
 
 	public void TurnX(double a) {
@@ -82,27 +82,27 @@ public class Face {
 	}
 
 	public void Zoom(double k, Vertex center) {
-		this.Move(-(center.getX()), -(center.getY()), -(center.getZ()));
+		this.move(-(center.getX()), -(center.getY()), -(center.getZ()));
 		this.Scale(k, k, k);
-		this.Move((center.getX()), (center.getY()), (center.getZ()));
+		this.move((center.getX()), (center.getY()), (center.getZ()));
 	}
 
 	public void TurnX(double a, Vertex center) {
-		this.Move(-(center.getX()), -(center.getY()), -(center.getZ()));
+		this.move(-(center.getX()), -(center.getY()), -(center.getZ()));
 		this.TurnX(a);
-		this.Move((center.getX()), (center.getY()), (center.getZ()));
+		this.move((center.getX()), (center.getY()), (center.getZ()));
 	}
 
 	public void TurnY(double a, Vertex center) {
-		this.Move(-(center.getX()), -(center.getY()), -(center.getZ()));
+		this.move(-(center.getX()), -(center.getY()), -(center.getZ()));
 		this.TurnY(a);
-		this.Move((center.getX()), (center.getY()), (center.getZ()));
+		this.move((center.getX()), (center.getY()), (center.getZ()));
 	}
 
 	public void TurnZ(double a, Vertex center) {
-		this.Move(-(center.getX()), -(center.getY()), -(center.getZ()));
+		this.move(-(center.getX()), -(center.getY()), -(center.getZ()));
 		this.TurnZ(a);
-		this.Move((center.getX()), (center.getY()), (center.getZ()));
+		this.move((center.getX()), (center.getY()), (center.getZ()));
 	}
 
 	public void DrawTriangle(Graphics g) {
@@ -169,15 +169,15 @@ public class Face {
 		Vertex p3 = getP3();
 		double tmp1, tmp2, tmp3;
 		middle = getCenter();
-		p1.Move(-p2.getX(), -p2.getY(), -p2.getZ());
-		p3.Move(-p2.getX(), -p2.getY(), -p2.getZ());
+		p1.move(-p2.getX(), -p2.getY(), -p2.getZ());
+		p3.move(-p2.getX(), -p2.getY(), -p2.getZ());
 
 		tmp1 = p1.getY() * p3.getZ() - p1.getZ() * p3.getY();
 		tmp2 = p1.getZ() * p3.getX() - p1.getX() * p3.getZ();
 		tmp3 = p1.getX() * p3.getY() - p1.getY() * p3.getX();
 
 		normal = new Vertex(tmp1, tmp2, tmp3);
-		middle.Move(0, 0, Vertex.DIST);
+		middle.move(0, 0, Vertex.DIST);
 		tmp1 = 1 / normal.getLength();
 		tmp2 = 1 / middle.getLength();
 		normal.Scale(tmp1, tmp1, tmp1);
