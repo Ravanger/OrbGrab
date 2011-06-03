@@ -14,10 +14,8 @@ import javax.swing.JMenuItem;
 public class MyMain extends JFrame {
 
 	private static Picture pic;
-	// private static ASEFile asefile, ball, cube;
 	private static JMenuBar menubar;
 	private static JMenu filemenu;
-	// private static JMenuItem open, ballmenuitem, cubemenuitem, playermenuitem, exit, help;
 	private static JMenuItem exit, help;
 	private static GameListener gamelistener;
 	private static Player player;

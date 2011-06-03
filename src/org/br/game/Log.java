@@ -3,13 +3,9 @@ package org.br.game;
 import java.util.Calendar;
 
 /**
- * Simple logger
- * 
- * TODO - use some logging framework !
- * 
+ * Simple logger TODO - use some logging framework !
  * 
  * @author Boris
- * 
  */
 public class Log {
 
@@ -29,8 +25,7 @@ public class Log {
 	}
 
 	private static String format(String className, String mess) {
-		return String.format("%1$tm %1$te,%1$tY-[%2$s]: %3$s", c.getTime(),
-				className, mess);
+		return String.format("%1$tm %1$te,%1$tY-[%2$s]: %3$s", c.getTime(), className, mess);
 
 	}
 }

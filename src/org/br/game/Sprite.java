@@ -1,20 +1,22 @@
 package org.br.game;
 
 import org.br.game.state.GameState;
- 
 
-public interface Sprite  {
- 	
-	void move(Direction dir);
+public interface Sprite {
+
 	void still();
- 	GameState getState();
 
-	Position getPosition();
-	void setPosition(Position pos);
-	 
-	
+	// void move(Direction dir);
+
+	GameState getState();
+
+	Point getPosition();
+
+	void setPosition(Point pos);
+
 	void setClicked(boolean flag);
+
 	boolean isClicked();
-	
-	String getName();
+
+	// String getName();
 }

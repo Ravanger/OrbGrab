@@ -10,46 +10,42 @@ public abstract class GroupedSprite extends StatefullSprite {
 	private List<Sprite> group = new ArrayList<Sprite>();
 
 	// a default distance between group members
-	public static final int DEFAULT_DISTANCE = 100;
+	public static final int RADIUS = 100;
 
-	private int distance = DEFAULT_DISTANCE;
+	private static int dist = RADIUS;
 
 	public GroupedSprite(List<? extends Sprite> group) {
 		this.group.addAll(group);
-
 	}
 
 	@Override
-	public Position getPosition() {
-
-		return calculateGroupCenter();
+	public Point getPosition() {
+		return getGroupCenter();
 	}
 
 	@Override
-	public void setPosition(Position pos) {
-		Position center = calculateGroupCenter();
+	public void setPosition(Point pos) {
+		Point center = getGroupCenter();
 		for (Sprite groupMember : group) {
-			groupMember.setPosition(center.distanced(getGroupDistance(),
-					getGroupDistance()));
+			groupMember.setPosition(center.getDistance(getGroupDistance(), getGroupDistance()));
 		}
 
 	}
 
-	protected Position calculateGroupCenter() {
+	protected Point getGroupCenter() {
 
-		List<Position> all = new ArrayList<Position>();
+		List<Point> all = new ArrayList<Point>();
 		for (Sprite groupMember : group) {
 			all.add(groupMember.getPosition());
 		}
-		double[] minMax = Position.getMinMaxXY(all);
+		double[] minMax = Point.getMinMaxXY(all);
 		double maxX = minMax[2];
 		double maxY = minMax[3];
 
 		double minX = minMax[0];
 		double minY = minMax[1];
 
-		Position groupCenter = new Position((maxX - minX) / 2,
-				(maxY - minY) / 2);
+		Point groupCenter = new Point((maxX - minX) / 2, (maxY - minY) / 2);
 
 		return groupCenter;
 	}
@@ -62,28 +58,28 @@ public abstract class GroupedSprite extends StatefullSprite {
 	}
 
 	public void move(Direction dir) {
-		for (Sprite groupMember : group) {
-			groupMember.move(dir);
-		}
+		// for (Sprite groupMember : group) {
+		// // groupMember.move(dir);
+		// }
 		setState(GameState.MOVING);
 	}
 
 	/**
-	 * Get a distance between group members
+	 * Get the distance (radius) between group members
 	 * 
 	 * @return
 	 */
-	public int getGroupDistance() {
-		return distance;
+	public static int getGroupDistance() {
+		return dist;
 	}
 
 	/**
-	 * Set a distance between group members
+	 * Set a distance (radius) between group members
 	 * 
 	 * @return
 	 */
 	protected void setGroupDistance(int distance) {
-		this.distance = distance;
+		this.dist = distance;
 	}
 
 }
