@@ -1,0 +1,7 @@
+-Fix getCenterBall() in CirclingBallGroup (get Center Ball)
+-Smoothen out spinning
+-Fix circling formula
+-Cubes
+-Collision
+-High scores
+-Field borders
