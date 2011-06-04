@@ -23,13 +23,10 @@ public class Ball extends StatefullSprite {
 	private boolean clicked = false;
 	private Thread movingThread;
 	private Boolean circling = false;
-	// private Point point = new Point(100, 100);
 	private Face[] faces;
 	private Vertex[] vertexes;
 	private Color color;
 	private ASEParser filereader;
-
-	// private Graphics g;
 
 	public Ball(ASEParser filereader, Color color, String name) {
 		this.filereader = filereader;
@@ -47,16 +44,6 @@ public class Ball extends StatefullSprite {
 		}
 		this.name = name;
 	}
-
-	// public Ball(Ball centerBall) {
-	// this.centerBall = centerBall;
-	// faces = new Face[centerBall.faces.length];
-	// for (int i = 0; i < centerBall.faces.length; i++) {
-	// faces[i] = new Face(centerBall.faces[i]);
-	// }
-	// color = centerBall.color;
-	// filereader = new ASEParser(centerBall.getFileReader().getFilePath());
-	// }
 
 	public Color getColor() {
 		return color;
@@ -129,7 +116,7 @@ public class Ball extends StatefullSprite {
 	}
 
 	/**
-	 * This ball is moving around the second Ball which is in the "still" state
+	 * This ball is moving around the center ball
 	 */
 	@Override
 	public void still() {
@@ -138,7 +125,7 @@ public class Ball extends StatefullSprite {
 			if (isClicked()) {
 				centerBall.setClicked(false);
 				centerBall.still();
-				circleAround(centerBall);
+				circleAround();
 			}
 			else {
 				stop();
@@ -149,16 +136,16 @@ public class Ball extends StatefullSprite {
 		}
 	}
 
-	void circleAround(final Ball centerBall) {
+	void circleAround() {
 		movingThread = new Thread() {
-			double angle = 0;
+			int angle = 0;
 
 			public void run() {
 				while (circling) {
 					spin(angle);
 					try {
-						Thread.sleep(100L);// Sleeps for 0.1 seconds
-						angle += 1.5;
+						Thread.sleep(50L);// Sleeps for 0.05 seconds
+						angle += 1;
 					}
 					catch (InterruptedException e) {
 						Log.warn(getClass(), this + ": Thread failed");
@@ -169,12 +156,11 @@ public class Ball extends StatefullSprite {
 		movingThread.start();
 	}
 
-	private void spin(double angle) {
-		double newX = 2 * CirclingBallGroup.getGroupDistance() * Math.cos(angle);
-		double newY = 2 * CirclingBallGroup.getGroupDistance() * Math.sin(angle);
+	private void spin(double a) {
+		double newX = CirclingBallGroup.getGroupDistance() * Math.cos(a);
+		double newY = CirclingBallGroup.getGroupDistance() * Math.sin(a);
 		move(newX, newY, 0);
-
-		Log.info(getClass(), this + " " + newX + "; " + newY + " Degree: " + angle);
+		Log.info(getClass(), this + " " + newX + "; " + newY + " Degree: " + a);
 	}
 
 	public Face[] getFaces() {

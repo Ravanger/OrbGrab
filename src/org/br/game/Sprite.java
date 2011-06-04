@@ -17,6 +17,8 @@ public interface Sprite {
 	void turnZ(double a, Vertex center);
 
 	void zoom(double a, Vertex center);
+	
+	Vertex getCenter();
 
 	GameState getState();
 

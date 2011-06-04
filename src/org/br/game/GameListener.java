@@ -34,8 +34,10 @@ public class GameListener implements MouseInputListener, KeyListener, MouseWheel
 	}
 
 	public void mouseClicked(java.awt.event.MouseEvent e) {
-		// player.switchSpinning();
-		// pic.repaint();
+		if (e.getModifiers() == InputEvent.BUTTON1_MASK) {
+			player.switchSpinning();
+			pic.repaint();
+		}
 	}
 
 	public void mouseReleased(java.awt.event.MouseEvent e) {
@@ -49,21 +51,26 @@ public class GameListener implements MouseInputListener, KeyListener, MouseWheel
 
 	public void mouseDragged(java.awt.event.MouseEvent e) {
 		int x = e.getX(), y = e.getY();
-		if (e.getModifiers() == InputEvent.BUTTON2_MASK) {
+		if (e.getModifiers() == InputEvent.BUTTON2_MASK) {// Middle mouse button
 			turnXY(x - mx, y - my);
+			pic.repaint();
 		}
-		else if (e.getModifiers() == InputEvent.BUTTON3_MASK) {
+		else if (e.getModifiers() == InputEvent.BUTTON3_MASK) {// Right mouse button
 			turnZ(x - mx);
+			pic.repaint();
 		}
 		mx = x;
 		my = y;
 	}
 
 	private void turnZ(int a) {
-		player.turnZ(a, player.getCenter());
+		player.turnZ(a, player.getCenterBall().getCenter());
 	}
 
 	private void turnXY(int a, int b) {
+		// a is for x, b is for y.
+		player.turnX(a, player.getCenterBall().getCenter());
+		player.turnY(b, player.getCenterBall().getCenter());
 	}
 
 	public void mouseMoved(java.awt.event.MouseEvent e) {
@@ -82,7 +89,5 @@ public class GameListener implements MouseInputListener, KeyListener, MouseWheel
 		this.mx = e.getX();
 		this.my = e.getY();
 		e.consume();
-		// if (e.getModifiers() == InputEvent.BUTTON1_MASK)
-		// player.changeSpinning();
 	}
 }

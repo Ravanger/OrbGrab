@@ -16,29 +16,34 @@ import javax.swing.JMenuItem;
 import org.br.game.sprites.Ball;
 import org.br.game.sprites.CirclingBallGroup;
 
+/**
+ * The main class of OrgGrab, starts the game itself.
+ * 
+ * @author Lone Wolf
+ */
 public class Game extends JFrame {
 	private Picture pic;
-	// private JMenuBar menubar;
-	private JMenu filemenu;
-	private JMenuItem exit, help;
+	static Game game;
+	private MainMenu mainMenu;
 	private GameListener gamelistener;
 	private CirclingBallGroup player;
-	private boolean gameover = false;
+	private boolean startGame = false;
 	private Graphics g;
 	private List<Sprite> sprites = new ArrayList<Sprite>();
 	private String ballModel = "models/small_ball.ase";
 
 	public Game(String st) {
 		super(st);
-
 		setSize(800, 600);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setJMenuBar(buildMenu());
 		g = getGraphics();
-		// setContentPane(getGameContent());
-		this.getContentPane().add(getGameContent(), BorderLayout.CENTER);
+		getContentPane().add(getGameContent(), BorderLayout.CENTER);
 	}
 
+	/**
+	 * Adds GameListener (MouseListener) to pic (JPanel)
+	 */
 	private void addPicListener() {
 		gamelistener = new GameListener(pic, getPlayer());
 		pic.addMouseListener(gamelistener);
@@ -46,37 +51,54 @@ public class Game extends JFrame {
 		pic.addMouseMotionListener(gamelistener);
 	}
 
+	/**
+	 * Creates the Ball sprites and sets the starting center ball (Ball 2).
+	 * 
+	 * @return
+	 */
 	private Picture getGameContent() {
-
 		pic = new Picture();
 		Ball ball1 = new Ball(new ASEParser(ballModel), Color.gray, "Ball 1");
 		Ball ball2 = new Ball(new ASEParser(ballModel), Color.red, "Ball 2");
 		List<Sprite> playerSprites = new ArrayList<Sprite>(2);
 		playerSprites.add(ball1);
 		playerSprites.add(ball2);
-		ball1.zoom(2, ball1.getCenter());
-		ball2.zoom(2, ball2.getCenter());
+		for (Sprite sprite : playerSprites) {
+			sprite.zoom(2, sprite.getCenter());
+		}
 		ball1.setClicked(true);
 		ball1.setCenterBall(ball2);// set Center ball as ball2
-
 		setPlayer(new CirclingBallGroup(playerSprites));
 		getPlayer().setPicture(pic);
-		sprites.add(getPlayer());
-
+		sprites.add(getPlayer()); // adds player (CirclingBallGroup) to sprites (List of Sprites).
 		pic.setListOfSprites(sprites);
 		addPicListener();
 		return pic;
 	}
 
-	public void startGame() {
+	/**
+	 * Moves one ball to the center of the group using the group's radius
+	 */
+	private void startGame() {
 		setVisible(true);
-		getPlayer().getGroup().get(1).move(player.getGroupDistance(), player.getGroupDistance(), 0); // move ball 1 to center of group (radius)
-		getPlayer().move(100, 100, 0);
+		// if (getStartGame()) {
+		getPlayer().getGroup().get(1).move(player.getGroupDistance() * Math.cos(45), player.getGroupDistance() * Math.sin(45), 0);// Moves the center ball
+		getPlayer().move(150, 150, 0);// Moves the group
 		getPlayer().still();
+		/*
+		 * } else { mainMenu = new MainMenu(); remove(pic); add(mainMenu); mainMenu.setFocusable(true); }
+		 */
 	}
 
+	/**
+	 * Builds the JMenu that's used in the game and returns it
+	 * 
+	 * @return
+	 */
 	private JMenuBar buildMenu() {
 		JMenuBar menubar = new JMenuBar();
+		JMenu filemenu;
+		JMenuItem exit, help;
 		filemenu = new JMenu("File");
 		menubar.add(filemenu);
 		// help = new JMenuItem("Help");
@@ -102,16 +124,28 @@ public class Game extends JFrame {
 		return menubar;
 	}
 
-	public static void main(String[] args) {
-		Game game = new Game("OrbGrab");
-		game.startGame();
-	}
-
-	private CirclingBallGroup getPlayer() {
+	public CirclingBallGroup getPlayer() {
 		return player;
 	}
 
 	private void setPlayer(CirclingBallGroup player) {
 		this.player = player;
+	}
+
+	public void setStartGame(boolean startGame) {
+		this.startGame = startGame;
+	}
+
+	public boolean getStartGame() {
+		return startGame;
+	}
+
+	public static Game getGame() {
+		return game;
+	}
+
+	public static void main(String[] args) {
+		game = new Game("OrbGrab");
+		game.startGame();
 	}
 }

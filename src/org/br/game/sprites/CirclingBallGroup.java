@@ -3,6 +3,7 @@ package org.br.game.sprites;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.br.game.Game;
 import org.br.game.GroupedSprite;
 import org.br.game.Sprite;
 import org.br.game.Vertex;
@@ -28,13 +29,17 @@ public class CirclingBallGroup extends GroupedSprite {
 		Ball ball2 = (Ball) getGroup().get(1);
 		if (ball1.isClicked()) {
 			ball1.setClicked(false);
+			ball1.setCenterBall(null);// Removes center ball from ball1
 			ball2.setClicked(true);
 			ball2.setCenterBall(ball1);// set Center ball as ball1
+			Game.getGame().getPlayer().still();
 		}
 		else {
 			ball1.setClicked(true);
+			ball2.setCenterBall(null);// Removes center ball from ball2
 			ball2.setClicked(false);
 			ball1.setCenterBall(ball2);// set Center ball as ball2
+			Game.getGame().getPlayer().still();
 		}
 	}
 
@@ -48,29 +53,29 @@ public class CirclingBallGroup extends GroupedSprite {
 	 * 
 	 * @return
 	 */
-	// public Vertex getCenter() {
-	// Ball ball1 = (Ball) getGroup().get(0);
-	// Ball ball2 = (Ball) getGroup().get(1);
-	// Vertex center1 = ball1.getCenter();
-	// Vertex center2 = ball2.getCenter();
-	// List<Vertex> positions = new ArrayList<Vertex>(2);
-	// positions.add(center1);
-	// positions.add(center2);
-	// double[] groupCenter = Vertex.getMinMaxXYZ(positions);
-	// double centerZ = groupCenter[5] - groupCenter[2];
-	// double centerX = groupCenter[3] - groupCenter[0];
-	// double centerY = groupCenter[4] - groupCenter[1];
-	// Vertex center = new Vertex(centerX, centerY, centerZ);
-	// return center;
-	// }
-
-	/**
-	 * Returns center of the center ball
-	 */
 	public Vertex getCenter() {
 		Ball ball1 = (Ball) getGroup().get(0);
-		Vertex center = ball1.getCenter();
+		Ball ball2 = (Ball) getGroup().get(1);
+		Vertex center1 = ball1.getCenter();
+		Vertex center2 = ball2.getCenter();
+		List<Vertex> positions = new ArrayList<Vertex>(2);
+		positions.add(center1);
+		positions.add(center2);
+		double[] groupCenter = Vertex.getMinMaxXYZ(positions);
+		double centerZ = groupCenter[5] - groupCenter[2];
+		double centerX = groupCenter[3] - groupCenter[0];
+		double centerY = groupCenter[4] - groupCenter[1];
+		Vertex center = new Vertex(centerX, centerY, centerZ);
 		return center;
+	}
+
+	/**
+	 * Returns the stationary ball.
+	 * 
+	 * @return
+	 */
+	public Ball getCenterBall() {
+		return null;
 	}
 
 	@Override
