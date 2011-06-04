@@ -1,6 +1,5 @@
 package org.br.game;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
@@ -9,7 +8,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JPanel;
 
 /**
@@ -23,6 +21,7 @@ public class MainMenu extends JPanel implements KeyListener,MouseListener {
 
 	public MainMenu() {
 		super();
+
 		setFocusable(true);
 		addKeyListener(this);
 		addMouseListener(this);
@@ -41,6 +40,7 @@ public class MainMenu extends JPanel implements KeyListener,MouseListener {
 
 	@Override
 	public void keyReleased(KeyEvent arg0) {
+		Log.info(getClass(),"keyReleased:"+arg0.getKeyCode());
 		if (arg0.getKeyCode() == 10 || arg0.getKeyCode() == 32) { // 10 = Enter, 32 = spacebar
 			Game.GAME.setStartGame(true);
 			Game.GAME.startGame();

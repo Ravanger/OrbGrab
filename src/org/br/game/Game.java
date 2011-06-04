@@ -104,6 +104,7 @@ public class Game extends JFrame {
 			}
 			getContentPane().add(mainMenu, BorderLayout.CENTER);
 			pack();
+			mainMenu.grabFocus();
 		}
 
 	}
