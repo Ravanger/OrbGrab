@@ -13,8 +13,6 @@ import org.br.game.Triangle;
 import org.br.game.Vertex;
 import org.br.game.state.GameState;
 
-import sun.awt.RepaintArea;
-
 public class Ball extends StatefullSprite {
 
 	private Picture picture;
@@ -27,6 +25,9 @@ public class Ball extends StatefullSprite {
 	private Vertex[] vertexes;
 	private Color color;
 	private ASEParser filereader;
+	private double maxX = 0, minX = 0, maxY = 0, minY = 0;
+	private Vertex center = new Vertex(0, 0, 0);
+	private CirclingBallGroup owner;
 
 	public Ball(ASEParser filereader, Color color, String name) {
 		this.filereader = filereader;
@@ -47,6 +48,14 @@ public class Ball extends StatefullSprite {
 
 	public Color getColor() {
 		return color;
+	}
+
+	public void setGroup(CirclingBallGroup owner) {
+		this.owner = owner;
+	}
+
+	private CirclingBallGroup getGroup() {
+		return owner;
 	}
 
 	public void move(double x, double y, double z) {
@@ -128,6 +137,8 @@ public class Ball extends StatefullSprite {
 				circleAround();
 			}
 			else {
+				Vertex center = getGroup().getCenter();
+				move(center.getX(), center.getY(), 0);
 				stop();
 			}
 		}
@@ -138,14 +149,17 @@ public class Ball extends StatefullSprite {
 
 	void circleAround() {
 		movingThread = new Thread() {
-			int angle = 0;
+			double radians = 0;
 
 			public void run() {
 				while (circling) {
-					spin(angle);
+					spin(radians);
 					try {
-						Thread.sleep(50L);// Sleeps for 0.05 seconds
-						angle += 1;
+						Thread.sleep(100L);// Sleeps for 0.1 seconds
+						// if (Math.toDegrees(radians) >= 343.77467707849394)
+						// radians = 0;
+						// else
+						radians += 1;
 					}
 					catch (InterruptedException e) {
 						Log.warn(getClass(), this + ": Thread failed");
@@ -156,11 +170,30 @@ public class Ball extends StatefullSprite {
 		movingThread.start();
 	}
 
-	private void spin(double a) {
-		double newX = CirclingBallGroup.getGroupDistance() * Math.cos(a);
-		double newY = CirclingBallGroup.getGroupDistance() * Math.sin(a);
+	private void setMaxX(double maxX) {
+		this.maxX = maxX;
+	}
+
+	private void setMinX(double minX) {
+		this.minX = minX;
+	}
+
+	private void setMaxY(double maxY) {
+		this.maxY = maxY;
+	}
+
+	private void setMinY(double minY) {
+		this.minY = minY;
+	}
+
+	private void spin(double a) {/*
+								 * double newX = CirclingBallGroup.getRadius() * Math.cos(Math.toDegrees(a)); if (newX > maxX) setMaxX(newX); if (newX < minX) setMinX(newX); double newY = CirclingBallGroup.getRadius() * Math.sin(Math.toDegrees(a)); if (newY > maxY) setMaxY(newY); if (newY < minY) setMinY(newY); center.setX((maxX - Math.abs(minX)) / 2); center.setY((maxY - Math.abs(minY)) / 2); Log.info(getClass(), this + " center="+center ); move(newX, newY, 0); getGroup().getCenterBall().move(center.getX() / 2, center.getY() / 2, 0); //Log.info(getClass(), this + " " + newX + "; " + newY + " Degree: " + Math.toDegrees(a) );
+								 */
+		double newX = CirclingBallGroup.getRadius() * Math.cos(a);
+		double newY = CirclingBallGroup.getRadius() * Math.sin(a);
 		move(newX, newY, 0);
-		Log.info(getClass(), this + " " + newX + "; " + newY + " Degree: " + a);
+		Log.info(getClass(), this + " " + newX + "; " + newY + " Degree: " + Math.toDegrees(a));
+
 	}
 
 	public Face[] getFaces() {
@@ -169,6 +202,10 @@ public class Ball extends StatefullSprite {
 
 	public Vertex[] getVertexes() {
 		return vertexes;
+	}
+
+	public Vertex getGroupCenter() {
+		return center;
 	}
 
 	public Vertex getCenter() {

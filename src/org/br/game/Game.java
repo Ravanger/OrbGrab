@@ -2,6 +2,7 @@ package org.br.game;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -23,8 +24,8 @@ import org.br.game.sprites.CirclingBallGroup;
  */
 public class Game extends JFrame {
 	private Picture pic;
-	static Game game;
-	private MainMenu mainMenu;
+	static Game GAME;
+	private MainMenu mainMenu = new MainMenu();
 	private GameListener gamelistener;
 	private CirclingBallGroup player;
 	private boolean startGame = false;
@@ -34,11 +35,11 @@ public class Game extends JFrame {
 
 	public Game(String st) {
 		super(st);
-		setSize(800, 600);
+		setPreferredSize(new Dimension(800, 600));
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setJMenuBar(buildMenu());
+
 		g = getGraphics();
-		getContentPane().add(getGameContent(), BorderLayout.CENTER);
+
 	}
 
 	/**
@@ -70,6 +71,8 @@ public class Game extends JFrame {
 		ball1.setCenterBall(ball2);// set Center ball as ball2
 		setPlayer(new CirclingBallGroup(playerSprites));
 		getPlayer().setPicture(pic);
+		ball1.setGroup(getPlayer());
+		ball2.setGroup(getPlayer());
 		sprites.add(getPlayer()); // adds player (CirclingBallGroup) to sprites (List of Sprites).
 		pic.setListOfSprites(sprites);
 		addPicListener();
@@ -79,15 +82,30 @@ public class Game extends JFrame {
 	/**
 	 * Moves one ball to the center of the group using the group's radius
 	 */
-	private void startGame() {
+	public void startGame() {
 		setVisible(true);
-		// if (getStartGame()) {
-		getPlayer().getGroup().get(1).move(player.getGroupDistance() * Math.cos(45), player.getGroupDistance() * Math.sin(45), 0);// Moves the center ball
-		getPlayer().move(150, 150, 0);// Moves the group
-		getPlayer().still();
-		/*
-		 * } else { mainMenu = new MainMenu(); remove(pic); add(mainMenu); mainMenu.setFocusable(true); }
-		 */
+		if (getStartGame()) {
+			getContentPane().remove(mainMenu);
+
+			getContentPane().add(getGameContent());
+			setJMenuBar(buildMenu());
+			pack();
+			repaint();
+			getPlayer().getGroup().get(1).move(player.getRadius(), player.getRadius(), 0);// Moves the center ball
+			getPlayer().move(150, 150, 0);// Moves the group
+
+			getPlayer().still();
+
+		}
+		else {
+			setJMenuBar(null);
+			if (pic != null) {
+				getContentPane().remove(pic);
+			}
+			getContentPane().add(mainMenu, BorderLayout.CENTER);
+			pack();
+		}
+
 	}
 
 	/**
@@ -141,11 +159,11 @@ public class Game extends JFrame {
 	}
 
 	public static Game getGame() {
-		return game;
+		return GAME;
 	}
 
 	public static void main(String[] args) {
-		game = new Game("OrbGrab");
-		game.startGame();
+		GAME = new Game("OrbGrab");
+		GAME.startGame();
 	}
 }

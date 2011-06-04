@@ -49,25 +49,25 @@ public class CirclingBallGroup extends GroupedSprite {
 	}
 
 	/**
-	 * Returns center vertex of the group
+	 * Returns center vertex of the group, else returns null.
 	 * 
 	 * @return
 	 */
 	public Vertex getCenter() {
-		Ball ball1 = (Ball) getGroup().get(0);
-		Ball ball2 = (Ball) getGroup().get(1);
-		Vertex center1 = ball1.getCenter();
-		Vertex center2 = ball2.getCenter();
-		List<Vertex> positions = new ArrayList<Vertex>(2);
-		positions.add(center1);
-		positions.add(center2);
-		double[] groupCenter = Vertex.getMinMaxXYZ(positions);
-		double centerZ = groupCenter[5] - groupCenter[2];
-		double centerX = groupCenter[3] - groupCenter[0];
-		double centerY = groupCenter[4] - groupCenter[1];
-		Vertex center = new Vertex(centerX, centerY, centerZ);
-		return center;
+		Vertex result = null;
+		for (Sprite sprite : getGroup()) {
+			Ball ball = (Ball) sprite;
+			if (ball.getCenterBall() != null) {
+				result = ball.getGroupCenter();
+				break;
+			}
+		}
+		return result;
 	}
+
+	/*
+	 * public Vertex getCenter() { Ball ball1 = (Ball) getGroup().get(0); Ball ball2 = (Ball) getGroup().get(1); Vertex center1 = ball1.getCenter(); Vertex center2 = ball2.getCenter(); List<Vertex> positions = new ArrayList<Vertex>(2); positions.add(center1); positions.add(center2); double[] groupCenter = Vertex.getMinMaxXYZ(positions); double centerZ = groupCenter[5] - groupCenter[2]; double centerX = groupCenter[3] - groupCenter[0]; double centerY = groupCenter[4] - groupCenter[1]; Vertex center = new Vertex(centerX, centerY, centerZ); return center; }
+	 */
 
 	/**
 	 * Returns the stationary ball.
@@ -75,7 +75,14 @@ public class CirclingBallGroup extends GroupedSprite {
 	 * @return
 	 */
 	public Ball getCenterBall() {
-		return null;
+		Ball center = null;
+		for (Sprite sprite : getGroup()) {
+			if (((Ball) sprite).getCenterBall() == null) {
+				center = (Ball) sprite;
+				break;
+			}
+		}
+		return center;
 	}
 
 	@Override

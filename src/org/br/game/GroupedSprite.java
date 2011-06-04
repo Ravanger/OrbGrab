@@ -67,7 +67,7 @@ public abstract class GroupedSprite extends StatefullSprite {
 	 * 
 	 * @return
 	 */
-	public static int getGroupDistance() {
+	public static int getRadius() {
 		return dist;
 	}
 

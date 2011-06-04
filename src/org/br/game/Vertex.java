@@ -112,4 +112,8 @@ public class Vertex {
 
 		return new double[] { minX, minY, minZ, maxX, maxY, maxZ };
 	}
+
+	public String toString() {
+		return new StringBuilder(getClass().getName()).append(" X:").append(getX()).append(" Y:").append(getY()).append(" Z:").append(getZ()).toString();
+	}
 }
