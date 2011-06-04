@@ -10,15 +10,13 @@ public interface Sprite {
 
 	void move(double x, double y, double z);
 
-	// void Move(double x, double y, double z);
-	//
-	// void TurnX(double a, Vertex center);
-	//
-	// void TurnY(double a, Vertex center);
-	//
-	// void TurnZ(double a, Vertex center);
-	//
-	// void Zoom(double a, Vertex center);
+	void turnX(double a, Vertex center);
+
+	void turnY(double a, Vertex center);
+
+	void turnZ(double a, Vertex center);
+
+	void zoom(double a, Vertex center);
 
 	GameState getState();
 
@@ -28,9 +26,7 @@ public interface Sprite {
 
 	void paint(Graphics g);
 
-	void setGraphics(Graphics g);
+	void setPicture(Picture picture);
 
-	Graphics getGraphics();
-
-	// String getName();
+	void repaintAll();
 }

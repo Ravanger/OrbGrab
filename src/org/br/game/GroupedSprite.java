@@ -1,5 +1,6 @@
 package org.br.game;
 
+import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,6 +41,13 @@ public abstract class GroupedSprite extends StatefullSprite {
 	// return groupCenter;
 	// }
 
+	@Override
+	public void paint(Graphics g) {
+		for (Sprite groupMember : group) {
+			groupMember.paint(g);
+		}
+	}
+
 	public void still() {
 		for (Sprite groupMember : group) {
 			groupMember.still();
@@ -72,4 +80,9 @@ public abstract class GroupedSprite extends StatefullSprite {
 		this.dist = distance;
 	}
 
+	public void setPicture(Picture picture) {
+		for (Sprite groupMember : group) {
+			groupMember.setPicture(picture);
+		}
+	}
 }

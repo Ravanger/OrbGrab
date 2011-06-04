@@ -23,14 +23,19 @@ public class GameListener implements MouseInputListener, KeyListener, MouseWheel
 	}
 
 	public void mouseWheelMoved(MouseWheelEvent e) {
-		if (e.getWheelRotation() > 0) {
+		if (e.getWheelRotation() < 0) {
+			player.zoom(1.1, player.getCenter());
+			pic.repaint();
 		}
-
 		else {
+			player.zoom(0.9, player.getCenter());
+			pic.repaint();
 		}
 	}
 
 	public void mouseClicked(java.awt.event.MouseEvent e) {
+		// player.switchSpinning();
+		// pic.repaint();
 	}
 
 	public void mouseReleased(java.awt.event.MouseEvent e) {
@@ -45,19 +50,20 @@ public class GameListener implements MouseInputListener, KeyListener, MouseWheel
 	public void mouseDragged(java.awt.event.MouseEvent e) {
 		int x = e.getX(), y = e.getY();
 		if (e.getModifiers() == InputEvent.BUTTON2_MASK) {
-			TurnXY(x - mx, y - my);
+			turnXY(x - mx, y - my);
 		}
 		else if (e.getModifiers() == InputEvent.BUTTON3_MASK) {
-			TurnZ(x - mx);
+			turnZ(x - mx);
 		}
 		mx = x;
 		my = y;
 	}
 
-	private void TurnZ(int a) {
+	private void turnZ(int a) {
+		player.turnZ(a, player.getCenter());
 	}
 
-	private void TurnXY(int a, int b) {
+	private void turnXY(int a, int b) {
 	}
 
 	public void mouseMoved(java.awt.event.MouseEvent e) {

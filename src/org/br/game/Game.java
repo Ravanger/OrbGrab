@@ -18,52 +18,65 @@ import org.br.game.sprites.CirclingBallGroup;
 
 public class Game extends JFrame {
 	private Picture pic;
-	private JMenuBar menubar;
+	// private JMenuBar menubar;
 	private JMenu filemenu;
 	private JMenuItem exit, help;
 	private GameListener gamelistener;
 	private CirclingBallGroup player;
 	private boolean gameover = false;
 	private Graphics g;
-	private List<Ball> sprites = new ArrayList<Ball>();
+	private List<Sprite> sprites = new ArrayList<Sprite>();
 	private String ballModel = "models/small_ball.ase";
 
 	public Game(String st) {
 		super(st);
-		// pic = new Picture();
-		// this.getContentPane().add(this, BorderLayout.CENTER);
-		this.setSize(800, 600);
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		// gamelistener = new GameListener(this, player);
-		BuildMenu();
-		this.setVisible(true);
-		this.addMouseListener(gamelistener);
-		this.addMouseWheelListener(gamelistener);
-		this.addMouseMotionListener(gamelistener);
-		g = this.getGraphics();
+
+		setSize(800, 600);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setJMenuBar(buildMenu());
+		g = getGraphics();
+		// setContentPane(getGameContent());
+		this.getContentPane().add(getGameContent(), BorderLayout.CENTER);
 	}
 
-	private void createBalls() {
+	private void addPicListener() {
+		gamelistener = new GameListener(pic, getPlayer());
+		pic.addMouseListener(gamelistener);
+		pic.addMouseWheelListener(gamelistener);
+		pic.addMouseMotionListener(gamelistener);
+	}
+
+	private Picture getGameContent() {
+
+		pic = new Picture();
 		Ball ball1 = new Ball(new ASEParser(ballModel), Color.gray, "Ball 1");
 		Ball ball2 = new Ball(new ASEParser(ballModel), Color.red, "Ball 2");
-		ball1.Zoom(2, ball1.getCenter());
-		ball2.Zoom(2, ball2.getCenter());
+		List<Sprite> playerSprites = new ArrayList<Sprite>(2);
+		playerSprites.add(ball1);
+		playerSprites.add(ball2);
+		ball1.zoom(2, ball1.getCenter());
+		ball2.zoom(2, ball2.getCenter());
 		ball1.setClicked(true);
 		ball1.setCenterBall(ball2);// set Center ball as ball2
-		sprites.add(ball1);
-		sprites.add(ball2);
-	}
 
-	// public void initGame() {
-	// Spheres spheres = new Spheres();
-	// }
+		setPlayer(new CirclingBallGroup(playerSprites));
+		getPlayer().setPicture(pic);
+		sprites.add(getPlayer());
+
+		pic.setListOfSprites(sprites);
+		addPicListener();
+		return pic;
+	}
 
 	public void startGame() {
-
+		setVisible(true);
+		getPlayer().getGroup().get(1).move(player.getGroupDistance(), player.getGroupDistance(), 0); // move ball 1 to center of group (radius)
+		getPlayer().move(100, 100, 0);
+		getPlayer().still();
 	}
 
-	public void BuildMenu() {
-		menubar = new JMenuBar();
+	private JMenuBar buildMenu() {
+		JMenuBar menubar = new JMenuBar();
 		filemenu = new JMenu("File");
 		menubar.add(filemenu);
 		// help = new JMenuItem("Help");
@@ -86,20 +99,19 @@ public class Game extends JFrame {
 
 			}
 		});
-	}
-
-	private void initPlayer() {
-		createBalls();
-		player = new CirclingBallGroup(sprites);
-		player.setGraphics(g);
-		player.getGroup().get(1).move(player.getGroupDistance(), player.getGroupDistance(), 0); // move ball 1
-		player.move(100, 100, 0);
-		player.still();
+		return menubar;
 	}
 
 	public static void main(String[] args) {
 		Game game = new Game("OrbGrab");
-		game.setJMenuBar(game.menubar);
-		game.initPlayer();
+		game.startGame();
+	}
+
+	private CirclingBallGroup getPlayer() {
+		return player;
+	}
+
+	private void setPlayer(CirclingBallGroup player) {
+		this.player = player;
 	}
 }

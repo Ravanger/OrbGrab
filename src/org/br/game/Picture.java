@@ -1,19 +1,18 @@
 package org.br.game;
 
-import java.awt.*;
+//import java.awt.*;
+import java.awt.FlowLayout;
+import java.awt.Graphics;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JPanel;
 
 import org.br.game.sprites.Ball;
-import org.br.game.sprites.CirclingBallGroup;
 
 public class Picture extends JPanel {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
+	private List<Sprite> listOfSprites = new ArrayList<Sprite>();
 
 	public Picture() {
 		super();
@@ -23,26 +22,18 @@ public class Picture extends JPanel {
 		this.setDoubleBuffered(true);
 	}
 
-	public void paintBall(Ball shape, Graphics g) {
-		// g.clearRect(0, 0, 800, 600);
-		ArrayList<Triangle> triangles = shape.perspectiveProjection();
-		for (int i = 0; i < triangles.size(); i++) {
-			triangles.get(i).FillTriangle(g);
-		}
+	public List<Sprite> getListOfSprites() {
+		return listOfSprites;
 	}
 
-	public void paintBallGroup(CirclingBallGroup player, Graphics g) {
-		g.clearRect(0, 0, 800, 600);
-		for (Sprite sprite : player.getGroup()) {
-			paintBall((Ball) sprite, g);
-		}
+	public void setListOfSprites(List<Sprite> listOfSprites) {
+		this.listOfSprites = listOfSprites;
 	}
 
-	public void paintHelp(Graphics g) {
-		String helpstring1 = "Click the left mouse button to change the spinning ball.";
-		String helpstring2 = "Collect all the cubes in the minimum amount of clicks.";
+	public void paint(Graphics g) {
 		g.clearRect(0, 0, 800, 600);
-		g.drawString(helpstring1, 100, 100);
-		g.drawString(helpstring2, 100, 130);
+		for (Sprite sprite : getListOfSprites()) {
+			sprite.paint(g);
+		}
 	}
 }

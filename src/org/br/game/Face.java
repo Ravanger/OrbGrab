@@ -57,19 +57,19 @@ public class Face {
 		p3.move(dx, dy, dz);
 	}
 
-	public void TurnX(double a) {
+	public void turnX(double a) {
 		p1.TurnX(a);
 		p2.TurnX(a);
 		p3.TurnX(a);
 	}
 
-	public void TurnY(double a) {
+	public void turnY(double a) {
 		p1.TurnY(a);
 		p2.TurnY(a);
 		p3.TurnY(a);
 	}
 
-	public void TurnZ(double a) {
+	public void turnZ(double a) {
 		p1.TurnZ(a);
 		p2.TurnZ(a);
 		p3.TurnZ(a);
@@ -81,7 +81,7 @@ public class Face {
 		p3.Scale(sx, sy, sz);
 	}
 
-	public void Zoom(double k, Vertex center) {
+	public void zoom(double k, Vertex center) {
 		this.move(-(center.getX()), -(center.getY()), -(center.getZ()));
 		this.Scale(k, k, k);
 		this.move((center.getX()), (center.getY()), (center.getZ()));
@@ -89,19 +89,19 @@ public class Face {
 
 	public void TurnX(double a, Vertex center) {
 		this.move(-(center.getX()), -(center.getY()), -(center.getZ()));
-		this.TurnX(a);
+		this.turnX(a);
 		this.move((center.getX()), (center.getY()), (center.getZ()));
 	}
 
 	public void TurnY(double a, Vertex center) {
 		this.move(-(center.getX()), -(center.getY()), -(center.getZ()));
-		this.TurnY(a);
+		this.turnY(a);
 		this.move((center.getX()), (center.getY()), (center.getZ()));
 	}
 
 	public void TurnZ(double a, Vertex center) {
 		this.move(-(center.getX()), -(center.getY()), -(center.getZ()));
-		this.TurnZ(a);
+		this.turnZ(a);
 		this.move((center.getX()), (center.getY()), (center.getZ()));
 	}
 

@@ -7,13 +7,17 @@ import java.util.ArrayList;
 import org.br.game.ASEParser;
 import org.br.game.Face;
 import org.br.game.Log;
+import org.br.game.Picture;
 import org.br.game.StatefullSprite;
 import org.br.game.Triangle;
 import org.br.game.Vertex;
 import org.br.game.state.GameState;
 
+import sun.awt.RepaintArea;
+
 public class Ball extends StatefullSprite {
 
+	private Picture picture;
 	private String name;
 	private Ball centerBall;
 	private boolean clicked = false;
@@ -24,7 +28,8 @@ public class Ball extends StatefullSprite {
 	private Vertex[] vertexes;
 	private Color color;
 	private ASEParser filereader;
-	private Graphics g;
+
+	// private Graphics g;
 
 	public Ball(ASEParser filereader, Color color, String name) {
 		this.filereader = filereader;
@@ -60,37 +65,37 @@ public class Ball extends StatefullSprite {
 	public void move(double x, double y, double z) {
 		for (int i = 0; i < faces.length; i++) {
 			faces[i].move(x, y, z);
-			paint(g);
+			repaintAll();
 		}
 	}
 
-	public void TurnX(double a, Vertex center) {
+	public void turnX(double a, Vertex center) {
 		this.move(-center.getX(), -center.getY(), -center.getZ());
 		for (int i = 0; i < faces.length; i++) {
-			faces[i].TurnX(a);
+			faces[i].turnX(a);
 		}
 		this.move(center.getX(), center.getY(), center.getZ());
 	}
 
-	public void TurnY(double a, Vertex p) {
+	public void turnY(double a, Vertex p) {
 		this.move(-p.getX(), -p.getY(), -p.getZ());
 		for (int i = 0; i < faces.length; i++) {
-			faces[i].TurnY(a);
+			faces[i].turnY(a);
 		}
 		this.move(p.getX(), p.getY(), p.getZ());
 	}
 
-	public void TurnZ(double a, Vertex p) {
+	public void turnZ(double a, Vertex p) {
 		this.move(-p.getX(), -p.getY(), -p.getZ());
 		for (int i = 0; i < faces.length; i++) {
-			faces[i].TurnZ(a);
+			faces[i].turnZ(a);
 		}
 		this.move(p.getX(), p.getY(), p.getZ());
 	}
 
-	public void Zoom(double a, Vertex center) {
+	public void zoom(double a, Vertex center) {
 		for (int i = 0; i < faces.length; i++) {
-			faces[i].Zoom(a, center);
+			faces[i].zoom(a, center);
 		}
 	}
 
@@ -152,7 +157,7 @@ public class Ball extends StatefullSprite {
 				while (circling) {
 					spin(angle);
 					try {
-						Thread.sleep(5L);// Sleeps for 0.005 seconds
+						Thread.sleep(100L);// Sleeps for 0.1 seconds
 						angle += 1.5;
 					}
 					catch (InterruptedException e) {
@@ -167,10 +172,9 @@ public class Ball extends StatefullSprite {
 	private void spin(double angle) {
 		double newX = 2 * CirclingBallGroup.getGroupDistance() * Math.cos(angle);
 		double newY = 2 * CirclingBallGroup.getGroupDistance() * Math.sin(angle);
-		this.move(newX, newY, 0);
+		move(newX, newY, 0);
+
 		Log.info(getClass(), this + " " + newX + "; " + newY + " Degree: " + angle);
-		paint(g);
-		clearRect(g);
 	}
 
 	public Face[] getFaces() {
@@ -201,18 +205,10 @@ public class Ball extends StatefullSprite {
 	}
 
 	public void paint(Graphics g) {
-		// g.clearRect(0, 0, 800, 600);
 		ArrayList<Triangle> triangles = perspectiveProjection();
 		for (int i = 0; i < triangles.size(); i++) {
 			triangles.get(i).FillTriangle(g);
 		}
-	}
-
-	public void clearRect(Graphics g) {
-		int r = 50;
-		int x = (int) getCenter().getX() - r;
-		int y = (int) getCenter().getY() - r;
-		g.clearRect(x, y, 2 * r, 2 * r);
 	}
 
 	public Ball getCenterBall() {
@@ -244,13 +240,15 @@ public class Ball extends StatefullSprite {
 		this.name = name;
 	}
 
-	@Override
-	public void setGraphics(Graphics g) {
-		this.g = g;
+	public void repaintAll() {
+		getPicture().repaint();
 	}
 
-	@Override
-	public Graphics getGraphics() {
-		return g;
+	public Picture getPicture() {
+		return picture;
+	}
+
+	public void setPicture(Picture picture) {
+		this.picture = picture;
 	}
 }
