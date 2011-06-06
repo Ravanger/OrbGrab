@@ -78,8 +78,8 @@ public class Game extends JFrame {
 		for (Sprite sprite : targetSprites) {
 			sprite.zoom(0.2, sprite.getCenter());
 		}
-		ball1.setClicked(true);
 		ball1.setCenterBall(ball2);// set Center ball as ball2
+		ball1.setActive(true);// Activate ball 1 (make it spin)
 		setPlayer(new CirclingBallGroup(playerSprites));
 		setTargets(new TargetGroup(targetSprites));
 		getPlayer().setPicture(pic);
@@ -105,9 +105,9 @@ public class Game extends JFrame {
 			pack();
 			pic.grabFocus();
 			repaint();
-			getPlayer().getGroup().get(1).move(getPlayer().getRadius(), getPlayer().getRadius(), 0);// Moves the center ball
+//			getPlayer().getGroup().get(1).move(getPlayer().getRadius(), getPlayer().getRadius(), 0);// Moves the center ball
 			getPlayer().move(150, 150, 0);// Moves the player group
-			getPlayer().still();
+			getPlayer().init();
 			for (int i = 0; i < 5; i++) {
 				Random rand = new Random();
 				getTargets().getGroup().get(i).move(rand.nextDouble() * 100 * i, rand.nextDouble() * 100 * i, 0);

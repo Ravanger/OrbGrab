@@ -6,7 +6,7 @@ import org.br.game.state.GameState;
 
 public interface Sprite {
 
-	void still();
+	void init();
 
 	void move(double x, double y, double z);
 
@@ -22,9 +22,9 @@ public interface Sprite {
 
 	GameState getState();
 
-	void setClicked(boolean flag);
+	void setActive(boolean flag);
 
-	boolean isClicked();
+	boolean isActive();
 
 	void paint(Graphics g);
 

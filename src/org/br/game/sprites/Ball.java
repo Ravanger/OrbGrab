@@ -25,7 +25,6 @@ public class Ball extends StatefullSprite {
 	private Vertex[] vertexes;
 	private Color color;
 	private ASEParser filereader;
-	private double maxX = 0, minX = 0, maxY = 0, minY = 0;
 	private Vertex center = new Vertex(0, 0, 0);
 	private CirclingBallGroup owner;
 
@@ -121,25 +120,26 @@ public class Ball extends StatefullSprite {
 	}
 
 	/**
-	 * This ball is moving around the center ball
+	 * Checks if ball has a center ball, then checks if it's active (spinning) and calls the circleAround() function, if not, stops the thread, and if there's no center ball, log a warning.
 	 */
 	@Override
-	public void still() {
+	public void init() {
 		setState(GameState.STILL);
 		if (centerBall != null) {
-			if (isClicked()) {
-				centerBall.setClicked(false);
-				centerBall.still();
+			if (isActive()) {
+				centerBall.setActive(false);// Deactivates the center ball
+				// centerBall.init();// And calls this function for it, causing the thread to stop
+				move(getGroup().getCenterBall().getCenter().getX() - getGroup().getRadius(), getGroup().getCenterBall().getCenter().getY() - getGroup().getRadius(), 0);
 				circleAround();
 			}
 			else {
-				Vertex center = getGroup().getCenter();
-				move(center.getX(), center.getY(), 0);
+				// Vertex center = getGroup().getCenter();
+				// move(center.getX(), center.getY(), 0);
 				stop();
 			}
 		}
 		else {
-			Log.warn(getClass(), this + ": No CirclingBall found to circle around!");
+			Log.warn(getClass(), this + ": No center ball found to circle around!");
 		}
 	}
 
@@ -152,9 +152,6 @@ public class Ball extends StatefullSprite {
 					spin(radians);
 					try {
 						Thread.sleep(100L);// Sleeps for 0.1 seconds
-						// if (Math.toDegrees(radians) >= 343.77467707849394)
-						// radians = 0;
-						// else
 						radians += 1;
 					}
 					catch (InterruptedException e) {
@@ -166,14 +163,11 @@ public class Ball extends StatefullSprite {
 		movingThread.start();
 	}
 
-	private void spin(double a) {/*
-								 * double newX = CirclingBallGroup.getRadius() * Math.cos(Math.toDegrees(a)); if (newX > maxX) setMaxX(newX); if (newX < minX) setMinX(newX); double newY = CirclingBallGroup.getRadius() * Math.sin(Math.toDegrees(a)); if (newY > maxY) setMaxY(newY); if (newY < minY) setMinY(newY); center.setX((maxX - Math.abs(minX)) / 2); center.setY((maxY - Math.abs(minY)) / 2); Log.info(getClass(), this + " center="+center ); move(newX, newY, 0); getGroup().getCenterBall().move(center.getX() / 2, center.getY() / 2, 0); //Log.info(getClass(), this + " " + newX + "; " + newY + " Degree: " + Math.toDegrees(a) );
-								 */
-		double newX = CirclingBallGroup.getRadius() * Math.cos(a);
-		double newY = CirclingBallGroup.getRadius() * Math.sin(a);
+	private void spin(double a) {
+		double newX = CirclingBallGroup.getRadius() * Math.cos(Math.toDegrees(a));
+		double newY = CirclingBallGroup.getRadius() * Math.sin(Math.toDegrees(a));
 		move(newX, newY, 0);
 		Log.info(getClass(), this + " " + newX + "; " + newY + " Degree: " + Math.toDegrees(a));
-
 	}
 
 	public Face[] getFaces() {
@@ -222,11 +216,11 @@ public class Ball extends StatefullSprite {
 		this.centerBall = centerBall;
 	}
 
-	public boolean isClicked() {
+	public boolean isActive() {
 		return clicked;
 	}
 
-	public void setClicked(boolean clicked) {
+	public void setActive(boolean clicked) {
 		this.clicked = clicked;
 		circling = clicked;
 	}

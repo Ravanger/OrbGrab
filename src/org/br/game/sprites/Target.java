@@ -39,7 +39,7 @@ public class Target extends StatefullSprite {
 	}
 
 	@Override
-	public void still() {
+	public void init() {
 		setState(GameState.STILL);
 	}
 
@@ -117,13 +117,13 @@ public class Target extends StatefullSprite {
 	}
 
 	@Override
-	public void setClicked(boolean flag) {
+	public void setActive(boolean flag) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public boolean isClicked() {
+	public boolean isActive() {
 		// TODO Auto-generated method stub
 		return false;
 	}

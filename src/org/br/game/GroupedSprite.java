@@ -48,9 +48,9 @@ public abstract class GroupedSprite extends StatefullSprite {
 		}
 	}
 
-	public void still() {
+	public void init() {
 		for (Sprite groupMember : group) {
-			groupMember.still();
+			groupMember.init();
 		}
 		setState(GameState.STILL);
 	}

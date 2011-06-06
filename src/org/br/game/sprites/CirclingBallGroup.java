@@ -19,31 +19,31 @@ public class CirclingBallGroup extends GroupedSprite {
 	}
 
 	@Override
-	public void setClicked(boolean flag) {
+	public void setActive(boolean flag) {
 		// nothing
 	}
 
 	public void switchSpinning() {
 		Ball ball1 = (Ball) getGroup().get(0);
 		Ball ball2 = (Ball) getGroup().get(1);
-		if (ball1.isClicked()) {
-			ball1.setClicked(false);
+		if (ball1.isActive()) {
+			ball1.setActive(false);
 			ball1.setCenterBall(null);// Removes center ball from ball1
-			ball2.setClicked(true);
+			ball2.setActive(true);
 			ball2.setCenterBall(ball1);// set Center ball as ball1
-			Game.getGame().getPlayer().still();
+			Game.getGame().getPlayer().init();
 		}
 		else {
-			ball1.setClicked(true);
+			ball1.setActive(true);
 			ball2.setCenterBall(null);// Removes center ball from ball2
-			ball2.setClicked(false);
+			ball2.setActive(false);
 			ball1.setCenterBall(ball2);// set Center ball as ball2
-			Game.getGame().getPlayer().still();
+			Game.getGame().getPlayer().init();
 		}
 	}
 
 	@Override
-	public boolean isClicked() {
+	public boolean isActive() {
 		return false;
 	}
 

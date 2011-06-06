@@ -55,13 +55,13 @@ public class TargetGroup extends GroupedSprite {
 	}
 
 	@Override
-	public void setClicked(boolean flag) {
+	public void setActive(boolean flag) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public boolean isClicked() {
+	public boolean isActive() {
 		// TODO Auto-generated method stub
 		return false;
 	}
