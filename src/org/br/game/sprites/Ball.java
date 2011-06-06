@@ -125,11 +125,10 @@ public class Ball extends StatefullSprite {
 	@Override
 	public void init() {
 		setState(GameState.STILL);
+		Vertex center = getCenterBall().getCenter();
 		if (centerBall != null) {
 			if (isActive()) {
 				centerBall.setActive(false);// Deactivates the center ball
-				// centerBall.init();// And calls this function for it, causing the thread to stop
-				move(getGroup().getCenterBall().getCenter().getX() - getGroup().getRadius(), getGroup().getCenterBall().getCenter().getY() - getGroup().getRadius(), 0);
 				circleAround();
 			}
 			else {

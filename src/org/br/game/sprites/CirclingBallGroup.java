@@ -24,22 +24,13 @@ public class CirclingBallGroup extends GroupedSprite {
 	}
 
 	public void switchSpinning() {
-		Ball ball1 = (Ball) getGroup().get(0);
-		Ball ball2 = (Ball) getGroup().get(1);
-		if (ball1.isActive()) {
-			ball1.setActive(false);
-			ball1.setCenterBall(null);// Removes center ball from ball1
-			ball2.setActive(true);
-			ball2.setCenterBall(ball1);// set Center ball as ball1
-			Game.getGame().getPlayer().init();
-		}
-		else {
-			ball1.setActive(true);
-			ball2.setCenterBall(null);// Removes center ball from ball2
-			ball2.setActive(false);
-			ball1.setCenterBall(ball2);// set Center ball as ball2
-			Game.getGame().getPlayer().init();
-		}
+		Ball centerBall = getCenterBall();
+		Ball circlingBall = getCirclingBall();
+		circlingBall.setActive(false);
+		circlingBall.setCenterBall(null);// Removes center ball from ball1
+		centerBall.setActive(true);
+		centerBall.setCenterBall(circlingBall);// set Center ball as ball1
+		Game.getGame().getPlayer().init();
 	}
 
 	@Override
@@ -82,6 +73,17 @@ public class CirclingBallGroup extends GroupedSprite {
 			}
 		}
 		return center;
+	}
+
+	public Ball getCirclingBall() {
+		Ball circling = null;
+		for (Sprite sprite : getGroup()) {
+			if (((Ball) sprite).getCenterBall() != null) {
+				circling = (Ball) sprite;
+				break;
+			}
+		}
+		return circling;
 	}
 
 	@Override

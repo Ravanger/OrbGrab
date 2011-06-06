@@ -66,7 +66,7 @@ public class Game extends JFrame {
 		Ball ball2 = new Ball(new ASEParser(ballModel), Color.red, "Ball 2");
 		List<Sprite> targetSprites = new ArrayList<Sprite>(5);
 		for (int i = 0; i < 5; i++) {
-			Target target = new Target(new ASEParser(cubeModel), Color.red, "Target");
+			Target target = new Target(new ASEParser(cubeModel), Color.green, "Target");
 			targetSprites.add(target);
 		}
 		List<Sprite> playerSprites = new ArrayList<Sprite>(2);
@@ -105,13 +105,13 @@ public class Game extends JFrame {
 			pack();
 			pic.grabFocus();
 			repaint();
-//			getPlayer().getGroup().get(1).move(getPlayer().getRadius(), getPlayer().getRadius(), 0);// Moves the center ball
+			getPlayer().getCenterBall().move(getPlayer().getRadius() * Math.cos(45), getPlayer().getRadius() * Math.sin(45), 0);// Moves the center ball
 			getPlayer().move(150, 150, 0);// Moves the player group
 			getPlayer().init();
-			for (int i = 0; i < 5; i++) {
-				Random rand = new Random();
-				getTargets().getGroup().get(i).move(rand.nextDouble() * 100 * i, rand.nextDouble() * 100 * i, 0);
-			}
+//			for (int i = 0; i < 5; i++) {
+//				Random rand = new Random();
+//				getTargets().getGroup().get(i).move(rand.nextDouble() * 100 * i, rand.nextDouble() * 100 * i, 0);
+//			}
 		}
 		else {
 			setJMenuBar(null);
