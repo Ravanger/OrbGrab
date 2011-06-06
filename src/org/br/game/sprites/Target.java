@@ -6,30 +6,22 @@ import java.util.ArrayList;
 
 import org.br.game.ASEParser;
 import org.br.game.Face;
-import org.br.game.Log;
 import org.br.game.Picture;
 import org.br.game.StatefullSprite;
 import org.br.game.Triangle;
 import org.br.game.Vertex;
 import org.br.game.state.GameState;
 
-public class Ball extends StatefullSprite {
+public class Target extends StatefullSprite {
 
-	private Picture picture;
-	private String name;
-	private Ball centerBall;
-	private boolean clicked = false;
-	private Thread movingThread;
-	private Boolean circling = false;
+	private ASEParser filereader;
+	private Color color;
 	private Face[] faces;
 	private Vertex[] vertexes;
-	private Color color;
-	private ASEParser filereader;
-	private double maxX = 0, minX = 0, maxY = 0, minY = 0;
-	private Vertex center = new Vertex(0, 0, 0);
-	private CirclingBallGroup owner;
+	private String name;
+	private Picture picture;
 
-	public Ball(ASEParser filereader, Color color, String name) {
+	public Target(ASEParser filereader, Color color, String name) {
 		this.filereader = filereader;
 		this.color = color;
 		double[] vertexarr = filereader.readASEVertex();
@@ -46,14 +38,12 @@ public class Ball extends StatefullSprite {
 		this.name = name;
 	}
 
-	public void setGroup(CirclingBallGroup owner) {
-		this.owner = owner;
+	@Override
+	public void still() {
+		setState(GameState.STILL);
 	}
 
-	private CirclingBallGroup getGroup() {
-		return owner;
-	}
-
+	@Override
 	public void move(double x, double y, double z) {
 		for (int i = 0; i < faces.length; i++) {
 			faces[i].move(x, y, z);
@@ -61,6 +51,7 @@ public class Ball extends StatefullSprite {
 		}
 	}
 
+	@Override
 	public void turnX(double a, Vertex center) {
 		this.move(-center.getX(), -center.getY(), -center.getZ());
 		for (int i = 0; i < faces.length; i++) {
@@ -116,78 +107,7 @@ public class Ball extends StatefullSprite {
 		return triangles;
 	}
 
-	public ASEParser getFileReader() {
-		return filereader;
-	}
-
-	/**
-	 * This ball is moving around the center ball
-	 */
 	@Override
-	public void still() {
-		setState(GameState.STILL);
-		if (centerBall != null) {
-			if (isClicked()) {
-				centerBall.setClicked(false);
-				centerBall.still();
-				circleAround();
-			}
-			else {
-				Vertex center = getGroup().getCenter();
-				move(center.getX(), center.getY(), 0);
-				stop();
-			}
-		}
-		else {
-			Log.warn(getClass(), this + ": No CirclingBall found to circle around!");
-		}
-	}
-
-	void circleAround() {
-		movingThread = new Thread() {
-			double radians = 0;
-
-			public void run() {
-				while (circling) {
-					spin(radians);
-					try {
-						Thread.sleep(100L);// Sleeps for 0.1 seconds
-						// if (Math.toDegrees(radians) >= 343.77467707849394)
-						// radians = 0;
-						// else
-						radians += 1;
-					}
-					catch (InterruptedException e) {
-						Log.warn(getClass(), this + ": Thread failed");
-					}
-				}
-			}
-		};
-		movingThread.start();
-	}
-
-	private void spin(double a) {/*
-								 * double newX = CirclingBallGroup.getRadius() * Math.cos(Math.toDegrees(a)); if (newX > maxX) setMaxX(newX); if (newX < minX) setMinX(newX); double newY = CirclingBallGroup.getRadius() * Math.sin(Math.toDegrees(a)); if (newY > maxY) setMaxY(newY); if (newY < minY) setMinY(newY); center.setX((maxX - Math.abs(minX)) / 2); center.setY((maxY - Math.abs(minY)) / 2); Log.info(getClass(), this + " center="+center ); move(newX, newY, 0); getGroup().getCenterBall().move(center.getX() / 2, center.getY() / 2, 0); //Log.info(getClass(), this + " " + newX + "; " + newY + " Degree: " + Math.toDegrees(a) );
-								 */
-		double newX = CirclingBallGroup.getRadius() * Math.cos(a);
-		double newY = CirclingBallGroup.getRadius() * Math.sin(a);
-		move(newX, newY, 0);
-		Log.info(getClass(), this + " " + newX + "; " + newY + " Degree: " + Math.toDegrees(a));
-
-	}
-
-	public Face[] getFaces() {
-		return faces;
-	}
-
-	public Vertex[] getVertexes() {
-		return vertexes;
-	}
-
-	public Vertex getGroupCenter() {
-		return center;
-	}
-
 	public Vertex getCenter() {
 		Vertex vertex = new Vertex(0, 0, 0);
 		for (int i = 0; i < faces.length; i++) {
@@ -196,17 +116,19 @@ public class Ball extends StatefullSprite {
 		return vertex;
 	}
 
-	/**
-	 * Stop moving
-	 */
-	void stop() {
-		circling = false;
-		if (movingThread != null) {
-			movingThread.interrupt();
-			Log.info(getClass(), "Stopped thread");
-		}
+	@Override
+	public void setClicked(boolean flag) {
+		// TODO Auto-generated method stub
+
 	}
 
+	@Override
+	public boolean isClicked() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
 	public void paint(Graphics g) {
 		ArrayList<Triangle> triangles = perspectiveProjection();
 		for (int i = 0; i < triangles.size(); i++) {
@@ -214,35 +136,7 @@ public class Ball extends StatefullSprite {
 		}
 	}
 
-	public Ball getCenterBall() {
-		return centerBall;
-	}
-
-	public void setCenterBall(Ball centerBall) {
-		this.centerBall = centerBall;
-	}
-
-	public boolean isClicked() {
-		return clicked;
-	}
-
-	public void setClicked(boolean clicked) {
-		this.clicked = clicked;
-		circling = clicked;
-	}
-
-	public String toString() {
-		return "CirclingBall: " + getName();
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
+	@Override
 	public void repaintAll() {
 		getPicture().repaint();
 	}

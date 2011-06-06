@@ -1,6 +1,5 @@
 package org.br.game.sprites;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.br.game.Game;

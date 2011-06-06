@@ -123,7 +123,7 @@ public class Face {
 		this.c = c;
 	}
 
-	public Color SetRGBColor(double a) {
+	public Color setRGBColor(double a) {
 		a = Math.abs(a);
 		int red, green, blue;
 		red = c.getRed();
@@ -162,7 +162,7 @@ public class Face {
 		return arr;
 	}
 
-	public double HowSeen(int i) {
+	public double howSeen(int i) {
 		Vertex normal, middle;
 		Vertex p1 = getP1();
 		Vertex p2 = getP2();
@@ -186,7 +186,7 @@ public class Face {
 		return tmp3;
 	}
 
-	public Triangle PerspectiveProjection(Color c) {
+	public Triangle perspectiveProjection(Color c) {
 		return new Triangle(p1.PerspectiveProjection(), p2.PerspectiveProjection(), p3.PerspectiveProjection(), c);
 	}
 }

@@ -8,34 +8,31 @@ import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 import javax.swing.event.MouseInputListener;
 
-import org.br.game.sprites.CirclingBallGroup;
-
 public class GameListener implements MouseInputListener, KeyListener, MouseWheelListener {
 
 	private Picture pic;
-	private Graphics g;
-	private CirclingBallGroup player;
+	private Game game;
 	int mx = 0, my = 0;
 
-	public GameListener(Picture pic, CirclingBallGroup player) {
+	public GameListener(Picture pic, Game game) {
 		this.pic = pic;
-		this.player = player;
+		this.game = game;
 	}
 
 	public void mouseWheelMoved(MouseWheelEvent e) {
 		if (e.getWheelRotation() < 0) {
-			player.zoom(1.1, player.getCenter());
+			game.getPlayer().zoom(1.1, game.getPlayer().getCenter());
 			pic.repaint();
 		}
 		else {
-			player.zoom(0.9, player.getCenter());
+			game.getPlayer().zoom(0.9, game.getPlayer().getCenter());
 			pic.repaint();
 		}
 	}
 
 	public void mouseClicked(java.awt.event.MouseEvent e) {
 		if (e.getModifiers() == InputEvent.BUTTON1_MASK) {
-			player.switchSpinning();
+			game.getPlayer().switchSpinning();
 			pic.repaint();
 		}
 	}
@@ -64,13 +61,13 @@ public class GameListener implements MouseInputListener, KeyListener, MouseWheel
 	}
 
 	private void turnZ(int a) {
-		player.turnZ(a, player.getCenterBall().getCenter());
+		game.getPlayer().turnZ(a, game.getPlayer().getCenterBall().getCenter());
 	}
 
 	private void turnXY(int a, int b) {
 		// a is for x, b is for y.
-		player.turnX(a, player.getCenterBall().getCenter());
-		player.turnY(b, player.getCenterBall().getCenter());
+		game.getPlayer().turnX(a, game.getPlayer().getCenterBall().getCenter());
+		game.getPlayer().turnY(b, game.getPlayer().getCenterBall().getCenter());
 	}
 
 	public void mouseMoved(java.awt.event.MouseEvent e) {
