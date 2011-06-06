@@ -20,7 +20,7 @@ public class Ball extends StatefullSprite {
 	private Ball centerBall;
 	private boolean clicked = false;
 	private Thread movingThread;
-	private Boolean circling = false;
+	private boolean circling = false;
 	private Face[] faces;
 	private Vertex[] vertexes;
 	private Color color;
@@ -56,6 +56,13 @@ public class Ball extends StatefullSprite {
 	public void move(double x, double y, double z) {
 		for (int i = 0; i < faces.length; i++) {
 			faces[i].move(x, y, z);
+			repaintAll();
+		}
+	}
+
+	public void moveTo(double x, double y, double z) {
+		for (int i = 0; i < faces.length; i++) {
+			faces[i].moveTo(x, y, z);
 			repaintAll();
 		}
 	}
@@ -125,7 +132,7 @@ public class Ball extends StatefullSprite {
 	@Override
 	public void init() {
 		setState(GameState.STILL);
-		Vertex center = getCenterBall().getCenter();
+		// Vertex center = getCenterBall().getCenter();
 		if (centerBall != null) {
 			if (isActive()) {
 				centerBall.setActive(false);// Deactivates the center ball
@@ -150,7 +157,7 @@ public class Ball extends StatefullSprite {
 				while (circling) {
 					spin(radians);
 					try {
-						Thread.sleep(100L);// Sleeps for 0.1 seconds
+						Thread.sleep(1000L);// Sleeps for 0.1 seconds
 						radians += 1;
 					}
 					catch (InterruptedException e) {
@@ -166,6 +173,10 @@ public class Ball extends StatefullSprite {
 		double newX = CirclingBallGroup.getRadius() * Math.cos(Math.toDegrees(a));
 		double newY = CirclingBallGroup.getRadius() * Math.sin(Math.toDegrees(a));
 		move(newX, newY, 0);
+
+		// Vertex center = getCenterBall().getCenter();
+		// moveTo(center.getX() - newX, center.getY() - newY, center.getZ());
+
 		Log.info(getClass(), this + " " + newX + "; " + newY + " Degree: " + Math.toDegrees(a));
 	}
 
@@ -194,8 +205,9 @@ public class Ball extends StatefullSprite {
 	 */
 	void stop() {
 		circling = false;
+		setActive(false);
 		if (movingThread != null) {
-			movingThread.interrupt();
+			// movingThread.interrupt();
 			Log.info(getClass(), "Stopped thread");
 		}
 	}
@@ -225,7 +237,7 @@ public class Ball extends StatefullSprite {
 	}
 
 	public String toString() {
-		return "CirclingBall: " + getName();
+		return "CirclingBall: " + getName() + " circling:" + isActive();
 	}
 
 	public String getName() {

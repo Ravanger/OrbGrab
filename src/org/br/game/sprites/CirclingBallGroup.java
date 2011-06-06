@@ -26,11 +26,20 @@ public class CirclingBallGroup extends GroupedSprite {
 	public void switchSpinning() {
 		Ball centerBall = getCenterBall();
 		Ball circlingBall = getCirclingBall();
-		circlingBall.setActive(false);
-		circlingBall.setCenterBall(null);// Removes center ball from ball1
+
+		circlingBall.stop();
 		centerBall.setActive(true);
+		circlingBall.setCenterBall(null);
 		centerBall.setCenterBall(circlingBall);// set Center ball as ball1
-		Game.getGame().getPlayer().init();
+
+		Vertex v = circlingBall.getCenter();
+		centerBall.moveTo(v.getX(), v.getY(), v.getZ());
+		centerBall.repaintAll();
+
+		centerBall.move(-getRadius() * Math.cos(45), -getRadius() * Math.sin(45), 0);
+		centerBall.repaintAll();
+
+		init();
 	}
 
 	@Override
@@ -94,6 +103,13 @@ public class CirclingBallGroup extends GroupedSprite {
 	}
 
 	@Override
+	public void moveTo(double x, double y, double z) {
+		for (Sprite sprite : getGroup()) {
+			sprite.moveTo(x, y, z);
+		}
+	}
+
+	@Override
 	public void zoom(double a, Vertex center) {
 		for (Sprite sprite : getGroup()) {
 			sprite.zoom(a, center);
@@ -123,4 +139,5 @@ public class CirclingBallGroup extends GroupedSprite {
 			sprite.turnZ(a, center);
 		}
 	}
+
 }

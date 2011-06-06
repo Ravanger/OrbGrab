@@ -10,6 +10,8 @@ public interface Sprite {
 
 	void move(double x, double y, double z);
 
+	void moveTo(double x, double y, double z);
+
 	void turnX(double a, Vertex center);
 
 	void turnY(double a, Vertex center);
@@ -17,7 +19,7 @@ public interface Sprite {
 	void turnZ(double a, Vertex center);
 
 	void zoom(double a, Vertex center);
-	
+
 	Vertex getCenter();
 
 	GameState getState();

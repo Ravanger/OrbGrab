@@ -25,7 +25,13 @@ public class Vertex {
 		z += dz;
 	}
 
-	public void Scale(double sx, double sy, double sz) {
+	public void moveTo(double x, double y, double z) {
+		this.x = x;
+		this.y = y;
+		this.z = z;
+	}
+
+	public void scale(double sx, double sy, double sz) {
 		x = x * sx;
 		y = y * sy;
 		z *= sz;

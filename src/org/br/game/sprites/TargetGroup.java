@@ -78,4 +78,10 @@ public class TargetGroup extends GroupedSprite {
 		}
 	}
 
+	@Override
+	public void moveTo(double x, double y, double z) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

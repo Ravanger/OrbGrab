@@ -148,4 +148,10 @@ public class Target extends StatefullSprite {
 	public void setPicture(Picture picture) {
 		this.picture = picture;
 	}
+
+	@Override
+	public void moveTo(double x, double y, double z) {
+		// TODO Auto-generated method stub
+		
+	}
 }

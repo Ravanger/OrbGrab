@@ -57,6 +57,12 @@ public class Face {
 		p3.move(dx, dy, dz);
 	}
 
+	public void moveTo(double x, double y, double z) {
+		p1.moveTo(x, y, z);
+		p2.moveTo(x, y, z);
+		p3.moveTo(x, y, z);
+	}
+
 	public void turnX(double a) {
 		p1.TurnX(a);
 		p2.TurnX(a);
@@ -76,9 +82,9 @@ public class Face {
 	}
 
 	public void Scale(double sx, double sy, double sz) {
-		p1.Scale(sx, sy, sz);
-		p2.Scale(sx, sy, sz);
-		p3.Scale(sx, sy, sz);
+		p1.scale(sx, sy, sz);
+		p2.scale(sx, sy, sz);
+		p3.scale(sx, sy, sz);
 	}
 
 	public void zoom(double k, Vertex center) {
@@ -180,8 +186,8 @@ public class Face {
 		middle.move(0, 0, Vertex.DIST);
 		tmp1 = 1 / normal.getLength();
 		tmp2 = 1 / middle.getLength();
-		normal.Scale(tmp1, tmp1, tmp1);
-		middle.Scale(tmp2, tmp2, tmp2);
+		normal.scale(tmp1, tmp1, tmp1);
+		middle.scale(tmp2, tmp2, tmp2);
 		tmp3 = normal.getX() * middle.getX() + normal.getY() * middle.getY() + normal.getZ() * middle.getZ();
 		return tmp3;
 	}
