@@ -20,20 +20,12 @@ public class GameListener implements MouseInputListener, KeyListener, MouseWheel
 	}
 
 	public void mouseWheelMoved(MouseWheelEvent e) {
-		if (e.getWheelRotation() < 0) {
-			game.getPlayer().zoom(1.1, game.getPlayer().getCenter());
-			pic.repaint();
-		}
-		else {
-			game.getPlayer().zoom(0.9, game.getPlayer().getCenter());
-			pic.repaint();
-		}
 	}
 
 	public void mouseClicked(java.awt.event.MouseEvent e) {
 		if (e.getModifiers() == InputEvent.BUTTON1_MASK) {
 			game.getPlayer().switchSpinning();
-			pic.repaint();
+//			pic.repaint();
 		}
 	}
 

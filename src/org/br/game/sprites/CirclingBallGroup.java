@@ -2,6 +2,7 @@ package org.br.game.sprites;
 
 import java.util.List;
 
+import org.br.game.Game;
 import org.br.game.GroupedSprite;
 import org.br.game.Sprite;
 import org.br.game.Vertex;
@@ -112,9 +113,6 @@ public class CirclingBallGroup extends GroupedSprite {
 		for (Sprite sprite : getGroup()) {
 			sprite.zoom(a, center);
 		}
-	}
-
-	public void repaintAll() {
 	}
 
 	@Override

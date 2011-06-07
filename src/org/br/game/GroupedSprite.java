@@ -10,11 +10,6 @@ public abstract class GroupedSprite extends StatefullSprite {
 
 	private List<Sprite> group = new ArrayList<Sprite>();
 
-	// a default distance between group members
-	public static final int RADIUS = 60;
-
-	private static int dist = RADIUS;
-
 	public GroupedSprite(List<? extends Sprite> group) {
 		this.group.addAll(group);
 	}
@@ -62,22 +57,8 @@ public abstract class GroupedSprite extends StatefullSprite {
 		setState(GameState.MOVING);
 	}
 
-	/**
-	 * Get the distance (radius) between group members
-	 * 
-	 * @return
-	 */
-	public static int getRadius() {
-		return dist;
-	}
-
-	/**
-	 * Set a distance (radius) between group members
-	 * 
-	 * @return
-	 */
-	protected void setGroupDistance(int distance) {
-		this.dist = distance;
+	protected int getRadius() {
+		return Game.getGame().getRadius();
 	}
 
 	public void setPicture(Picture picture) {

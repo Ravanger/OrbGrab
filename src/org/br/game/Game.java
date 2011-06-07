@@ -6,8 +6,11 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileReader;
+import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 import java.util.Random;
 
 import javax.swing.JFrame;
@@ -26,6 +29,7 @@ import org.br.game.sprites.TargetGroup;
  * @author Lone Wolf
  */
 public class Game extends JFrame {
+
 	private Picture pic;
 	static Game GAME;
 	private MainMenu mainMenu = new MainMenu();
@@ -38,6 +42,13 @@ public class Game extends JFrame {
 	private String ballModel = "models/small_ball.ase";
 	private String cubeModel = "models/cubik1.ase";
 	private int score = 0;
+
+	// /////////////////////////////////////
+	private int targetNumber = 2;
+	// a default distance between group members
+	private int radius = 60;
+	private long sleepTime = 100L;
+	private Color movingBallColor = Color.GREEN, centerBallColor = Color.GRAY, targetColor = Color.RED;
 
 	public Game(String st) {
 		super(st);
@@ -63,11 +74,11 @@ public class Game extends JFrame {
 	 */
 	private Picture getGameContent() {
 		pic = new Picture();
-		Ball ball1 = new Ball(new ASEParser(ballModel), Color.gray, "Ball 1");
-		Ball ball2 = new Ball(new ASEParser(ballModel), Color.red, "Ball 2");
+		Ball ball1 = new Ball(new ASEParser(ballModel), getMovingBallColor(), "Ball 1");
+		Ball ball2 = new Ball(new ASEParser(ballModel), getCenterBallColor(), "Ball 2");
 		List<Sprite> targetSprites = new ArrayList<Sprite>(5);
-		for (int i = 0; i < 2; i++) {
-			Target target = new Target(new ASEParser(cubeModel), Color.green, "Target " + i);
+		for (int i = 0; i < getTargetNumber(); i++) {
+			Target target = new Target(new ASEParser(cubeModel), getTargetColor(), "Target " + i);
 			targetSprites.add(target);
 		}
 		List<Sprite> playerSprites = new ArrayList<Sprite>(2);
@@ -106,7 +117,7 @@ public class Game extends JFrame {
 			pack();
 			pic.grabFocus();
 			repaint();
-			getPlayer().getCenterBall().move(getPlayer().getRadius() * Math.cos(45), getPlayer().getRadius() * Math.sin(45), 0);// Moves the center ball
+			getPlayer().getCenterBall().move(getRadius() * Math.cos(45), getRadius() * Math.sin(45), 0);// Moves the center ball
 			getPlayer().move(150, 150, 0);// Moves the player group
 			getPlayer().init();
 			pic.setCenterBall(getPlayer().getCenterBall());
@@ -114,7 +125,7 @@ public class Game extends JFrame {
 			for (int i = 0; i < getTargets().getGroup().size(); i++) {
 				Random rand = new Random();
 				Target target = (Target) getTargets().getGroup().get(i);
-				target.move(rand.nextDouble() * 100 * i, rand.nextDouble() * 100 * i, 0);
+				target.move(rand.nextDouble() * 200 * i, rand.nextDouble() * 300 * i, 0);
 				target.rotate();
 			}
 		}
@@ -186,6 +197,7 @@ public class Game extends JFrame {
 
 	public static void main(String[] args) {
 		GAME = new Game("OrbGrab");
+		GAME.loadConfiguration();
 		GAME.startGame();
 	}
 
@@ -211,9 +223,80 @@ public class Game extends JFrame {
 			random2 = -1 * random2;
 		}
 		target.move(random1 * 100, random2 * 100, 0);
-		Vertex targetPos = target.getCenter();
-		if ((targetPos.getX() > getGame().getWidth() - 100) || (targetPos.getY() > getGame().getHeight() - 100)) {
-			target.move(150, 150, 0);
+	}
+
+	public void outOfBorder() {
+		score--;
+	}
+
+	private void loadConfiguration() {
+		Properties properties = new Properties();
+		try {
+			Reader propertiesReader = new FileReader("orbgrab.properties");
+			properties.load(propertiesReader);
+			Log.info(getClass(), "Loaded config: " + properties);
+			setTargetNumber(Integer.valueOf(properties.getProperty("target.number")));
+			setRadius(Integer.valueOf(properties.getProperty("radius")));
+			setSleepTime(Long.valueOf(properties.getProperty("sleep.time")));
+
+			Color centerBall = Color.decode(properties.getProperty("color.center.ball"));
+			Color movingBall = Color.decode(properties.getProperty("color.moving.ball"));
+			Color target = Color.decode(properties.getProperty("color.target"));
+
+			setMovingBallColor(movingBall);
+			setCenterBallColor(centerBall);
+			setTargetColor(target);
 		}
+		catch (Throwable ex) {
+			Log.error(getClass(), ex);
+		}
+	}
+
+	private int getTargetNumber() {
+		return targetNumber;
+	}
+
+	private void setTargetNumber(int targetNumber) {
+		this.targetNumber = targetNumber;
+	}
+
+	public int getRadius() {
+		return radius;
+	}
+
+	private void setRadius(int radius) {
+		this.radius = radius;
+	}
+
+	public long getSleepTime() {
+		return sleepTime;
+	}
+
+	private void setSleepTime(long sleepTime) {
+		this.sleepTime = sleepTime;
+	}
+
+	public Color getMovingBallColor() {
+		return movingBallColor;
+	}
+
+	public void setMovingBallColor(Color movingBallColor) {
+		this.movingBallColor = movingBallColor;
+	}
+
+	public Color getCenterBallColor() {
+		return centerBallColor;
+	}
+
+	public void setCenterBallColor(Color centerBallColor) {
+		this.centerBallColor = centerBallColor;
+	}
+
+	public Color getTargetColor() {
+		return targetColor;
+	}
+
+	public void setTargetColor(Color targetColor) {
+		this.targetColor = targetColor;
 	}
 }
