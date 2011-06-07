@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" name="game" size="1691,1079" id="org.br.game" metadata="uml2-1.0" initialized="true" tag="1000" key="32303037303533312D31303030205363686F6F6C50726F6A6563742F4C6F6E6520576F6C66">
-  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.8/@sourceConnections.1 //@children.11/@sourceConnections.0" name="Triangle" location="753,240" size="100,27" id="org.br.game/Triangle" runTimeClassModel="getCenter(),p3,p2,p1,rotate(D),turn(DLorg.br.game.Point;),zoom(D),turn(D),color,Triangle(Lorg.br.game.Point;Lorg.br.game.Point;Lorg.br.game.Point;Ljava.awt.Color;),move(DD),scale(DD),paint(Ljava.awt.Graphics;)">
+  <children xsi:type="editmodel:ClassEditModel" name="Triangle" location="779,229" size="100,25" id="org.br.game/Triangle" runTimeClassModel="getCenter(),p3,p2,p1,rotate(D),turn(DLorg.br.game.Point;),zoom(D),turn(D),color,Triangle(Lorg.br.game.Point;Lorg.br.game.Point;Lorg.br.game.Point;Ljava.awt.Color;),move(DD),scale(DD),paint(Ljava.awt.Graphics;)">
     <children xsi:type="editmodel:CompartmentEditModel" size="74,72">
       <children xsi:type="editmodel:AttributeEditModel" name="color" id="org.br.game/Triangle#color"/>
       <children xsi:type="editmodel:AttributeEditModel" name="p1" id="org.br.game/Triangle#p1"/>
@@ -20,13 +20,13 @@
     </children>
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game/Triangle-Standard::Call->org.br.game/Point*org.br.game/Triangle-Standard::Instantiate->org.br.game/Point*org.br.game/Triangle-Soyatec::Import->org.br.game/Point" source="//@children.0" target="//@children.6" targetEnd="//@children.0/@sourceConnections.0/@children.2" label="//@children.0/@sourceConnections.0/@children.0" sourceEnd="//@children.0/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
-      <children xsi:type="editmodel:WireLabelEditModel" name="«Instantiate, Call, Import»" location="901,291" size="119,14" anchorKind="MiddlePart"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="99,27" attachSource="true"/>
-      <children xsi:type="editmodel:AssociationEndEditModel"/>
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Instantiate, Import, Call»" location="901,291" size="119,14" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="66,25" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="32,0"/>
     </sourceConnections>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.3/@sourceConnections.0 //@children.11/@sourceConnections.1 //@children.13/@sourceConnections.2 //@children.14/@sourceConnections.1" name="ASEParser" location="798,480" size="137,31" id="org.br.game/ASEParser" runTimeClassModel="getBufferSize(),readASEFace(),getNUMFACES(),filePath,getNUMVERTEX(),nUMFACES,readFACENUM(),read(),getFilePath(),bufferSize,ASEParser(Ljava.lang.String;),readASEVertex(),nUMVERTEX,readVERTEXNUM(),ASEParser(Ljava.lang.String;I)">
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.11/@sourceConnections.0 //@children.13/@sourceConnections.1 //@children.14/@sourceConnections.1" name="ASEParser" location="643,425" size="137,26" id="org.br.game/ASEParser" runTimeClassModel="getBufferSize(),readASEFace(),filePath,getNUMFACES(),getNUMVERTEX(),nUMFACES,readFACENUM(),read(),getFilePath(),bufferSize,ASEParser(Ljava.lang.String;),readASEVertex(),nUMVERTEX,readVERTEXNUM(),ASEParser(Ljava.lang.String;I)">
     <children xsi:type="editmodel:CompartmentEditModel" size="98,72">
       <children xsi:type="editmodel:AttributeEditModel" name="bufferSize" id="org.br.game/ASEParser#bufferSize"/>
       <children xsi:type="editmodel:AttributeEditModel" name="filePath" id="org.br.game/ASEParser#filePath"/>
@@ -49,7 +49,7 @@
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.5/@sourceConnections.2 //@children.12/@sourceConnections.1 //@children.10/@sourceConnections.1 //@children.11/@sourceConnections.4 //@children.16/@sourceConnections.2" name="Picture" location="328,442" size="164,31" id="org.br.game/Picture" runTimeClassModel="getSpinningBall(),listOfSprites,getListOfSprites(),setSpinningBall(Lorg.br.game.Sprite;),getCenterBall(),setCenterBall(Lorg.br.game.Sprite;),Picture(),setListOfSprites(Ljava.util.List;),paint(Ljava.awt.Graphics;),spinningBall,centerBall">
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.5/@sourceConnections.1 //@children.12/@sourceConnections.1 //@children.10/@sourceConnections.0 //@children.11/@sourceConnections.3 //@children.16/@sourceConnections.2 //@children.3/@sourceConnections.4" name="Picture" location="318,480" size="164,23" id="org.br.game/Picture" runTimeClassModel="getSpinningBall(),listOfSprites,getListOfSprites(),setSpinningBall(Lorg.br.game.Sprite;),setCenterBall(Lorg.br.game.Sprite;),getCenterBall(),Picture(),setListOfSprites(Ljava.util.List;),paint(Ljava.awt.Graphics;),spinningBall,centerBall">
     <children xsi:type="editmodel:CompartmentEditModel" size="141,54">
       <children xsi:type="editmodel:AttributeEditModel" name="centerBall" id="org.br.game/Picture#centerBall"/>
       <children xsi:type="editmodel:AttributeEditModel" name="listOfSprites" id="org.br.game/Picture#listOfSprites"/>
@@ -66,19 +66,14 @@
       <children xsi:type="editmodel:MethodEditModel" name="setSpinningBall" id="org.br.game/Picture#setSpinningBall(Lorg.br.game.Sprite;)"/>
     </children>
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
-    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game/Picture-Standard::Call->org.br.game/Sprite*org.br.game/Picture-Soyatec::Import->org.br.game/Sprite" source="//@children.2" target="//@children.12" targetEnd="//@children.2/@sourceConnections.0/@children.2" label="//@children.2/@sourceConnections.0/@children.0" sourceEnd="//@children.2/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
-      <children xsi:type="editmodel:WireLabelEditModel" name="«Call, Import»" size="64,14" anchorKind="MiddlePart"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="81,31" attachSource="true"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="101,15"/>
-    </sourceConnections>
-    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game/Picture-Standard::Call->org.br.game/Vertex*org.br.game/Picture-Soyatec::Import->org.br.game/Vertex" source="//@children.2" target="//@children.4" targetEnd="//@children.2/@sourceConnections.1/@children.2" label="//@children.2/@sourceConnections.1/@children.0" sourceEnd="//@children.2/@sourceConnections.1/@children.1" connectionRouterKind="Manual">
-      <children xsi:type="editmodel:WireLabelEditModel" name="«Call, Import»" size="64,14" anchorKind="MiddlePart"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="116,0" attachSource="true"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="41,31"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game/Picture-Soyatec::Import->org.br.game/Sprite" source="//@children.2" target="//@children.12" targetEnd="//@children.2/@sourceConnections.0/@children.2" label="//@children.2/@sourceConnections.0/@children.0" sourceEnd="//@children.2/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import»" size="41,14" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="156,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="6,42"/>
     </sourceConnections>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.5/@sourceConnections.0 //@children.9/@sourceConnections.0 //@children.10/@sourceConnections.0 //@children.13/@sourceConnections.1 //@children.14/@sourceConnections.3" name="Game" location="330,15" size="160,31" id="org.br.game/Game" runTimeClassModel="main([Ljava.lang.String;),Game(Ljava.lang.String;),player,getTargetColor(),score,setTargetColor(Ljava.awt.Color;),getStartGame(),movingBallColor,getRadius(),getScore(),startGame,hit(Lorg.br.game.Sprite;),setCenterBallColor(Ljava.awt.Color;),sleepTime,setStartGame(Z),getSleepTime(),targets,centerBallColor,targetColor,getTargets(),gAME,getPlayer(),getCenterBallColor(),startGame(),getGame(),outOfBorder(),setMovingBallColor(Ljava.awt.Color;),radius,getMovingBallColor()">
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.5/@sourceConnections.0 //@children.14/@sourceConnections.3" name="Game" location="320,20" size="160,25" id="org.br.game/Game" runTimeClassModel="main([Ljava.lang.String;),Game(Ljava.lang.String;),player,getTargetColor(),score,setTargetColor(Ljava.awt.Color;),getStartGame(),getRadius(),movingBallColor,startGame,getScore(),hit(Lorg.br.game.Sprite;),setCenterBallColor(Ljava.awt.Color;),sleepTime,setStartGame(Z),getSleepTime(),targets,centerBallColor,targetColor,getTargets(),gAME,getPlayer(),getCenterBallColor(),startGame(),getGame(),outOfBorder(),setMovingBallColor(Ljava.awt.Color;),radius,getMovingBallColor()">
     <children xsi:type="editmodel:CompartmentEditModel" size="137,180">
       <children xsi:type="editmodel:AttributeEditModel" name="centerBallColor" id="org.br.game/Game#centerBallColor"/>
       <children xsi:type="editmodel:AttributeEditModel" name="gAME" id="org.br.game/Game#gAME"/>
@@ -113,24 +108,39 @@
       <children xsi:type="editmodel:MethodEditModel" name="startGame" id="org.br.game/Game#startGame()"/>
     </children>
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
-    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game/Game-Standard::Instantiate->org.br.game/ASEParser" source="//@children.3" target="//@children.1" targetEnd="//@children.3/@sourceConnections.0/@children.2" label="//@children.3/@sourceConnections.0/@children.0" sourceEnd="//@children.3/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
-      <children xsi:type="editmodel:WireLabelEditModel" name="«Instantiate»" size="61,14" anchorKind="MiddlePart"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="96,31" attachSource="true"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="53,0"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game/Game-Soyatec::Import->org.br.game/Sprite" source="//@children.3" target="//@children.12" targetEnd="//@children.3/@sourceConnections.0/@children.2" label="//@children.3/@sourceConnections.0/@children.0" sourceEnd="//@children.3/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import»" size="41,14" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="153,25" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="5,0"/>
     </sourceConnections>
-    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game/Game-Standard::Call->org.br.game/Log" source="//@children.3" target="//@children.7" targetEnd="//@children.3/@sourceConnections.1/@children.2" label="//@children.3/@sourceConnections.1/@children.0" sourceEnd="//@children.3/@sourceConnections.1/@children.1" connectionRouterKind="Manual">
-      <children xsi:type="editmodel:WireLabelEditModel" name="«Call»" size="29,14" anchorKind="MiddlePart"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="69,31" attachSource="true"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="49,0"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game/Game-Soyatec::Import->org.br.game.sprites/CirclingBallGroup" source="//@children.3" target="//@children.15" targetEnd="//@children.3/@sourceConnections.1/@children.2" label="//@children.3/@sourceConnections.1/@children.0" sourceEnd="//@children.3/@sourceConnections.1/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import»" size="41,14" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="84,25" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="74,0"/>
     </sourceConnections>
-    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game/Game-Standard::Call->org.br.game/Sprite*org.br.game/Game-Soyatec::Import->org.br.game/Sprite" source="//@children.3" target="//@children.12" targetEnd="//@children.3/@sourceConnections.2/@children.2" label="//@children.3/@sourceConnections.2/@children.0" sourceEnd="//@children.3/@sourceConnections.2/@children.1" connectionRouterKind="Manual">
-      <children xsi:type="editmodel:WireLabelEditModel" name="«Call, Import»" size="64,14" anchorKind="MiddlePart"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="79,31" attachSource="true"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="50,0"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game/Game-Soyatec::Import->org.br.game.sprites/TargetGroup" source="//@children.3" target="//@children.16" targetEnd="//@children.3/@sourceConnections.2/@children.2" label="//@children.3/@sourceConnections.2/@children.0" sourceEnd="//@children.3/@sourceConnections.2/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import»" size="41,14" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="88,25" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="60,0"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game/Game-Soyatec::Import->org.br.game/MainMenu" source="//@children.3" target="//@children.9" targetEnd="//@children.3/@sourceConnections.3/@children.2" label="//@children.3/@sourceConnections.3/@children.0" sourceEnd="//@children.3/@sourceConnections.3/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import»" size="41,14" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="62,25" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="78,0"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game/Game-Soyatec::Import->org.br.game/Picture" source="//@children.3" target="//@children.2" targetEnd="//@children.3/@sourceConnections.4/@children.2" label="//@children.3/@sourceConnections.4/@children.0" sourceEnd="//@children.3/@sourceConnections.4/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import»" size="41,14" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="80,25" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="82,0"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game/Game-Soyatec::Import->org.br.game/GameListener" source="//@children.3" target="//@children.5" targetEnd="//@children.3/@sourceConnections.5/@children.2" label="//@children.3/@sourceConnections.5/@children.0" sourceEnd="//@children.3/@sourceConnections.5/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import»" size="41,14" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="3,25" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="127,0"/>
     </sourceConnections>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.8/@sourceConnections.0 //@children.2/@sourceConnections.1 //@children.12/@sourceConnections.0 //@children.11/@sourceConnections.2 //@children.13/@sourceConnections.3 //@children.14/@sourceConnections.2 //@children.16/@sourceConnections.1 //@children.15/@sourceConnections.3" name="Vertex" location="623,315" size="157,31" id="org.br.game/Vertex" runTimeClassModel="getZ(),move(DDD),perspectiveProjection(),setZ(D),getLength(),Vertex(DDD),turnY(D),toString(),Vertex(Lorg.br.game.Vertex;),getX(),turnX(D),scale(DDD),setX(D),getY(),equals(Ljava.lang.Object;),turnZ(D),dIST,z,setY(D),y,x">
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.8/@sourceConnections.0 //@children.12/@sourceConnections.0 //@children.11/@sourceConnections.1 //@children.14/@sourceConnections.2 //@children.16/@sourceConnections.1 //@children.15/@sourceConnections.3" name="Vertex" location="681,303" size="157,27" id="org.br.game/Vertex" runTimeClassModel="getZ(),move(DDD),setZ(D),perspectiveProjection(),getLength(),Vertex(DDD),turnY(D),toString(),Vertex(Lorg.br.game.Vertex;),getX(),turnX(D),scale(DDD),setX(D),getY(),equals(Ljava.lang.Object;),turnZ(D),dIST,z,setY(D),y,x">
     <children xsi:type="editmodel:CompartmentEditModel" size="63,72">
       <children xsi:type="editmodel:AttributeEditModel" name="dIST" id="org.br.game/Vertex#dIST"/>
       <children xsi:type="editmodel:AttributeEditModel" name="x" id="org.br.game/Vertex#x"/>
@@ -157,14 +167,9 @@
       <children xsi:type="editmodel:MethodEditModel" name="turnZ" id="org.br.game/Vertex#turnZ(D)"/>
     </children>
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
-    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game/Vertex-Standard::Instantiate->org.br.game/Point*org.br.game/Vertex-Soyatec::Import->org.br.game/Point" source="//@children.4" target="//@children.6" targetEnd="//@children.4/@sourceConnections.0/@children.2" label="//@children.4/@sourceConnections.0/@children.0" sourceEnd="//@children.4/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
-      <children xsi:type="editmodel:WireLabelEditModel" name="«Instantiate, Import»" size="96,14" anchorKind="MiddlePart"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="109,31" attachSource="true"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="22,0"/>
-    </sourceConnections>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" name="GameListener" location="138,416" size="131,31" id="org.br.game/GameListener" runTimeClassModel="mouseMoved(Ljava.awt.event.MouseEvent;),mouseDragged(Ljava.awt.event.MouseEvent;),keyTyped(Ljava.awt.event.KeyEvent;),keyPressed(Ljava.awt.event.KeyEvent;),mouseEntered(Ljava.awt.event.MouseEvent;),mouseClicked(Ljava.awt.event.MouseEvent;),mousePressed(Ljava.awt.event.MouseEvent;),mouseExited(Ljava.awt.event.MouseEvent;),keyReleased(Ljava.awt.event.KeyEvent;),GameListener(Lorg.br.game.Game;Lorg.br.game.Picture;),mouseReleased(Ljava.awt.event.MouseEvent;)">
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.3/@sourceConnections.5" name="GameListener" location="196,311" size="131,27" id="org.br.game/GameListener" runTimeClassModel="keyPressed(Ljava.awt.event.KeyEvent;),keyTyped(Ljava.awt.event.KeyEvent;),mouseMoved(Ljava.awt.event.MouseEvent;),mouseDragged(Ljava.awt.event.MouseEvent;),mousePressed(Ljava.awt.event.MouseEvent;),mouseEntered(Ljava.awt.event.MouseEvent;),mouseClicked(Ljava.awt.event.MouseEvent;),mouseExited(Ljava.awt.event.MouseEvent;),keyReleased(Ljava.awt.event.KeyEvent;),GameListener(Lorg.br.game.Game;Lorg.br.game.Picture;),mouseReleased(Ljava.awt.event.MouseEvent;)">
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <children xsi:type="editmodel:CompartmentEditModel" size="107,198">
       <children xsi:type="editmodel:MethodEditModel" name="GameListener" id="org.br.game/GameListener#GameListener(Lorg.br.game.Game;Lorg.br.game.Picture;)"/>
@@ -180,24 +185,19 @@
       <children xsi:type="editmodel:MethodEditModel" name="mouseReleased" id="org.br.game/GameListener#mouseReleased(Ljava.awt.event.MouseEvent;)"/>
     </children>
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
-    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game/GameListener-Standard::Call->org.br.game/Game*org.br.game/GameListener-Soyatec::Import->org.br.game/Game" source="//@children.5" target="//@children.3" targetEnd="//@children.5/@sourceConnections.0/@children.2" label="//@children.5/@sourceConnections.0/@children.0" sourceEnd="//@children.5/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
-      <children xsi:type="editmodel:WireLabelEditModel" name="«Call, Import»" size="64,14" anchorKind="MiddlePart"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="73,0" attachSource="true"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="72,31"/>
-    </sourceConnections>
-    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game/GameListener-Standard::Call->org.br.game/Log" source="//@children.5" target="//@children.7" targetEnd="//@children.5/@sourceConnections.1/@children.2" label="//@children.5/@sourceConnections.1/@children.0" sourceEnd="//@children.5/@sourceConnections.1/@children.1" connectionRouterKind="Manual">
-      <children xsi:type="editmodel:WireLabelEditModel" name="«Call»" size="29,14" anchorKind="MiddlePart"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="73,0" attachSource="true"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="39,31"/>
-    </sourceConnections>
-    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game/GameListener-Soyatec::Import->org.br.game/Picture" source="//@children.5" target="//@children.2" targetEnd="//@children.5/@sourceConnections.2/@children.2" label="//@children.5/@sourceConnections.2/@children.0" sourceEnd="//@children.5/@sourceConnections.2/@children.1" connectionRouterKind="Manual">
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game/GameListener-Soyatec::Import->org.br.game/Game" source="//@children.5" target="//@children.3" targetEnd="//@children.5/@sourceConnections.0/@children.2" label="//@children.5/@sourceConnections.0/@children.0" sourceEnd="//@children.5/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
       <children xsi:type="editmodel:WireLabelEditModel" name="«Import»" size="41,14" anchorKind="MiddlePart"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="131,28" attachSource="true"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="0,2"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="107,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,10"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game/GameListener-Soyatec::Import->org.br.game/Picture" source="//@children.5" target="//@children.2" targetEnd="//@children.5/@sourceConnections.1/@children.2" label="//@children.5/@sourceConnections.1/@children.0" sourceEnd="//@children.5/@sourceConnections.1/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import»" size="41,14" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="126,27" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="4,0"/>
     </sourceConnections>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.4/@sourceConnections.0 //@children.0/@sourceConnections.0" name="Point" location="852,420" size="86,23" id="org.br.game/Point" runTimeClassModel="getX(),turn(D),Point(DD),move(DD),setX(D),scale(DD),getY(),Point(Lorg.br.game.Point;),setY(D),y,x">
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.0/@sourceConnections.0" name="Point" location="813,379" size="86,27" id="org.br.game/Point" runTimeClassModel="getX(),turn(D),Point(DD),move(DD),scale(DD),setX(D),getY(),Point(Lorg.br.game.Point;),setY(D),y,x">
     <children xsi:type="editmodel:CompartmentEditModel" size="63,36">
       <children xsi:type="editmodel:AttributeEditModel" name="x" id="org.br.game/Point#x"/>
       <children xsi:type="editmodel:AttributeEditModel" name="y" id="org.br.game/Point#y"/>
@@ -216,7 +216,7 @@
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.3/@sourceConnections.1 //@children.5/@sourceConnections.1 //@children.9/@sourceConnections.1" name="Log" location="172,315" size="79,31" id="org.br.game/Log" runTimeClassModel="info(Ljava.lang.Class;Ljava.lang.String;),error(Ljava.lang.Class;Ljava.lang.Throwable;),warn(Ljava.lang.Class;Ljava.lang.String;)">
+  <children xsi:type="editmodel:ClassEditModel" name="Log" location="180,210" size="79,30" id="org.br.game/Log" runTimeClassModel="info(Ljava.lang.Class;Ljava.lang.String;),error(Ljava.lang.Class;Ljava.lang.Throwable;),warn(Ljava.lang.Class;Ljava.lang.String;)">
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <children xsi:type="editmodel:CompartmentEditModel" size="56,54">
       <children xsi:type="editmodel:MethodEditModel" name="error" id="org.br.game/Log#error(Ljava.lang.Class;Ljava.lang.Throwable;)"/>
@@ -226,7 +226,7 @@
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.11/@sourceConnections.3" name="Face" location="483,90" size="157,31" id="org.br.game/Face" runTimeClassModel="getCenter(),perspectiveProjection(Ljava.awt.Color;),p3,move(DDD),p2,p1,getColor(),getP2(),howSeen(),zoom(DLorg.br.game.Vertex;),setRGBColor(D),turnY(D),getP3(),turnX(D),color,getP1(),Face(Lorg.br.game.Vertex;Lorg.br.game.Vertex;Lorg.br.game.Vertex;Ljava.awt.Color;),scale(DDD),setColor(Ljava.awt.Color;),turnZ(D)">
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.11/@sourceConnections.2" name="Face" location="643,48" size="157,25" id="org.br.game/Face" runTimeClassModel="getCenter(),perspectiveProjection(Ljava.awt.Color;),p3,p2,move(DDD),p1,getColor(),howSeen(),getP2(),zoom(DLorg.br.game.Vertex;),setRGBColor(D),turnY(D),getP3(),turnX(D),color,getP1(),Face(Lorg.br.game.Vertex;Lorg.br.game.Vertex;Lorg.br.game.Vertex;Ljava.awt.Color;),scale(DDD),setColor(Ljava.awt.Color;),turnZ(D)">
     <children xsi:type="editmodel:CompartmentEditModel" size="74,72">
       <children xsi:type="editmodel:AttributeEditModel" name="color" id="org.br.game/Face#color"/>
       <children xsi:type="editmodel:AttributeEditModel" name="p1" id="org.br.game/Face#p1"/>
@@ -252,19 +252,14 @@
       <children xsi:type="editmodel:MethodEditModel" name="zoom" id="org.br.game/Face#zoom(DLorg.br.game.Vertex;)"/>
     </children>
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
-    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game/Face-Standard::Call->org.br.game/Vertex*org.br.game/Face-Standard::Instantiate->org.br.game/Vertex*org.br.game/Face-Soyatec::Import->org.br.game/Vertex" source="//@children.8" target="//@children.4" targetEnd="//@children.8/@sourceConnections.0/@children.2" label="//@children.8/@sourceConnections.0/@children.0" sourceEnd="//@children.8/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
-      <children xsi:type="editmodel:WireLabelEditModel" name="«Instantiate, Call, Import»" size="119,14" anchorKind="MiddlePart"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="148,31" attachSource="true"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="8,0"/>
-    </sourceConnections>
-    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game/Face-Standard::Instantiate->org.br.game/Triangle*org.br.game/Face-Soyatec::Import->org.br.game/Triangle" source="//@children.8" target="//@children.0" targetEnd="//@children.8/@sourceConnections.1/@children.2" label="//@children.8/@sourceConnections.1/@children.0" sourceEnd="//@children.8/@sourceConnections.1/@children.1" connectionRouterKind="Manual">
-      <children xsi:type="editmodel:WireLabelEditModel" name="«Instantiate, Import»" size="96,14" anchorKind="MiddlePart"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="104,31" attachSource="true"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="29,0"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game/Face-Soyatec::Import->org.br.game/Vertex" source="//@children.8" target="//@children.4" targetEnd="//@children.8/@sourceConnections.0/@children.2" label="//@children.8/@sourceConnections.0/@children.0" sourceEnd="//@children.8/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import»" size="41,14" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="97,25" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="59,0"/>
     </sourceConnections>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" name="MainMenu" location="154,195" size="115,31" id="org.br.game/MainMenu" runTimeClassModel="keyTyped(Ljava.awt.event.KeyEvent;),keyPressed(Ljava.awt.event.KeyEvent;),MainMenu(),keyReleased(Ljava.awt.event.KeyEvent;),paint(Ljava.awt.Graphics;)">
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.3/@sourceConnections.3" name="MainMenu" location="204,115" size="115,31" id="org.br.game/MainMenu" runTimeClassModel="keyPressed(Ljava.awt.event.KeyEvent;),keyTyped(Ljava.awt.event.KeyEvent;),MainMenu(),keyReleased(Ljava.awt.event.KeyEvent;),paint(Ljava.awt.Graphics;)">
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <children xsi:type="editmodel:CompartmentEditModel" size="92,90">
       <children xsi:type="editmodel:MethodEditModel" name="MainMenu" id="org.br.game/MainMenu#MainMenu()"/>
@@ -274,19 +269,9 @@
       <children xsi:type="editmodel:MethodEditModel" name="paint" id="org.br.game/MainMenu#paint(Ljava.awt.Graphics;)"/>
     </children>
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
-    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game/MainMenu-Standard::Call->org.br.game/Game*org.br.game/MainMenu-Soyatec::Access->org.br.game/Game" source="//@children.9" target="//@children.3" targetEnd="//@children.9/@sourceConnections.0/@children.2" label="//@children.9/@sourceConnections.0/@children.0" sourceEnd="//@children.9/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
-      <children xsi:type="editmodel:WireLabelEditModel" name="«Access, Call»" size="73,14" anchorKind="MiddlePart"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="74,0" attachSource="true"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="62,31"/>
-    </sourceConnections>
-    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game/MainMenu-Standard::Call->org.br.game/Log" source="//@children.9" target="//@children.7" targetEnd="//@children.9/@sourceConnections.1/@children.2" label="//@children.9/@sourceConnections.1/@children.0" sourceEnd="//@children.9/@sourceConnections.1/@children.1" connectionRouterKind="Manual">
-      <children xsi:type="editmodel:WireLabelEditModel" name="«Call»" size="29,14" anchorKind="MiddlePart"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="57,31" attachSource="true"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="39,0"/>
-    </sourceConnections>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.15/@sourceConnections.0 //@children.16/@sourceConnections.0" name="GroupedSprite" location="573,652" size="135,28" id="org.br.game/GroupedSprite" runTimeClassModel="init(),paint(Ljava.awt.Graphics;),group,getGroup(),setPicture(Lorg.br.game.Picture;),GroupedSprite(Ljava.util.List;)">
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.15/@sourceConnections.0 //@children.16/@sourceConnections.0" name="GroupedSprite" location="583,605" size="135,29" id="org.br.game/GroupedSprite" runTimeClassModel="init(),paint(Ljava.awt.Graphics;),group,setPicture(Lorg.br.game.Picture;),getGroup(),GroupedSprite(Ljava.util.List;)">
     <children xsi:type="editmodel:CompartmentEditModel" size="110,18">
       <children xsi:type="editmodel:AttributeEditModel" name="group" id="org.br.game/GroupedSprite#group"/>
     </children>
@@ -298,28 +283,23 @@
       <children xsi:type="editmodel:MethodEditModel" name="setPicture" id="org.br.game/GroupedSprite#setPicture(Lorg.br.game.Picture;)"/>
     </children>
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
-    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game/GroupedSprite-Standard::Call->org.br.game/Game" source="//@children.10" target="//@children.3" targetEnd="//@children.10/@sourceConnections.0/@children.2" label="//@children.10/@sourceConnections.0/@children.0" sourceEnd="//@children.10/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
-      <children xsi:type="editmodel:WireLabelEditModel" name="«Call»" size="29,14" anchorKind="MiddlePart"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="62,0" attachSource="true"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="86,31"/>
-    </sourceConnections>
-    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game/GroupedSprite-Soyatec::Import->org.br.game/Picture" source="//@children.10" target="//@children.2" targetEnd="//@children.10/@sourceConnections.1/@children.2" label="//@children.10/@sourceConnections.1/@children.0" sourceEnd="//@children.10/@sourceConnections.1/@children.1" connectionRouterKind="Manual">
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game/GroupedSprite-Soyatec::Import->org.br.game/Picture" source="//@children.10" target="//@children.2" targetEnd="//@children.10/@sourceConnections.0/@children.2" label="//@children.10/@sourceConnections.0/@children.0" sourceEnd="//@children.10/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
       <children xsi:type="editmodel:WireLabelEditModel" name="«Import»" size="41,14" anchorKind="MiddlePart"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="52,0" attachSource="true"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="100,31"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="40,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="105,23"/>
     </sourceConnections>
-    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game/GroupedSprite-Standard::Call->org.br.game/Sprite*org.br.game/GroupedSprite-Soyatec::Import->org.br.game/Sprite" source="//@children.10" target="//@children.12" targetEnd="//@children.10/@sourceConnections.2/@children.2" label="//@children.10/@sourceConnections.2/@children.0" sourceEnd="//@children.10/@sourceConnections.2/@children.1" connectionRouterKind="Manual">
-      <children xsi:type="editmodel:WireLabelEditModel" name="«Call, Import»" size="64,14" anchorKind="MiddlePart"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="14,0" attachSource="true"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="101,33"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game/GroupedSprite-Soyatec::Import->org.br.game/Sprite" source="//@children.10" target="//@children.12" targetEnd="//@children.10/@sourceConnections.1/@children.2" label="//@children.10/@sourceConnections.1/@children.0" sourceEnd="//@children.10/@sourceConnections.1/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import»" size="41,14" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="60,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="60,42"/>
     </sourceConnections>
-    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="org.br.game/SpriteBase&lt;-org.br.game/GroupedSprite" source="//@children.10" target="//@children.11" targetEnd="//@children.10/@sourceConnections.3/@children.1" sourceEnd="//@children.10/@sourceConnections.3/@children.0" connectionRouterKind="Manual">
-      <children xsi:type="editmodel:AssociationEndEditModel" location="59,0" attachSource="true"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="87,31"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="org.br.game/SpriteBase&lt;-org.br.game/GroupedSprite" source="//@children.10" target="//@children.11" targetEnd="//@children.10/@sourceConnections.2/@children.1" sourceEnd="//@children.10/@sourceConnections.2/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="49,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="107,27"/>
     </sourceConnections>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.10/@sourceConnections.3 //@children.13/@sourceConnections.0 //@children.14/@sourceConnections.0" name="SpriteBase" location="331,238" size="157,31" id="org.br.game/SpriteBase" runTimeClassModel="turnX(DLorg.br.game.Vertex;),getCenter(),setActive(Z),init(),faces,SpriteBase(Lorg.br.game.ASEParser;Ljava.awt.Color;Ljava.lang.String;),move(DDD),getFaces(),perspectiveProjection(),getColor(),zoom(DLorg.br.game.Vertex;),getName(),SpriteBase(),repaintAll(),getPicture(),turnZ(DLorg.br.game.Vertex;),getFileReader(),setColor(Ljava.awt.Color;),name,turnY(DLorg.br.game.Vertex;),setName(Ljava.lang.String;),getVertexes(),vertexes,picture,color,isActive(),active,paint(Ljava.awt.Graphics;),setPicture(Lorg.br.game.Picture;)">
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.10/@sourceConnections.2 //@children.13/@sourceConnections.0 //@children.14/@sourceConnections.0" name="SpriteBase" location="525,183" size="157,27" id="org.br.game/SpriteBase" runTimeClassModel="turnX(DLorg.br.game.Vertex;),getCenter(),setActive(Z),faces,init(),SpriteBase(Lorg.br.game.ASEParser;Ljava.awt.Color;Ljava.lang.String;),move(DDD),getFaces(),perspectiveProjection(),getColor(),zoom(DLorg.br.game.Vertex;),getName(),SpriteBase(),repaintAll(),getPicture(),turnZ(DLorg.br.game.Vertex;),getFileReader(),name,setColor(Ljava.awt.Color;),turnY(DLorg.br.game.Vertex;),setName(Ljava.lang.String;),getVertexes(),vertexes,picture,color,isActive(),active,paint(Ljava.awt.Graphics;),setPicture(Lorg.br.game.Picture;)">
     <children xsi:type="editmodel:CompartmentEditModel" size="131,108">
       <children xsi:type="editmodel:AttributeEditModel" name="active" id="org.br.game/SpriteBase#active"/>
       <children xsi:type="editmodel:AttributeEditModel" name="color" id="org.br.game/SpriteBase#color"/>
@@ -354,38 +334,33 @@
       <children xsi:type="editmodel:MethodEditModel" name="zoom" id="org.br.game/SpriteBase#zoom(DLorg.br.game.Vertex;)"/>
     </children>
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
-    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game/SpriteBase-Standard::Call->org.br.game/Triangle" source="//@children.11" target="//@children.0" targetEnd="//@children.11/@sourceConnections.0/@children.2" label="//@children.11/@sourceConnections.0/@children.0" sourceEnd="//@children.11/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
-      <children xsi:type="editmodel:WireLabelEditModel" name="«Call»" size="29,14" anchorKind="MiddlePart"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="157,15" attachSource="true"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="0,13"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game/SpriteBase-Soyatec::Import->org.br.game/ASEParser" source="//@children.11" target="//@children.1" targetEnd="//@children.11/@sourceConnections.0/@children.2" label="//@children.11/@sourceConnections.0/@children.0" sourceEnd="//@children.11/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import»" size="41,14" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="137,27" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="19,0"/>
     </sourceConnections>
-    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game/SpriteBase-Standard::Call->org.br.game/ASEParser*org.br.game/SpriteBase-Soyatec::Import->org.br.game/ASEParser" source="//@children.11" target="//@children.1" targetEnd="//@children.11/@sourceConnections.1/@children.2" label="//@children.11/@sourceConnections.1/@children.0" sourceEnd="//@children.11/@sourceConnections.1/@children.1" connectionRouterKind="Manual">
-      <children xsi:type="editmodel:WireLabelEditModel" name="«Call, Import»" size="64,14" anchorKind="MiddlePart"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="108,31" attachSource="true"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="40,0"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game/SpriteBase-Soyatec::Import->org.br.game/Vertex" source="//@children.11" target="//@children.4" targetEnd="//@children.11/@sourceConnections.1/@children.2" label="//@children.11/@sourceConnections.1/@children.0" sourceEnd="//@children.11/@sourceConnections.1/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import»" size="41,14" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="156,27" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel"/>
     </sourceConnections>
-    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game/SpriteBase-Standard::Call->org.br.game/Vertex*org.br.game/SpriteBase-Standard::Instantiate->org.br.game/Vertex*org.br.game/SpriteBase-Soyatec::Import->org.br.game/Vertex" source="//@children.11" target="//@children.4" targetEnd="//@children.11/@sourceConnections.2/@children.2" label="//@children.11/@sourceConnections.2/@children.0" sourceEnd="//@children.11/@sourceConnections.2/@children.1" connectionRouterKind="Manual">
-      <children xsi:type="editmodel:WireLabelEditModel" name="«Instantiate, Call, Import»" size="119,14" anchorKind="MiddlePart"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="139,31" attachSource="true"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="21,0"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game/SpriteBase-Soyatec::Import->org.br.game/Face" source="//@children.11" target="//@children.8" targetEnd="//@children.11/@sourceConnections.2/@children.2" label="//@children.11/@sourceConnections.2/@children.0" sourceEnd="//@children.11/@sourceConnections.2/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import»" size="41,14" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="137,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="19,25"/>
     </sourceConnections>
-    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game/SpriteBase-Standard::Call->org.br.game/Face*org.br.game/SpriteBase-Standard::Instantiate->org.br.game/Face*org.br.game/SpriteBase-Soyatec::Import->org.br.game/Face" source="//@children.11" target="//@children.8" targetEnd="//@children.11/@sourceConnections.3/@children.2" label="//@children.11/@sourceConnections.3/@children.0" sourceEnd="//@children.11/@sourceConnections.3/@children.1" connectionRouterKind="Manual">
-      <children xsi:type="editmodel:WireLabelEditModel" name="«Instantiate, Call, Import»" size="119,14" anchorKind="MiddlePart"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="154,0" attachSource="true"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="2,31"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game/SpriteBase-Soyatec::Import->org.br.game/Picture" source="//@children.11" target="//@children.2" targetEnd="//@children.11/@sourceConnections.3/@children.2" label="//@children.11/@sourceConnections.3/@children.0" sourceEnd="//@children.11/@sourceConnections.3/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import»" size="41,14" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="68,27" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="90,0"/>
     </sourceConnections>
-    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game/SpriteBase-Standard::Call->org.br.game/Picture*org.br.game/SpriteBase-Soyatec::Import->org.br.game/Picture" source="//@children.11" target="//@children.2" targetEnd="//@children.11/@sourceConnections.4/@children.2" label="//@children.11/@sourceConnections.4/@children.0" sourceEnd="//@children.11/@sourceConnections.4/@children.1" connectionRouterKind="Manual">
-      <children xsi:type="editmodel:WireLabelEditModel" name="«Call, Import»" size="64,14" anchorKind="MiddlePart"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="78,31" attachSource="true"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="81,0"/>
-    </sourceConnections>
-    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="org.br.game/Sprite&lt;-org.br.game/SpriteBase" source="//@children.11" target="//@children.12" targetEnd="//@children.11/@sourceConnections.5/@children.1" sourceEnd="//@children.11/@sourceConnections.5/@children.0" connectionRouterKind="Manual">
-      <children xsi:type="editmodel:AssociationEndEditModel" location="78,31" attachSource="true"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="50,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="org.br.game/Sprite&lt;-org.br.game/SpriteBase" source="//@children.11" target="//@children.12" targetEnd="//@children.11/@sourceConnections.4/@children.1" sourceEnd="//@children.11/@sourceConnections.4/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="21,27" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="78,0"/>
     </sourceConnections>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
   </children>
-  <children xsi:type="editmodel:InterfaceEditModel" targetConnections="//@children.2/@sourceConnections.0 //@children.10/@sourceConnections.2 //@children.11/@sourceConnections.5 //@children.15/@sourceConnections.2 //@children.16/@sourceConnections.3 //@children.3/@sourceConnections.2" name="Sprite" location="359,585" size="101,41" id="org.br.game/Sprite" runTimeClassModel="turnX(DLorg.br.game.Vertex;),setActive(Z),repaintAll(),getCenter(),init(),turnZ(DLorg.br.game.Vertex;),move(DDD),isActive(),zoom(DLorg.br.game.Vertex;),turnY(DLorg.br.game.Vertex;),paint(Ljava.awt.Graphics;),setPicture(Lorg.br.game.Picture;)">
+  <children xsi:type="editmodel:InterfaceEditModel" targetConnections="//@children.2/@sourceConnections.0 //@children.10/@sourceConnections.1 //@children.11/@sourceConnections.4 //@children.15/@sourceConnections.2 //@children.16/@sourceConnections.3 //@children.3/@sourceConnections.0" name="Sprite" location="468,319" size="101,42" id="org.br.game/Sprite" runTimeClassModel="turnX(DLorg.br.game.Vertex;),getCenter(),repaintAll(),setActive(Z),init(),turnZ(DLorg.br.game.Vertex;),move(DDD),isActive(),turnY(DLorg.br.game.Vertex;),zoom(DLorg.br.game.Vertex;),paint(Ljava.awt.Graphics;),setPicture(Lorg.br.game.Picture;)">
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <children xsi:type="editmodel:CompartmentEditModel" size="78,216">
       <children xsi:type="editmodel:MethodEditModel" name="getCenter" id="org.br.game/Sprite#getCenter()"/>
@@ -404,17 +379,17 @@
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game/Sprite-Soyatec::Import->org.br.game/Vertex" source="//@children.12" target="//@children.4" targetEnd="//@children.12/@sourceConnections.0/@children.2" label="//@children.12/@sourceConnections.0/@children.0" sourceEnd="//@children.12/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
       <children xsi:type="editmodel:WireLabelEditModel" name="«Import»" size="41,14" anchorKind="MiddlePart"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="71,0" attachSource="true"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="61,31"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="101,5" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,21"/>
     </sourceConnections>
     <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game/Sprite-Soyatec::Import->org.br.game/Picture" source="//@children.12" target="//@children.2" targetEnd="//@children.12/@sourceConnections.1/@children.2" label="//@children.12/@sourceConnections.1/@children.0" sourceEnd="//@children.12/@sourceConnections.1/@children.1" connectionRouterKind="Manual">
       <children xsi:type="editmodel:WireLabelEditModel" name="«Import»" size="41,14" anchorKind="MiddlePart"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="50,0" attachSource="true"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="81,31"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="26,42" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="166,10"/>
     </sourceConnections>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.15/@sourceConnections.1" name="Ball" location="493,556" size="117,30" id="org.br.game.sprites/Ball">
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.15/@sourceConnections.1" name="Ball" location="628,530" size="117,27" id="org.br.game.sprites/Ball" runTimeClassModel="circleAround(),setActive(Z),init(),stop(),move(DDD),getCenterBall(),Ball(Lorg.br.game.ASEParser;Ljava.awt.Color;Ljava.lang.String;),setGroup(Lorg.br.game.sprites.CirclingBallGroup;),setCenterBall(Lorg.br.game.sprites.Ball;),centerBall,toString()">
     <children xsi:type="editmodel:CompartmentEditModel" size="90,18">
       <children xsi:type="editmodel:AttributeEditModel" name="centerBall" id="org.br.game.sprites/Ball#centerBall"/>
     </children>
@@ -432,27 +407,22 @@
     </children>
     <children xsi:type="editmodel:CompartmentEditModel"/>
     <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="org.br.game/SpriteBase&lt;-org.br.game.sprites/Ball" source="//@children.13" target="//@children.11" targetEnd="//@children.13/@sourceConnections.0/@children.1" sourceEnd="//@children.13/@sourceConnections.0/@children.0" connectionRouterKind="Manual">
-      <children xsi:type="editmodel:AssociationEndEditModel" location="51,0" attachSource="true"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="85,31"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="26,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="129,27"/>
     </sourceConnections>
-    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game.sprites/Ball-Standard::Call->org.br.game/Game" source="//@children.13" target="//@children.3" targetEnd="//@children.13/@sourceConnections.1/@children.2" label="//@children.13/@sourceConnections.1/@children.0" sourceEnd="//@children.13/@sourceConnections.1/@children.1" connectionRouterKind="Manual">
-      <children xsi:type="editmodel:WireLabelEditModel" name="«Call»" size="29,14" anchorKind="MiddlePart"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="54,0" attachSource="true"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="84,31"/>
-    </sourceConnections>
-    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game.sprites/Ball-Soyatec::Import->org.br.game/ASEParser" source="//@children.13" target="//@children.1" targetEnd="//@children.13/@sourceConnections.2/@children.2" label="//@children.13/@sourceConnections.2/@children.0" sourceEnd="//@children.13/@sourceConnections.2/@children.1" connectionRouterKind="Manual">
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game.sprites/Ball-Soyatec::Import->org.br.game/ASEParser" source="//@children.13" target="//@children.1" targetEnd="//@children.13/@sourceConnections.1/@children.2" label="//@children.13/@sourceConnections.1/@children.0" sourceEnd="//@children.13/@sourceConnections.1/@children.1" connectionRouterKind="Manual">
       <children xsi:type="editmodel:WireLabelEditModel" name="«Import»" size="41,14" anchorKind="MiddlePart"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="117,1" attachSource="true"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="2,31"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="65,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="50,26"/>
     </sourceConnections>
-    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game.sprites/Ball-Standard::Call->org.br.game/Vertex*org.br.game.sprites/Ball-Soyatec::Import->org.br.game/Vertex" source="//@children.13" target="//@children.4" targetEnd="//@children.13/@sourceConnections.3/@children.2" label="//@children.13/@sourceConnections.3/@children.0" sourceEnd="//@children.13/@sourceConnections.3/@children.1" connectionRouterKind="Manual">
-      <children xsi:type="editmodel:WireLabelEditModel" name="«Call, Import»" size="64,14" anchorKind="MiddlePart"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="67,0" attachSource="true"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="68,31"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game.sprites/Ball-Soyatec::Import->org.br.game.sprites/CirclingBallGroup" source="//@children.13" target="//@children.15" targetEnd="//@children.13/@sourceConnections.2/@children.2" label="//@children.13/@sourceConnections.2/@children.0" sourceEnd="//@children.13/@sourceConnections.2/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import»" size="41,14" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="44,27" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="155,15"/>
     </sourceConnections>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" name="Target" location="694,574" size="83,26" id="org.br.game.sprites/Target">
+  <children xsi:type="editmodel:ClassEditModel" name="Target" location="763,530" size="83,27" id="org.br.game.sprites/Target" runTimeClassModel="rotate(),move(DDD),Target(Lorg.br.game.ASEParser;Ljava.awt.Color;Ljava.lang.String;)">
     <children xsi:type="editmodel:CompartmentEditModel"/>
     <children xsi:type="editmodel:CompartmentEditModel" size="60,54">
       <children xsi:type="editmodel:MethodEditModel" name="Target" id="org.br.game.sprites/Target#Target(Lorg.br.game.ASEParser;Ljava.awt.Color;Ljava.lang.String;)"/>
@@ -461,27 +431,27 @@
     </children>
     <children xsi:type="editmodel:CompartmentEditModel"/>
     <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="org.br.game/SpriteBase&lt;-org.br.game.sprites/Target" source="//@children.14" target="//@children.11" targetEnd="//@children.14/@sourceConnections.0/@children.1" sourceEnd="//@children.14/@sourceConnections.0/@children.0" connectionRouterKind="Manual">
-      <children xsi:type="editmodel:AssociationEndEditModel" location="28,0" attachSource="true"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="94,31"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="33,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="86,27"/>
     </sourceConnections>
     <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game.sprites/Target-Soyatec::Import->org.br.game/ASEParser" source="//@children.14" target="//@children.1" targetEnd="//@children.14/@sourceConnections.1/@children.2" label="//@children.14/@sourceConnections.1/@children.0" sourceEnd="//@children.14/@sourceConnections.1/@children.1" connectionRouterKind="Manual">
       <children xsi:type="editmodel:WireLabelEditModel" name="«Import»" size="41,14" anchorKind="MiddlePart"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="60,0" attachSource="true"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="45,31"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="8,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="128,26"/>
     </sourceConnections>
-    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game.sprites/Target-Standard::Call->org.br.game/Vertex*org.br.game.sprites/Target-Soyatec::Import->org.br.game/Vertex" source="//@children.14" target="//@children.4" targetEnd="//@children.14/@sourceConnections.2/@children.2" label="//@children.14/@sourceConnections.2/@children.0" sourceEnd="//@children.14/@sourceConnections.2/@children.1" connectionRouterKind="Manual">
-      <children xsi:type="editmodel:WireLabelEditModel" name="«Call, Import»" size="64,14" anchorKind="MiddlePart"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="41,0" attachSource="true"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="112,31"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game.sprites/Target-Standard::Call->org.br.game/Vertex" source="//@children.14" target="//@children.4" targetEnd="//@children.14/@sourceConnections.2/@children.2" label="//@children.14/@sourceConnections.2/@children.0" sourceEnd="//@children.14/@sourceConnections.2/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Call»" size="29,14" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="37,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="119,27"/>
     </sourceConnections>
     <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game.sprites/Target-Standard::Call->org.br.game/Game" source="//@children.14" target="//@children.3" targetEnd="//@children.14/@sourceConnections.3/@children.2" label="//@children.14/@sourceConnections.3/@children.0" sourceEnd="//@children.14/@sourceConnections.3/@children.1" connectionRouterKind="Manual">
       <children xsi:type="editmodel:WireLabelEditModel" name="«Call»" size="29,14" anchorKind="MiddlePart"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="33,0" attachSource="true"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="89,31"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="31,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="90,25"/>
     </sourceConnections>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" name="CirclingBallGroup" location="469,751" size="155,25" id="org.br.game.sprites/CirclingBallGroup">
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.3/@sourceConnections.1 //@children.13/@sourceConnections.2" name="CirclingBallGroup" location="523,741" size="155,24" id="org.br.game.sprites/CirclingBallGroup" runTimeClassModel="turnX(DLorg.br.game.Vertex;),setActive(Z),switchSpinning(),turnZ(DLorg.br.game.Vertex;),move(DDD),CirclingBallGroup(Ljava.util.List;),isActive(),getCenterBall(),turnY(DLorg.br.game.Vertex;),zoom(DLorg.br.game.Vertex;),getCirclingBall()">
     <children xsi:type="editmodel:CompartmentEditModel"/>
     <children xsi:type="editmodel:CompartmentEditModel" size="112,198">
       <children xsi:type="editmodel:MethodEditModel" name="CirclingBallGroup" id="org.br.game.sprites/CirclingBallGroup#CirclingBallGroup(Ljava.util.List;)"/>
@@ -498,27 +468,27 @@
     </children>
     <children xsi:type="editmodel:CompartmentEditModel"/>
     <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="org.br.game/GroupedSprite&lt;-org.br.game.sprites/CirclingBallGroup" source="//@children.15" target="//@children.10" targetEnd="//@children.15/@sourceConnections.0/@children.1" sourceEnd="//@children.15/@sourceConnections.0/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="107,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="47,29"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game.sprites/CirclingBallGroup-Soyatec::Import->org.br.game.sprites/Ball" source="//@children.15" target="//@children.13" targetEnd="//@children.15/@sourceConnections.1/@children.2" label="//@children.15/@sourceConnections.1/@children.0" sourceEnd="//@children.15/@sourceConnections.1/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import»" size="41,14" anchorKind="MiddlePart"/>
       <children xsi:type="editmodel:AssociationEndEditModel" location="129,0" attachSource="true"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="25,28"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="24,27"/>
     </sourceConnections>
-    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game.sprites/CirclingBallGroup-Standard::Call->org.br.game.sprites/Ball*org.br.game.sprites/CirclingBallGroup-Soyatec::Import->org.br.game.sprites/Ball" source="//@children.15" target="//@children.13" targetEnd="//@children.15/@sourceConnections.1/@children.2" label="//@children.15/@sourceConnections.1/@children.0" sourceEnd="//@children.15/@sourceConnections.1/@children.1" connectionRouterKind="Manual">
-      <children xsi:type="editmodel:WireLabelEditModel" name="«Call, Import»" size="64,14" anchorKind="MiddlePart"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="82,0" attachSource="true"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="58,30"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game.sprites/CirclingBallGroup-Soyatec::Import->org.br.game/Sprite" source="//@children.15" target="//@children.12" targetEnd="//@children.15/@sourceConnections.2/@children.2" label="//@children.15/@sourceConnections.2/@children.0" sourceEnd="//@children.15/@sourceConnections.2/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import»" size="41,14" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="22,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="77,42"/>
     </sourceConnections>
-    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game.sprites/CirclingBallGroup-Standard::Call->org.br.game/Sprite*org.br.game.sprites/CirclingBallGroup-Soyatec::Import->org.br.game/Sprite" source="//@children.15" target="//@children.12" targetEnd="//@children.15/@sourceConnections.2/@children.2" label="//@children.15/@sourceConnections.2/@children.0" sourceEnd="//@children.15/@sourceConnections.2/@children.1" connectionRouterKind="Manual">
-      <children xsi:type="editmodel:WireLabelEditModel" name="«Call, Import»" size="64,14" anchorKind="MiddlePart"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="67,0" attachSource="true"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="68,41"/>
-    </sourceConnections>
-    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game.sprites/CirclingBallGroup-Standard::Call->org.br.game/Vertex*org.br.game.sprites/CirclingBallGroup-Soyatec::Import->org.br.game/Vertex" source="//@children.15" target="//@children.4" targetEnd="//@children.15/@sourceConnections.3/@children.2" label="//@children.15/@sourceConnections.3/@children.0" sourceEnd="//@children.15/@sourceConnections.3/@children.1" connectionRouterKind="Manual">
-      <children xsi:type="editmodel:WireLabelEditModel" name="«Call, Import»" size="64,14" anchorKind="MiddlePart"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="154,0" attachSource="true"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="0,31"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game.sprites/CirclingBallGroup-Soyatec::Import->org.br.game/Vertex" source="//@children.15" target="//@children.4" targetEnd="//@children.15/@sourceConnections.3/@children.2" label="//@children.15/@sourceConnections.3/@children.0" sourceEnd="//@children.15/@sourceConnections.3/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import»" size="41,14" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="81,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="73,27"/>
     </sourceConnections>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" name="TargetGroup" location="669,751" size="134,26" id="org.br.game.sprites/TargetGroup">
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.3/@sourceConnections.2" name="TargetGroup" location="774,741" size="134,25" id="org.br.game.sprites/TargetGroup" runTimeClassModel="turnX(DLorg.br.game.Vertex;),repaintAll(),setActive(Z),getCenter(),collisionDetected(Lorg.br.game.Sprite;),move(DDD),turnZ(DLorg.br.game.Vertex;),isActive(),TargetGroup(Ljava.util.List;),zoom(DLorg.br.game.Vertex;),turnY(DLorg.br.game.Vertex;),setPicture(Lorg.br.game.Picture;)">
     <children xsi:type="editmodel:CompartmentEditModel"/>
     <children xsi:type="editmodel:CompartmentEditModel" size="111,216">
       <children xsi:type="editmodel:MethodEditModel" name="TargetGroup" id="org.br.game.sprites/TargetGroup#TargetGroup(Ljava.util.List;)"/>
@@ -536,23 +506,23 @@
     </children>
     <children xsi:type="editmodel:CompartmentEditModel"/>
     <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="org.br.game/GroupedSprite&lt;-org.br.game.sprites/TargetGroup" source="//@children.16" target="//@children.10" targetEnd="//@children.16/@sourceConnections.0/@children.1" sourceEnd="//@children.16/@sourceConnections.0/@children.0" connectionRouterKind="Manual">
-      <children xsi:type="editmodel:AssociationEndEditModel" location="19,0" attachSource="true"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="115,28"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="50,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="88,29"/>
     </sourceConnections>
-    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game.sprites/TargetGroup-Standard::Call->org.br.game/Vertex*org.br.game.sprites/TargetGroup-Soyatec::Import->org.br.game/Vertex" source="//@children.16" target="//@children.4" targetEnd="//@children.16/@sourceConnections.1/@children.2" label="//@children.16/@sourceConnections.1/@children.0" sourceEnd="//@children.16/@sourceConnections.1/@children.1" connectionRouterKind="Manual">
-      <children xsi:type="editmodel:WireLabelEditModel" name="«Call, Import»" size="64,14" anchorKind="MiddlePart"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="55,0" attachSource="true"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="101,31"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game.sprites/TargetGroup-Soyatec::Import->org.br.game/Vertex" source="//@children.16" target="//@children.4" targetEnd="//@children.16/@sourceConnections.1/@children.2" label="//@children.16/@sourceConnections.1/@children.0" sourceEnd="//@children.16/@sourceConnections.1/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import»" size="41,14" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="31,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="124,27"/>
     </sourceConnections>
     <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game.sprites/TargetGroup-Soyatec::Import->org.br.game/Picture" source="//@children.16" target="//@children.2" targetEnd="//@children.16/@sourceConnections.2/@children.2" label="//@children.16/@sourceConnections.2/@children.0" sourceEnd="//@children.16/@sourceConnections.2/@children.1" connectionRouterKind="Manual">
       <children xsi:type="editmodel:WireLabelEditModel" name="«Import»" size="41,14" anchorKind="MiddlePart"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="53,0" attachSource="true"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="99,31"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="47,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="102,23"/>
     </sourceConnections>
-    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game.sprites/TargetGroup-Standard::Call->org.br.game/Sprite*org.br.game.sprites/TargetGroup-Soyatec::Import->org.br.game/Sprite" source="//@children.16" target="//@children.12" targetEnd="//@children.16/@sourceConnections.3/@children.2" label="//@children.16/@sourceConnections.3/@children.0" sourceEnd="//@children.16/@sourceConnections.3/@children.1" connectionRouterKind="Manual">
-      <children xsi:type="editmodel:WireLabelEditModel" name="«Call, Import»" size="64,14" anchorKind="MiddlePart"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="40,0" attachSource="true"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="93,41"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.br.game.sprites/TargetGroup-Soyatec::Import->org.br.game/Sprite" source="//@children.16" target="//@children.12" targetEnd="//@children.16/@sourceConnections.3/@children.2" label="//@children.16/@sourceConnections.3/@children.0" sourceEnd="//@children.16/@sourceConnections.3/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import»" location="806,607" size="41,14" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="58,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="66,42"/>
     </sourceConnections>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
   </children>
