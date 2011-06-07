@@ -6,6 +6,7 @@ public class Vertex {
 
 	double x, y, z;
 	public final static int DIST = 3000;
+	private final int dif = 40;
 
 	public Vertex(double x, double y, double z) {
 		this.x = x;
@@ -25,12 +26,6 @@ public class Vertex {
 		z += dz;
 	}
 
-	public void moveTo(double x, double y, double z) {
-		this.x = x;
-		this.y = y;
-		this.z = z;
-	}
-
 	public void scale(double sx, double sy, double sz) {
 		x = x * sx;
 		y = y * sy;
@@ -41,7 +36,7 @@ public class Vertex {
 		return Math.sqrt((x * x) + (y * y) + (z * z));
 	}
 
-	public void TurnX(double a) {
+	public void turnX(double a) {
 		double y1 = this.y, z1 = this.z;
 		this.y = y1 * Math.cos(a * Math.PI / 180) - z1 * Math.sin(a * Math.PI / 180);
 		this.z = y1 * Math.sin(a * Math.PI / 180) + z1 * Math.cos(a * Math.PI / 180);
@@ -117,6 +112,18 @@ public class Vertex {
 		}
 
 		return new double[] { minX, minY, minZ, maxX, maxY, maxZ };
+	}
+
+	@Override
+	public boolean equals(Object other) {
+		boolean eq = false;
+		if (other instanceof Vertex) {
+			Vertex otherVertex = (Vertex) other;
+			if (Math.abs(otherVertex.getX() - this.getX()) <= dif)
+				if (Math.abs(otherVertex.getY() - this.getY()) <= dif)
+					eq = true;
+		}
+		return eq;
 	}
 
 	public String toString() {

@@ -2,7 +2,6 @@ package org.br.game.sprites;
 
 import java.util.List;
 
-import org.br.game.Game;
 import org.br.game.GroupedSprite;
 import org.br.game.Sprite;
 import org.br.game.Vertex;
@@ -32,14 +31,20 @@ public class CirclingBallGroup extends GroupedSprite {
 		circlingBall.setCenterBall(null);
 		centerBall.setCenterBall(circlingBall);// set Center ball as ball1
 
-		Vertex v = circlingBall.getCenter();
-		centerBall.moveTo(v.getX(), v.getY(), v.getZ());
-		centerBall.repaintAll();
-
+		double[] delta = getDeltaPos(circlingBall, centerBall);
+		centerBall.move(delta[0] + 10, delta[1], delta[2]);
 		centerBall.move(-getRadius() * Math.cos(45), -getRadius() * Math.sin(45), 0);
-		centerBall.repaintAll();
 
 		init();
+	}
+
+	private double[] getDeltaPos(Ball ball1, Ball ball2) {
+		Vertex ball1Pos = ball1.getCenter();
+		Vertex ball2Pos = ball2.getCenter();
+		double dX = ball1Pos.getX() - ball2Pos.getX();
+		double dY = ball1Pos.getY() - ball2Pos.getY();
+		double dZ = ball1Pos.getZ() - ball2Pos.getZ();
+		return new double[] { dX, dY, dZ };
 	}
 
 	@Override
@@ -99,13 +104,6 @@ public class CirclingBallGroup extends GroupedSprite {
 	public void move(double x, double y, double z) {
 		for (Sprite sprite : getGroup()) {
 			sprite.move(x, y, z);
-		}
-	}
-
-	@Override
-	public void moveTo(double x, double y, double z) {
-		for (Sprite sprite : getGroup()) {
-			sprite.moveTo(x, y, z);
 		}
 	}
 

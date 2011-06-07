@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import org.br.game.ASEParser;
 import org.br.game.Face;
+import org.br.game.Game;
 import org.br.game.Log;
 import org.br.game.Picture;
 import org.br.game.StatefullSprite;
@@ -56,13 +57,6 @@ public class Ball extends StatefullSprite {
 	public void move(double x, double y, double z) {
 		for (int i = 0; i < faces.length; i++) {
 			faces[i].move(x, y, z);
-			repaintAll();
-		}
-	}
-
-	public void moveTo(double x, double y, double z) {
-		for (int i = 0; i < faces.length; i++) {
-			faces[i].moveTo(x, y, z);
 			repaintAll();
 		}
 	}
@@ -156,8 +150,12 @@ public class Ball extends StatefullSprite {
 			public void run() {
 				while (circling) {
 					spin(radians);
+					if (Game.getGame().getTargets().isCollisionDetected(Ball.this)) {
+						Log.warn(getClass(), this + "======================>> WOW!!!!!");
+						Game.getGame().incrementScore();
+					}
 					try {
-						Thread.sleep(1000L);// Sleeps for 0.1 seconds
+						Thread.sleep(100L);// Sleeps for 0.1 seconds
 						radians += 1;
 					}
 					catch (InterruptedException e) {
@@ -174,10 +172,8 @@ public class Ball extends StatefullSprite {
 		double newY = CirclingBallGroup.getRadius() * Math.sin(Math.toDegrees(a));
 		move(newX, newY, 0);
 
-		// Vertex center = getCenterBall().getCenter();
-		// moveTo(center.getX() - newX, center.getY() - newY, center.getZ());
-
-		Log.info(getClass(), this + " " + newX + "; " + newY + " Degree: " + Math.toDegrees(a));
+		// Log.info(getClass(), this + " Changed by: " + newX + "; " + newY + " Degree: " + Math.toDegrees(a));
+		// Log.info(getClass(), this + " Current position: " + getCenter().getX() + "; " + getCenter().getY() + "; " + getCenter().getZ());
 	}
 
 	public Face[] getFaces() {

@@ -57,16 +57,10 @@ public class Face {
 		p3.move(dx, dy, dz);
 	}
 
-	public void moveTo(double x, double y, double z) {
-		p1.moveTo(x, y, z);
-		p2.moveTo(x, y, z);
-		p3.moveTo(x, y, z);
-	}
-
 	public void turnX(double a) {
-		p1.TurnX(a);
-		p2.TurnX(a);
-		p3.TurnX(a);
+		p1.turnX(a);
+		p2.turnX(a);
+		p3.turnX(a);
 	}
 
 	public void turnY(double a) {

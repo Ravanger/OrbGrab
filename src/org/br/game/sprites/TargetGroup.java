@@ -3,6 +3,7 @@ package org.br.game.sprites;
 import java.util.List;
 
 import org.br.game.GroupedSprite;
+import org.br.game.Log;
 import org.br.game.Picture;
 import org.br.game.Sprite;
 import org.br.game.Vertex;
@@ -41,6 +42,17 @@ public class TargetGroup extends GroupedSprite {
 		}
 	}
 
+	public boolean isCollisionDetected(Sprite other) {
+		boolean detected = false;
+		for (Sprite sprite : getGroup()) {
+			if (sprite.getCenter().equals(other.getCenter())) {
+				detected = true;
+				break;
+			}
+		}
+		return detected;
+	}
+
 	@Override
 	public void zoom(double a, Vertex center) {
 		for (Sprite sprite : getGroup()) {
@@ -76,12 +88,6 @@ public class TargetGroup extends GroupedSprite {
 		for (Sprite groupMember : getGroup()) {
 			groupMember.setPicture(picture);
 		}
-	}
-
-	@Override
-	public void moveTo(double x, double y, double z) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

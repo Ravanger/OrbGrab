@@ -37,6 +37,7 @@ public class Game extends JFrame {
 	private List<Sprite> sprites = new ArrayList<Sprite>();
 	private String ballModel = "models/small_ball.ase";
 	private String cubeModel = "models/cubik1.ase";
+	private int score = 0;
 
 	public Game(String st) {
 		super(st);
@@ -65,8 +66,8 @@ public class Game extends JFrame {
 		Ball ball1 = new Ball(new ASEParser(ballModel), Color.gray, "Ball 1");
 		Ball ball2 = new Ball(new ASEParser(ballModel), Color.red, "Ball 2");
 		List<Sprite> targetSprites = new ArrayList<Sprite>(5);
-		for (int i = 0; i < 5; i++) {
-			Target target = new Target(new ASEParser(cubeModel), Color.green, "Target");
+		for (int i = 0; i < 2; i++) {
+			Target target = new Target(new ASEParser(cubeModel), Color.green, "Target " + i);
 			targetSprites.add(target);
 		}
 		List<Sprite> playerSprites = new ArrayList<Sprite>(2);
@@ -108,10 +109,14 @@ public class Game extends JFrame {
 			getPlayer().getCenterBall().move(getPlayer().getRadius() * Math.cos(45), getPlayer().getRadius() * Math.sin(45), 0);// Moves the center ball
 			getPlayer().move(150, 150, 0);// Moves the player group
 			getPlayer().init();
-//			for (int i = 0; i < 5; i++) {
-//				Random rand = new Random();
-//				getTargets().getGroup().get(i).move(rand.nextDouble() * 100 * i, rand.nextDouble() * 100 * i, 0);
-//			}
+			pic.setCenterBall(getPlayer().getCenterBall());
+			pic.setSpinningBall(getPlayer().getCirclingBall());
+			for (int i = 0; i < getTargets().getGroup().size(); i++) {
+				Random rand = new Random();
+				Target target = (Target) getTargets().getGroup().get(i);
+				target.move(rand.nextDouble() * 100 * i, rand.nextDouble() * 100 * i, 0);
+				target.rotate();
+			}
 		}
 		else {
 			setJMenuBar(null);
@@ -190,5 +195,13 @@ public class Game extends JFrame {
 
 	private void setTargets(TargetGroup targets) {
 		this.targets = targets;
+	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public void incrementScore() {
+		score++;
 	}
 }

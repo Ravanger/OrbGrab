@@ -11,7 +11,7 @@ public abstract class GroupedSprite extends StatefullSprite {
 	private List<Sprite> group = new ArrayList<Sprite>();
 
 	// a default distance between group members
-	public static final int RADIUS = 100;
+	public static final int RADIUS = 60;
 
 	private static int dist = RADIUS;
 

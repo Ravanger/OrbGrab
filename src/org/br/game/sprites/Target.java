@@ -116,6 +116,24 @@ public class Target extends StatefullSprite {
 		return vertex;
 	}
 
+	public void rotate() {
+		Thread thread = new Thread() {
+			public void run() {
+				while (true) {
+					try {
+						Thread.sleep(100L);
+						turnX(5, getCenter());
+						turnY(5, getCenter());
+					}
+					catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		};
+		thread.start();
+	}
+
 	@Override
 	public void setActive(boolean flag) {
 		// TODO Auto-generated method stub
@@ -149,9 +167,7 @@ public class Target extends StatefullSprite {
 		this.picture = picture;
 	}
 
-	@Override
-	public void moveTo(double x, double y, double z) {
-		// TODO Auto-generated method stub
-		
+	public String toString() {
+		return name;
 	}
 }

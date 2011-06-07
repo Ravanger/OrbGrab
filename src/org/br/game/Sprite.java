@@ -10,8 +10,6 @@ public interface Sprite {
 
 	void move(double x, double y, double z);
 
-	void moveTo(double x, double y, double z);
-
 	void turnX(double a, Vertex center);
 
 	void turnY(double a, Vertex center);
