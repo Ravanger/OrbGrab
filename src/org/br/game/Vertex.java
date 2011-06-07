@@ -1,12 +1,15 @@
 package org.br.game;
 
-import java.util.List;
-
+/**
+ * Same as Point class, but has 3 coordinates: X, Y, and Z.
+ * 
+ * @author Boris
+ */
 public class Vertex {
 
 	double x, y, z;
-	public final static int DIST = 3000;
-	private final int dif = 40;
+	public final static int DIST = 3000; // Used for perspective projection.
+	private final int dif = 30; // The max difference used in the collision detection.
 
 	public Vertex(double x, double y, double z) {
 		this.x = x;
@@ -20,42 +23,81 @@ public class Vertex {
 		this.z = p.getZ();
 	}
 
+	/**
+	 * Moves all the coordinates by the given values.
+	 * 
+	 * @param dx
+	 * @param dy
+	 * @param dz
+	 */
 	public void move(double dx, double dy, double dz) {
 		x += dx;
 		y += dy;
 		z += dz;
 	}
 
+	/**
+	 * Scales all the coordinates by the given values.
+	 * 
+	 * @param sx
+	 * @param sy
+	 * @param sz
+	 */
 	public void scale(double sx, double sy, double sz) {
-		x = x * sx;
-		y = y * sy;
+		x *= sx;
+		y *= sy;
 		z *= sz;
 	}
 
+	/**
+	 * Gets the length of the vertex.
+	 * 
+	 * @return
+	 */
 	public double getLength() {
 		return Math.sqrt((x * x) + (y * y) + (z * z));
 	}
 
+	/**
+	 * Turns the vertex around the X axis.
+	 * 
+	 * @param a
+	 */
 	public void turnX(double a) {
-		double y1 = this.y, z1 = this.z;
-		this.y = y1 * Math.cos(a * Math.PI / 180) - z1 * Math.sin(a * Math.PI / 180);
-		this.z = y1 * Math.sin(a * Math.PI / 180) + z1 * Math.cos(a * Math.PI / 180);
+		double y1 = y, z1 = z;
+		y = y1 * Math.cos(a * Math.PI / 180) - z1 * Math.sin(a * Math.PI / 180);
+		z = y1 * Math.sin(a * Math.PI / 180) + z1 * Math.cos(a * Math.PI / 180);
 	}
 
-	public void TurnY(double a) {
-		double x1 = this.x, z1 = this.z;
-		this.x = x1 * Math.cos(a * Math.PI / 180) - z1 * Math.sin(a * Math.PI / 180);
-		this.z = x1 * Math.sin(a * Math.PI / 180) + z1 * Math.cos(a * Math.PI / 180);
+	/**
+	 * Turns the vertex around the Y axis.
+	 * 
+	 * @param a
+	 */
+	public void turnY(double a) {
+		double x1 = x, z1 = z;
+		x = x1 * Math.cos(a * Math.PI / 180) - z1 * Math.sin(a * Math.PI / 180);
+		z = x1 * Math.sin(a * Math.PI / 180) + z1 * Math.cos(a * Math.PI / 180);
 	}
 
-	public void TurnZ(double a) {
-		double x1 = this.x, y1 = this.y;
-		this.x = x1 * Math.cos(a * Math.PI / 180) - y1 * Math.sin(a * Math.PI / 180);
-		this.y = x1 * Math.sin(a * Math.PI / 180) + y1 * Math.cos(a * Math.PI / 180);
+	/**
+	 * Turns the vertex around the Z axis.
+	 * 
+	 * @param a
+	 */
+	public void turnZ(double a) {
+		double x1 = x, y1 = y;
+		x = x1 * Math.cos(a * Math.PI / 180) - y1 * Math.sin(a * Math.PI / 180);
+		y = x1 * Math.sin(a * Math.PI / 180) + y1 * Math.cos(a * Math.PI / 180);
 	}
 
-	public Point PerspectiveProjection() {
-		Point p2d = new Point((this.x * DIST) / (this.z + DIST), (this.y * DIST) / (this.z + DIST));
+	/**
+	 * Turns a 3D vertex into a 2D point.
+	 * 
+	 * @return
+	 */
+	public Point perspectiveProjection() {
+		Point p2d = new Point((getX() * DIST) / (getZ() + DIST), (getY() * DIST) / (getZ() + DIST));
 		return p2d;
 	}
 
@@ -83,37 +125,9 @@ public class Vertex {
 		return y;
 	}
 
-	public static double[] getMinMaxXYZ(List<Vertex> positions) {
-		double maxX = 0;
-		double maxY = 0;
-		double minX = 0;
-		double minY = 0;
-		double maxZ = 0;
-		double minZ = 0;
-		for (Vertex p : positions) {
-			if (p.getX() > maxX) {
-				maxX = p.getX();
-			}
-			else {
-				minX = p.getX();
-			}
-			if (p.getY() > maxY) {
-				maxY = p.getY();
-			}
-			else {
-				minY = p.getY();
-			}
-			if (p.getZ() > maxZ) {
-				maxZ = p.getZ();
-			}
-			else {
-				minZ = p.getZ();
-			}
-		}
-
-		return new double[] { minX, minY, minZ, maxX, maxY, maxZ };
-	}
-
+	/**
+	 * Used for collision detection. Checks if the vertex is equal to another vertex (centers of sprites) plus or minus the dif amount.
+	 */
 	@Override
 	public boolean equals(Object other) {
 		boolean eq = false;

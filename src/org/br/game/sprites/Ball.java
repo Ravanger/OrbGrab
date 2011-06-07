@@ -4,27 +4,32 @@ import java.awt.Color;
 
 import org.br.game.ASEParser;
 import org.br.game.Game;
-import org.br.game.Log;
 import org.br.game.Sprite;
-import org.br.game.StatefullSprite;
+import org.br.game.SpriteBase;
 import org.br.game.Vertex;
 
-public class Ball extends StatefullSprite {
+/**
+ * The Ball sprite.
+ * 
+ * @author Boris
+ */
+public class Ball extends SpriteBase {
 
 	private long sleep = Game.getGame().getSleepTime();
 	private Ball centerBall;
-
 	private Thread movingThread;
 	private boolean circling = false;
-
-	private Vertex grpCenter = new Vertex(0, 0, 0);
 	private CirclingBallGroup owner;
 
 	public Ball(ASEParser filereader, Color color, String name) {
-
 		super(filereader, color, name);
 	}
 
+	/**
+	 * Sets the group for each ball so it's aware of the other ball.
+	 * 
+	 * @param owner
+	 */
 	public void setGroup(CirclingBallGroup owner) {
 		this.owner = owner;
 	}
@@ -39,15 +44,12 @@ public class Ball extends StatefullSprite {
 	@Override
 	public void init() {
 		super.init();
-		// Vertex center = getCenterBall().getCenter();
 		if (centerBall != null) {
 			if (isActive()) {
 				centerBall.setActive(false);// Deactivates the center ball
 				circleAround();
 			}
 			else {
-				// Vertex center = getGroup().getCenter();
-				// move(center.getX(), center.getY(), 0);
 				stop();
 			}
 		}
@@ -55,23 +57,25 @@ public class Ball extends StatefullSprite {
 		}
 	}
 
+	/**
+	 * A thread that's used for the active ball. Inside the loop it keeps calling the spin() method which updates its coordinates.
+	 */
 	void circleAround() {
 		movingThread = new Thread() {
-			double radians = 0;
+			int inc = 0;
 
 			public void run() {
 				while (circling) {
-					spin(radians);
+					spin(inc);
 					Sprite targetDetected = Game.getGame().getTargets().collisionDetected(Ball.this);
 					if (targetDetected != null) {
 						Game.getGame().hit(targetDetected);
 					}
 					try {
 						Thread.sleep(sleep);// Sleeps for 0.1 seconds
-						radians += 1;
+						inc += 1;
 					}
 					catch (InterruptedException e) {
-						Log.warn(getClass(), this + ": Thread failed");
 					}
 				}
 			}
@@ -79,14 +83,15 @@ public class Ball extends StatefullSprite {
 		movingThread.start();
 	}
 
-	private void spin(double a) {
-		double newX = getRadius() * Math.cos(Math.toDegrees(a));
-		double newY = getRadius() * Math.sin(Math.toDegrees(a));
+	/**
+	 * Updates the spinning ball's coordinates
+	 * 
+	 * @param inc
+	 */
+	private void spin(int inc) {
+		double newX = getRadius() * Math.cos(Math.toDegrees(inc));
+		double newY = getRadius() * Math.sin(Math.toDegrees(inc));
 		move(newX, newY, 0);
-	}
-
-	public Vertex getGroupCenter() {
-		return grpCenter;
 	}
 
 	/**
@@ -100,6 +105,11 @@ public class Ball extends StatefullSprite {
 		}
 	}
 
+	/**
+	 * Returns the center (non-spinning) ball.
+	 * 
+	 * @return
+	 */
 	public Ball getCenterBall() {
 		return centerBall;
 	}
@@ -121,6 +131,9 @@ public class Ball extends StatefullSprite {
 		return Game.getGame().getRadius();
 	}
 
+	/**
+	 * If the ball hits the edge of the screen, bounce it back 200 pixels.
+	 */
 	public void move(double x, double y, double z) {
 		Vertex center = getCenter();
 		if (center.getX() + x < 0) {
@@ -145,9 +158,4 @@ public class Ball extends StatefullSprite {
 		}
 		super.move(x, y, z);
 	}
-
-	public void moveIn(double x, double y, double z) {
-		super.move(x, y, z);
-	}
-
 }

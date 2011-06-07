@@ -2,13 +2,12 @@ package org.br.game.sprites;
 
 import java.util.List;
 
-import org.br.game.Game;
 import org.br.game.GroupedSprite;
 import org.br.game.Sprite;
 import org.br.game.Vertex;
 
 /**
- * The concrete implementation of GroupedSprite with the group of 2 moving balls. One of the Ball is still, the second circles around it.
+ * The concrete implementation of GroupedSprite with the group of 2 moving ball sprites. One of the sprites is still, the second circles around it.
  * 
  * @author Boris
  */
@@ -23,6 +22,9 @@ public class CirclingBallGroup extends GroupedSprite {
 		// nothing
 	}
 
+	/**
+	 * Switches between the active sprites.
+	 */
 	public void switchSpinning() {
 		Ball centerBall = getCenterBall();
 		Ball circlingBall = getCirclingBall();
@@ -33,12 +35,18 @@ public class CirclingBallGroup extends GroupedSprite {
 		centerBall.setCenterBall(circlingBall);// set Center ball as ball1
 
 		double[] delta = getDeltaPos(circlingBall, centerBall);
-		centerBall.move(delta[0] + 10, delta[1], delta[2]);
-		centerBall.move(-getRadius() * Math.cos(45), -getRadius() * Math.sin(45), 0);
-
+		centerBall.move(delta[0], delta[1], delta[2]); // Moves the (previously) center ball on top of the (previously) circling ball.
+		centerBall.move(-getRadius() * Math.cos(45), -getRadius() * Math.sin(45), 0);// Moves the (previously) center ball to the starting point on the orbit.
 		init();
 	}
 
+	/**
+	 * We need the delta position of the sprites in order to move the sprites correctly.
+	 * 
+	 * @param ball1
+	 * @param ball2
+	 * @return
+	 */
 	private double[] getDeltaPos(Ball ball1, Ball ball2) {
 		Vertex ball1Pos = ball1.getCenter();
 		Vertex ball2Pos = ball2.getCenter();
@@ -52,27 +60,6 @@ public class CirclingBallGroup extends GroupedSprite {
 	public boolean isActive() {
 		return false;
 	}
-
-	/**
-	 * Returns center vertex of the group, else returns null.
-	 * 
-	 * @return
-	 */
-	public Vertex getCenter() {
-		Vertex result = null;
-		for (Sprite sprite : getGroup()) {
-			Ball ball = (Ball) sprite;
-			if (ball.getCenterBall() != null) {
-				result = ball.getGroupCenter();
-				break;
-			}
-		}
-		return result;
-	}
-
-	/*
-	 * public Vertex getCenter() { Ball ball1 = (Ball) getGroup().get(0); Ball ball2 = (Ball) getGroup().get(1); Vertex center1 = ball1.getCenter(); Vertex center2 = ball2.getCenter(); List<Vertex> positions = new ArrayList<Vertex>(2); positions.add(center1); positions.add(center2); double[] groupCenter = Vertex.getMinMaxXYZ(positions); double centerZ = groupCenter[5] - groupCenter[2]; double centerX = groupCenter[3] - groupCenter[0]; double centerY = groupCenter[4] - groupCenter[1]; Vertex center = new Vertex(centerX, centerY, centerZ); return center; }
-	 */
 
 	/**
 	 * Returns the stationary ball.
@@ -90,6 +77,11 @@ public class CirclingBallGroup extends GroupedSprite {
 		return center;
 	}
 
+	/**
+	 * Returns the circling ball.
+	 * 
+	 * @return
+	 */
 	public Ball getCirclingBall() {
 		Ball circling = null;
 		for (Sprite sprite : getGroup()) {

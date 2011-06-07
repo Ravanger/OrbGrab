@@ -4,16 +4,23 @@ import java.awt.Color;
 
 import org.br.game.ASEParser;
 import org.br.game.Game;
-import org.br.game.Log;
-import org.br.game.StatefullSprite;
+import org.br.game.SpriteBase;
 import org.br.game.Vertex;
 
-public class Target extends StatefullSprite {
+/**
+ * The target class.
+ * 
+ * @author Lone Wolf
+ */
+public class Target extends SpriteBase {
 
 	public Target(ASEParser filereader, Color color, String name) {
 		super(filereader, color, name);
 	}
 
+	/**
+	 * Basic thread to animate rotation of the cube.
+	 */
 	public void rotate() {
 		Thread thread = new Thread() {
 			public void run() {
@@ -22,6 +29,7 @@ public class Target extends StatefullSprite {
 						Thread.sleep(100L);
 						turnX(5, getCenter());
 						turnY(5, getCenter());
+						turnZ(5, getCenter());
 					}
 					catch (InterruptedException e) {
 						e.printStackTrace();
@@ -32,6 +40,9 @@ public class Target extends StatefullSprite {
 		thread.start();
 	}
 
+	/**
+	 * Checks if the cube went out of bounds of the screen and if it did, move it back.
+	 */
 	public void move(double x, double y, double z) {
 		Vertex center = getCenter();
 		if (center.getX() + x < 0) {

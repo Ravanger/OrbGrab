@@ -3,11 +3,15 @@ package org.br.game.sprites;
 import java.util.List;
 
 import org.br.game.GroupedSprite;
-import org.br.game.Log;
 import org.br.game.Picture;
 import org.br.game.Sprite;
 import org.br.game.Vertex;
 
+/**
+ * The concrete implementation of GroupedSprite with the group of target sprites.
+ * 
+ * @author Boris
+ */
 public class TargetGroup extends GroupedSprite {
 
 	public TargetGroup(List<Sprite> sprites) {
@@ -42,6 +46,12 @@ public class TargetGroup extends GroupedSprite {
 		}
 	}
 
+	/**
+	 * Used for collision detection. Returns the collided-with sprite (target). "Other" is the spinning ball in this case.
+	 * 
+	 * @param other
+	 * @return
+	 */
 	public Sprite collisionDetected(Sprite other) {
 		Sprite detected = null;
 		for (Sprite sprite : getGroup()) {
@@ -89,5 +99,4 @@ public class TargetGroup extends GroupedSprite {
 			groupMember.setPicture(picture);
 		}
 	}
-
 }

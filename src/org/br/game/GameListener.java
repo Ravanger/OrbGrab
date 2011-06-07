@@ -1,68 +1,53 @@
 package org.br.game;
 
-import java.awt.*;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.event.MouseWheelEvent;
-import java.awt.event.MouseWheelListener;
+
+import javax.swing.JOptionPane;
 import javax.swing.event.MouseInputListener;
+import java.awt.event.MouseEvent;
 
-public class GameListener implements MouseInputListener, KeyListener, MouseWheelListener {
+/**
+ * Listener for the game class. Contains mouse and key actions for controlling the game.
+ * 
+ * @author Boris
+ */
+public class GameListener implements MouseInputListener, KeyListener {
 
-	private Picture pic;
 	private Game game;
-	int mx = 0, my = 0;
+	private Picture pic;
 
-	public GameListener(Picture pic, Game game) {
-		this.pic = pic;
+	public GameListener(Game game, Picture pic) {
 		this.game = game;
+		this.pic = pic;
 	}
 
-	public void mouseWheelMoved(MouseWheelEvent e) {
-	}
-
-	public void mouseClicked(java.awt.event.MouseEvent e) {
+	/**
+	 * On mouse click, calls the switchSpinning() function which switches the active ball.
+	 */
+	public void mouseClicked(MouseEvent e) {
 		if (e.getModifiers() == InputEvent.BUTTON1_MASK) {
 			game.getPlayer().switchSpinning();
-//			pic.repaint();
 		}
 	}
 
-	public void mouseReleased(java.awt.event.MouseEvent e) {
+	public void mouseReleased(MouseEvent e) {
 	}
 
-	public void mouseEntered(java.awt.event.MouseEvent e) {
+	public void mouseEntered(MouseEvent e) {
 	}
 
-	public void mouseExited(java.awt.event.MouseEvent e) {
+	public void mouseExited(MouseEvent e) {
 	}
 
-	public void mouseDragged(java.awt.event.MouseEvent e) {
-		int x = e.getX(), y = e.getY();
-		if (e.getModifiers() == InputEvent.BUTTON2_MASK) {// Middle mouse button
-			turnXY(x - mx, y - my);
-			pic.repaint();
-		}
-		else if (e.getModifiers() == InputEvent.BUTTON3_MASK) {// Right mouse button
-			turnZ(x - mx);
-			pic.repaint();
-		}
-		mx = x;
-		my = y;
+	public void mouseDragged(MouseEvent e) {
 	}
 
-	private void turnZ(int a) {
-		game.getPlayer().turnZ(a, game.getPlayer().getCenterBall().getCenter());
+	public void mouseMoved(MouseEvent e) {
 	}
 
-	private void turnXY(int a, int b) {
-		// a is for x, b is for y.
-		game.getPlayer().turnX(a, game.getPlayer().getCenterBall().getCenter());
-		game.getPlayer().turnY(b, game.getPlayer().getCenterBall().getCenter());
-	}
-
-	public void mouseMoved(java.awt.event.MouseEvent e) {
+	public void mousePressed(MouseEvent e) {
 	}
 
 	public void keyTyped(KeyEvent e) {
@@ -72,11 +57,8 @@ public class GameListener implements MouseInputListener, KeyListener, MouseWheel
 	}
 
 	public void keyReleased(KeyEvent e) {
-	}
-
-	public void mousePressed(java.awt.event.MouseEvent e) {
-		this.mx = e.getX();
-		this.my = e.getY();
-		e.consume();
+		if (e.getKeyCode() == 72) { // 72 = H
+			JOptionPane.showMessageDialog(pic, "OrbGrab is a simple game. You control a group of two balls. One of the balls spins around the other one. \nWhen you press the left mouse button, the balls switch roles and the second ball starts spinning around the first. \nThe object of the game is to move the group and collect all of the cubes to raise your score. \nBut stay away from the edges of the screen! If you hit the edge you get bounced back and lose points!");
+		}
 	}
 }

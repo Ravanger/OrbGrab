@@ -4,9 +4,12 @@ import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.br.game.state.GameState;
-
-public abstract class GroupedSprite extends StatefullSprite {
+/**
+ * Abstract class which is a parent of all grouped sprites.
+ * 
+ * @author Boris
+ */
+public abstract class GroupedSprite extends SpriteBase {
 
 	private List<Sprite> group = new ArrayList<Sprite>();
 
@@ -17,24 +20,6 @@ public abstract class GroupedSprite extends StatefullSprite {
 	public List<Sprite> getGroup() {
 		return group;
 	}
-
-	// protected Vertex getGroupCenter() {
-	//
-	// List<Point> all = new ArrayList<Point>();
-	// for (Sprite groupMember : group) {
-	// all.add(groupMember.getPosition());
-	// }
-	// double[] minMax = Point.getMinMaxXY(all);
-	// double maxX = minMax[2];
-	// double maxY = minMax[3];
-	//
-	// double minX = minMax[0];
-	// double minY = minMax[1];
-	//
-	// Point groupCenter = new Point((maxX - minX) / 2, (maxY - minY) / 2);
-	//
-	// return groupCenter;
-	// }
 
 	@Override
 	public void paint(Graphics g) {
@@ -47,14 +32,6 @@ public abstract class GroupedSprite extends StatefullSprite {
 		for (Sprite groupMember : group) {
 			groupMember.init();
 		}
-		setState(GameState.STILL);
-	}
-
-	public void move(Direction dir) {
-		// for (Sprite groupMember : group) {
-		// // groupMember.move(dir);
-		// }
-		setState(GameState.MOVING);
 	}
 
 	protected int getRadius() {

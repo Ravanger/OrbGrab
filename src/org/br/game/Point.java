@@ -1,9 +1,7 @@
 package org.br.game;
 
-import java.util.List;
-
 /**
- * TODO use Point ?
+ * Basic point class. Has x and y coordinates.
  * 
  * @author Boris
  */
@@ -29,47 +27,37 @@ public class Point {
 		return y;
 	}
 
-	public Point getDistance(double x, double y) {
-		return new Point(this.x + x, this.y + y);
-	}
-
-	public static double[] getMinMaxXY(List<Point> positions) {
-		double maxX = 0;
-		double maxY = 0;
-		double minX = 0;
-		double minY = 0;
-		for (Point p : positions) {
-			if (p.getX() > maxX) {
-				maxX = p.getX();
-			}
-			if (p.getX() < minX) {
-				minX = p.getX();
-			}
-			if (p.getY() > maxY) {
-				maxY = p.getY();
-			}
-			if (p.getY() < minY) {
-				minY = p.getY();
-			}
-		}
-
-		return new double[] { minX, minY, maxX, maxY };
-	}
-
-	public void Move(double dx, double dy) {
+	/**
+	 * Moves the point by the given coordinates.
+	 * 
+	 * @param dx
+	 * @param dy
+	 */
+	public void move(double dx, double dy) {
 		x += dx;
 		y += dy;
 	}
 
-	public void Scale(double sx, double sy) {
+	/**
+	 * Scales the point up or down depending on the given values.
+	 * 
+	 * @param sx
+	 * @param sy
+	 */
+	public void scale(double sx, double sy) {
 		x = x * sx;
 		y = y * sy;
 	}
 
-	public void Turn(double a) {
-		double x1 = this.x, y1 = this.y;
-		this.x = x1 * Math.cos(a * Math.PI / 180) - y1 * Math.sin(a * Math.PI / 180);
-		this.y = x1 * Math.sin(a * Math.PI / 180) + y1 * Math.cos(a * Math.PI / 180);
+	/**
+	 * Turns the point in a circle based on the given angle.
+	 * 
+	 * @param a
+	 */
+	public void turn(double a) {
+		double x1 = x, y1 = y;
+		setX(x1 * Math.cos(a * Math.PI / 180) - y1 * Math.sin(a * Math.PI / 180));
+		setY(x1 * Math.sin(a * Math.PI / 180) + y1 * Math.cos(a * Math.PI / 180));
 	}
 
 	public void setX(double x) {

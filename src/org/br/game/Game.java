@@ -17,6 +17,7 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 
 import org.br.game.sprites.Ball;
 import org.br.game.sprites.CirclingBallGroup;
@@ -26,7 +27,7 @@ import org.br.game.sprites.TargetGroup;
 /**
  * The main class of OrgGrab, starts the game itself.
  * 
- * @author Lone Wolf
+ * @author Boris
  */
 public class Game extends JFrame {
 
@@ -43,9 +44,8 @@ public class Game extends JFrame {
 	private String cubeModel = "models/cubik1.ase";
 	private int score = 0;
 
-	// /////////////////////////////////////
+	// ///////////////////////////////////// Default properties
 	private int targetNumber = 2;
-	// a default distance between group members
 	private int radius = 60;
 	private long sleepTime = 100L;
 	private Color movingBallColor = Color.GREEN, centerBallColor = Color.GRAY, targetColor = Color.RED;
@@ -58,19 +58,19 @@ public class Game extends JFrame {
 	}
 
 	/**
-	 * Adds GameListener (MouseListener) to pic (JPanel)
+	 * Adds GameListener (MouseListener + KeyListener) to pic (JPanel)
 	 */
 	private void addPicListener() {
-		gamelistener = new GameListener(pic, this);
+		gamelistener = new GameListener(this, pic);
 		pic.addMouseListener(gamelistener);
-		pic.addMouseWheelListener(gamelistener);
 		pic.addMouseMotionListener(gamelistener);
+		pic.addKeyListener(gamelistener);
 	}
 
 	/**
-	 * Creates the Ball sprites and sets the starting center ball (Ball 2).
+	 * Creates the Ball sprites, set the starting center ball, creates list of target sprites.
 	 * 
-	 * @return
+	 * @return Returns picture with the list of all the sprites for painting.
 	 */
 	private Picture getGameContent() {
 		pic = new Picture();
@@ -85,12 +85,12 @@ public class Game extends JFrame {
 		playerSprites.add(ball1);
 		playerSprites.add(ball2);
 		for (Sprite sprite : playerSprites) {
-			sprite.zoom(2, sprite.getCenter());
+			sprite.zoom(2.5, sprite.getCenter());
 		}
 		for (Sprite sprite : targetSprites) {
 			sprite.zoom(0.2, sprite.getCenter());
 		}
-		ball1.setCenterBall(ball2);// set Center ball as ball2
+		ball1.setCenterBall(ball2);// Set Center ball as ball2
 		ball1.setActive(true);// Activate ball 1 (make it spin)
 		setPlayer(new CirclingBallGroup(playerSprites));
 		setTargets(new TargetGroup(targetSprites));
@@ -106,7 +106,7 @@ public class Game extends JFrame {
 	}
 
 	/**
-	 * Moves one ball to the center of the group using the group's radius
+	 * If not in the main menu, starts the game. Moves the active ball to the starting orbit location (by radius). Initializes the group and the targets.
 	 */
 	public void startGame() {
 		setVisible(true);
@@ -115,7 +115,6 @@ public class Game extends JFrame {
 			getContentPane().add(getGameContent());
 			setJMenuBar(buildMenu());
 			pack();
-			pic.grabFocus();
 			repaint();
 			getPlayer().getCenterBall().move(getRadius() * Math.cos(45), getRadius() * Math.sin(45), 0);// Moves the center ball
 			getPlayer().move(150, 150, 0);// Moves the player group
@@ -128,6 +127,7 @@ public class Game extends JFrame {
 				target.move(rand.nextDouble() * 200 * i, rand.nextDouble() * 300 * i, 0);
 				target.rotate();
 			}
+			pic.grabFocus();
 		}
 		else {
 			setJMenuBar(null);
@@ -138,7 +138,6 @@ public class Game extends JFrame {
 			pack();
 			mainMenu.grabFocus();
 		}
-
 	}
 
 	/**
@@ -149,20 +148,29 @@ public class Game extends JFrame {
 	private JMenuBar buildMenu() {
 		JMenuBar menubar = new JMenuBar();
 		JMenu filemenu;
-		JMenuItem exit, help;
+		JMenuItem exit, help, about;
 		filemenu = new JMenu("File");
 		menubar.add(filemenu);
-		// help = new JMenuItem("Help");
-		// filemenu.add(help);
-		// help.addActionListener(new ActionListener() {
-		//
-		// @Override
-		// public void actionPerformed(ActionEvent e) {
-		// g = pic.getGraphics();
-		// pic.paintHelp(g);
-		// }
-		// });
+		help = new JMenuItem("Help");
+		filemenu.add(help);
+		about = new JMenuItem("About");
+		filemenu.add(about);
+		help.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(pic, "OrbGrab is a simple game. You control a group of two balls. One of the balls spins around the other one. \nWhen you press the left mouse button, the balls switch roles and the second ball starts spinning around the first. \nThe object of the game is to move the group and collect all of the cubes to raise your score. \nBut stay away from the edges of the screen! If you hit the edge you get bounced back and lose points!");
+			}
+		});
+		about.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(pic, "Made by Boris Rossovsky in 2011 for Shevah Mofet.\nSpecial thanks to Gennady Rashap and Michael Rossovsky.");
+			}
+		});
 		exit = new JMenuItem("Exit");
+		filemenu.addSeparator();
 		filemenu.add(exit);
 		exit.addActionListener(new ActionListener() {
 
@@ -195,12 +203,6 @@ public class Game extends JFrame {
 		return GAME;
 	}
 
-	public static void main(String[] args) {
-		GAME = new Game("OrbGrab");
-		GAME.loadConfiguration();
-		GAME.startGame();
-	}
-
 	public TargetGroup getTargets() {
 		return targets;
 	}
@@ -213,6 +215,11 @@ public class Game extends JFrame {
 		return score;
 	}
 
+	/**
+	 * Tells the game what to do when the player hits a target. Increases the score by 1 and randomly changes the hit target's position.
+	 * 
+	 * @param target
+	 */
 	public void hit(Sprite target) {
 		score++;
 		Random rand = new Random();
@@ -225,10 +232,16 @@ public class Game extends JFrame {
 		target.move(random1 * 100, random2 * 100, 0);
 	}
 
+	/**
+	 * If the player hits the edge of the canvas, subtract 1 from the score.
+	 */
 	public void outOfBorder() {
 		score--;
 	}
 
+	/**
+	 * Reads the configuration file "orbgrab.properties" and saves various properties from the file.
+	 */
 	private void loadConfiguration() {
 		Properties properties = new Properties();
 		try {
@@ -298,5 +311,11 @@ public class Game extends JFrame {
 
 	public void setTargetColor(Color targetColor) {
 		this.targetColor = targetColor;
+	}
+
+	public static void main(String[] args) {
+		GAME = new Game("OrbGrab");
+		GAME.loadConfiguration();
+		GAME.startGame();
 	}
 }

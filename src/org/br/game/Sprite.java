@@ -2,8 +2,11 @@ package org.br.game;
 
 import java.awt.Graphics;
 
-import org.br.game.state.GameState;
-
+/**
+ * Sprite interface. Contains all needed methods for sprites.
+ * 
+ * @author Lone Wolf
+ */
 public interface Sprite {
 
 	void init();
@@ -19,8 +22,6 @@ public interface Sprite {
 	void zoom(double a, Vertex center);
 
 	Vertex getCenter();
-
-	GameState getState();
 
 	void setActive(boolean flag);
 

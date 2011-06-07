@@ -5,6 +5,11 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
+/**
+ * Reads .ASE (and similar format) files and parses them. Saves the needed information (Vertexes and faces) into arrays.
+ * 
+ * @author Boris
+ */
 public class ASEParser {
 
 	private String filePath = null;
@@ -58,8 +63,6 @@ public class ASEParser {
 		}
 		br.close();
 		fr.close();
-		// readFACENUM();
-		// readVERTEXNUM();
 		return aList;
 	}
 
@@ -106,7 +109,7 @@ public class ASEParser {
 	}
 
 	/**
-	 * Returns double[] array which contains information for every vertex (x, y, and z).
+	 * Returns a double[] array which contains information for every vertex (x, y, and z).
 	 */
 	public double[] readASEVertex() {
 		String line;
@@ -132,7 +135,7 @@ public class ASEParser {
 	}
 
 	/**
-	 * Returns double[] array which contains information for every face (Number of face and numbers of the vertexes in the face).
+	 * Returns a double[] array which contains information for every face (Index of face and numbers of the vertexes in the face).
 	 */
 	public double[] readASEFace() {
 		String line;
@@ -182,7 +185,7 @@ public class ASEParser {
 					index++;
 				}
 				else {
-					String temp = st.nextToken();// Skips the token.
+					st.nextToken();// Skips the token.
 				}
 				counter++;
 			}
@@ -194,7 +197,7 @@ public class ASEParser {
 					index++;
 				}
 				else {
-					String temp = st.nextToken();// Skips the token.
+					st.nextToken();// Skips the token.
 				}
 				counter++;
 			}
