@@ -42,11 +42,11 @@ public class TargetGroup extends GroupedSprite {
 		}
 	}
 
-	public boolean isCollisionDetected(Sprite other) {
-		boolean detected = false;
+	public Sprite collisionDetected(Sprite other) {
+		Sprite detected = null;
 		for (Sprite sprite : getGroup()) {
 			if (sprite.getCenter().equals(other.getCenter())) {
-				detected = true;
+				detected = sprite;
 				break;
 			}
 		}

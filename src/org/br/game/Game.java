@@ -201,7 +201,19 @@ public class Game extends JFrame {
 		return score;
 	}
 
-	public void incrementScore() {
+	public void hit(Sprite target) {
 		score++;
+		Random rand = new Random();
+		double random1 = rand.nextDouble();
+		double random2 = rand.nextDouble();
+		if ((random1 < 0.5) || (random2 > 0.5)) {
+			random1 = -1 * random1;
+			random2 = -1 * random2;
+		}
+		target.move(random1 * 100, random2 * 100, 0);
+		Vertex targetPos = target.getCenter();
+		if ((targetPos.getX() > getGame().getWidth() - 100) || (targetPos.getY() > getGame().getHeight() - 100)) {
+			target.move(150, 150, 0);
+		}
 	}
 }

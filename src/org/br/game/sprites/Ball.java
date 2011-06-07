@@ -9,6 +9,7 @@ import org.br.game.Face;
 import org.br.game.Game;
 import org.br.game.Log;
 import org.br.game.Picture;
+import org.br.game.Sprite;
 import org.br.game.StatefullSprite;
 import org.br.game.Triangle;
 import org.br.game.Vertex;
@@ -150,9 +151,9 @@ public class Ball extends StatefullSprite {
 			public void run() {
 				while (circling) {
 					spin(radians);
-					if (Game.getGame().getTargets().isCollisionDetected(Ball.this)) {
-						Log.warn(getClass(), this + "======================>> WOW!!!!!");
-						Game.getGame().incrementScore();
+					Sprite targetDetected = Game.getGame().getTargets().collisionDetected(Ball.this);
+					if (targetDetected != null) {
+						Game.getGame().hit(targetDetected);
 					}
 					try {
 						Thread.sleep(100L);// Sleeps for 0.1 seconds
