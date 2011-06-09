@@ -4,5 +4,5 @@ Name: org/br/game
 Sealed: true
 Specification-Title: "OrbGrab"
 Specification-Vendor:  "org.br.game"
-Implementation-Title: "OrbGrab"
+Implementation-Title: "OrbGram"
 Implementation-Vendor: "org.br.game"

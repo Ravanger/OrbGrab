@@ -44,7 +44,7 @@ GOTO :eof
 COPY "%manifest%" "%lstf%" > NUL
 ECHO Specification-Version: "1.0" >> "%lstf%"
 ECHO Implementation-Version: "1.0" >> "%lstf%"
-jar cfm "%dist%" "%lstf%" -C "%out%" . %versionfile% %imgdir%\*
+jar cfm "%dist%" "%lstf%" -C bin %versionfile% img models orbgrab.properties
 GOTO :eof
 
 :end
